@@ -24,9 +24,15 @@
             <ComboBox Name="fieldSelector" Grid.Row="1" Margin="10,10,10,10" SelectionChanged="ChangeListBinding" />
             <ScrollViewer Grid.Row ="2" HorizontalAlignment="Left" Margin="0,20,0,0" VerticalAlignment="Stretch" Width="256">
                 <ListView Name="elementPanel" Width="250" VerticalAlignment="Stretch" ItemsSource="{Binding Patients}">
+                    <ListView.Resources>
+                        <Style x:Key="ListViewTextBlockStyle" TargetType="TextBlock" >
+                            <Setter Property="FontWeight" Value="Bold" />
+                            <Setter Property="Padding" Value="20,0,0,0" />                         
+                        </Style>
+                    </ListView.Resources>
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Path=Name}"></TextBlock>
+                            <TextBlock Text="{Binding Path=Name}" Style="{StaticResource ListViewTextBlockStyle}" />
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
@@ -48,7 +54,23 @@
                     <TextBlock Grid.Row="0" Grid.Column="0" FontSize="15">Button pressed:</TextBlock>
                     <TextBlock Grid.Row="0" Grid.Column="0" FontSize="15" Text="{Binding ElementName=baseButton, Path=IsPressed}" Margin="110,0,0,0"></TextBlock>
                     <pc:ButtonBase x:Name="baseButton" Grid.Row="0" Width="150" Height="50" VerticalAlignment="Top" Content="BaseButton" Tapped="baseButton_Tapped" HorizontalAlignment="Center" FontSize="15" />
-                </Grid>
+
+                <ListView Name="elPanel" Grid.Row="1" Grid.Column="0">
+                    <ListView.Resources>
+                        <Style x:Key="ListViewTextBlockStyle" TargetType="TextBlock" >
+                            <Setter Property="FontWeight" Value="Bold" />
+                            <Setter Property="Padding" Value="20,0,0,0" />
+                            <Setter Property="Foreground" Value="Red" />
+                        </Style>
+                    </ListView.Resources>
+                    <ListViewItem>
+                        <TextBlock Text="TextBlock 1" Style="{StaticResource ListViewTextBlockStyle}" />
+                    </ListViewItem>
+                    <ListViewItem>
+                        <TextBlock Text="TextBlock 2" />
+                    </ListViewItem>
+                </ListView>
+            </Grid>
                 
             </Grid>
     </Grid>

@@ -508,8 +508,56 @@ Auch sonst gibt es eine definierte Prioritätsliste, welche genau angibt, welche
 \cite{ana12}, S. 104ff
 
 \subsection[Styles]{Styles}
-Angenommen, man will, dass jedes Element 
-\cite{ana12}, S. 410ff
+Angenommen, man will das Aussehen eines Buttons verändern. In diesem Fall setzt man im XAML-File die entsprechenden Properties und bekommt so einen Button, der genauso gerendert wird, wie man es möchte.
+\newline
+Wenn man nun aber nicht nur eines Controls ändern möchte, sondern eine ganze Reihe von einem bestimmten Control, wird es mühsam und unübersichtlich: man müsste bei jedem einzelnen die selben Properties setzen, was das XAML-File unnötig aufbläht.
+\newline
+An dieser Stelle kommen Styles ins Spiel.
+\newline
+\newline
+Styles machen es möglich, mehrere Eigenschaften auf einmal zu gruppieren und auf alle Elemente eines Typs einfach anzuwenden. Definiert werden Styles direkt auf Controls, sodass alle in der Hierarchie darunterliegenden Kindelemente dieses Typs besagte Eigenschaften nutzen können. \cite{ana12}, S. 410ff
+\newline
+\newline
+In Listing \ref{lst:styles_templates} ist dargestellt, wie ein Style für TextBlock-Elemente innerhalb der definierten ListView definiert wird, der die \textit{FontWeight} auf \textit{Bold}, die \textit{Foreground}-Farbe auf \textit{Red}, und ein \textit{Padding} von links auf 20 setzt.
+\newline
+Der Style wird dazu als Resource der ListView definiert und in den gewünschten TextBlock-Elementen mit \textit{Style="\{StaticResource ListViewTextBlockStyle\}"} angewendet.
+\newline
+\begin{lstlisting}[caption={Styles und Templates}\label{lst:styles_templates},captionpos=t]
+<ListView Name="elementPanel">
+   <ListView.Resources>
+       <Style x:Key="ListViewTextBlockStyle" TargetType="TextBlock" >
+           <Setter Property="FontWeight" Value="Bold" />
+           <Setter Property="Padding" Value="20,0,0,0" />
+           <Setter Property="Foreground" Value="Red" />                         
+        </Style>
+   </ListView.Resources>
+   <ListViewItem>
+       <TextBlock Text="TextBlock 1"
+	 Style="{StaticResource ListViewTextBlockStyle}" />
+   </ListViewItem>
+   <ListViewItem>
+       <TextBlock Text="TextBlock 2" />
+   </ListViewItem>
+</ListView>
+\end{lstlisting}
+Nur das erste TextBlock-Control bekommt den Style zugewiesen, der zweite behält somit seine Default-Formatierung, wie in Abbildung \ref{img:styles} gezeigt wird.
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=1]{images/styles.png}
+\caption[Styles]{Styles}\label{img:styles}
+\end{figure}
+Lässt man \textit{x:Key} und \textit{x:Name} weg, verzichtet also darauf, dem Style einen Identifier zu geben, wird der Style auf alle Elemente des definierten Typs angewendet.
+\newline
+\newline
+Ein Control kann einen durch Styles gesetzten Property-Wert auch überschreiben, indem es einfach einen anderen Wert für diesen setzt.
+\newline
+\newline
+Schon beim Anlegen einer neuer WinRT-Solution wird das File \textit{Common/StandardStyles.xaml} erstellt. In diesem File finden sich einige Styles bereits vordefiniert, die nur noch im XAML eingebunden werden müssen. Styles können dabei auch voneinander erben, was wieder einiges an Schreibarbeit erspart und den Code übersichtlicher macht.
+\newline
+\newline
+WinRT-Applikationen können unter drei verschiedenen Themes laufen: \textit{Default} (entspricht schwarz), \textit{Light} (entspricht weiß) und \textit{High Contrast} (entspricht weißem Text auf schwarzem Hintergrund).
+\newline
+Schlussendlich ist es auch möglich, für jedes dieser Themes einen anderen Style zu definieren. \cite{ana12}, S. 413ff
 
 \subsection[Templates]{Templates}
 \cite{ana12}, S. 418ff

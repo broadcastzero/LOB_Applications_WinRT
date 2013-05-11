@@ -19,26 +19,26 @@
 \contentsline {subsection}{\numberline {3.7.2}Attached Properties}{14}{subsection.3.7.2}
 \contentsline {subsection}{\numberline {3.7.3}Property Wertevererbung und mehrere Provider}{14}{subsection.3.7.3}
 \contentsline {subsection}{\numberline {3.7.4}Styles}{15}{subsection.3.7.4}
-\contentsline {subsection}{\numberline {3.7.5}Templates}{15}{subsection.3.7.5}
-\contentsline {section}{\numberline {3.8}Diagramme}{15}{section.3.8}
-\contentsline {section}{\numberline {3.9}Frameworks}{15}{section.3.9}
-\contentsline {section}{\numberline {3.10}Custom Control f\IeC {\"u}r Practitioner Mobile}{15}{section.3.10}
-\contentsline {chapter}{\numberline {4}Schnittstellen und Charms}{16}{chapter.4}
-\contentsline {section}{\numberline {4.1}Suchen}{16}{section.4.1}
-\contentsline {section}{\numberline {4.2}Teilen}{17}{section.4.2}
-\contentsline {section}{\numberline {4.3}Ger\IeC {\"a}te}{17}{section.4.3}
-\contentsline {section}{\numberline {4.4}Einstellungen}{18}{section.4.4}
-\contentsline {section}{\numberline {4.5}Lokale Daten und Datenbankanbindung}{18}{section.4.5}
-\contentsline {section}{\numberline {4.6}App Bars}{18}{section.4.6}
-\contentsline {section}{\numberline {4.7}Live Tiles}{19}{section.4.7}
-\contentsline {section}{\numberline {4.8}Toast Notifications}{19}{section.4.8}
-\contentsline {section}{\numberline {4.9}Push Notifications}{20}{section.4.9}
-\contentsline {section}{\numberline {4.10}Sensoren}{21}{section.4.10}
-\contentsline {chapter}{\numberline {5}Praktisches Beispiel anhand einer einfachen Line Of Business Applikation}{22}{chapter.5}
-\contentsline {chapter}{Literaturverzeichnis}{23}{chapter*.8}
-\contentsline {chapter}{Abbildungsverzeichnis}{24}{chapter*.9}
-\contentsline {chapter}{Listingverzeichnis}{25}{chapter*.10}
-\contentsline {chapter}{Tabellenverzeichnis}{26}{chapter*.11}
-\contentsline {chapter}{Abk"urzungsverzeichnis}{27}{chapter*.12}
-\contentsline {chapter}{\numberline {A}Erster Anhang}{28}{appendix.A}
-\contentsline {chapter}{\numberline {B}Zweiter Anhang}{29}{appendix.B}
+\contentsline {subsection}{\numberline {3.7.5}Templates}{16}{subsection.3.7.5}
+\contentsline {section}{\numberline {3.8}Diagramme}{16}{section.3.8}
+\contentsline {section}{\numberline {3.9}Frameworks}{16}{section.3.9}
+\contentsline {section}{\numberline {3.10}Custom Control f\IeC {\"u}r Practitioner Mobile}{16}{section.3.10}
+\contentsline {chapter}{\numberline {4}Schnittstellen und Charms}{17}{chapter.4}
+\contentsline {section}{\numberline {4.1}Suchen}{17}{section.4.1}
+\contentsline {section}{\numberline {4.2}Teilen}{18}{section.4.2}
+\contentsline {section}{\numberline {4.3}Ger\IeC {\"a}te}{18}{section.4.3}
+\contentsline {section}{\numberline {4.4}Einstellungen}{19}{section.4.4}
+\contentsline {section}{\numberline {4.5}Lokale Daten und Datenbankanbindung}{19}{section.4.5}
+\contentsline {section}{\numberline {4.6}App Bars}{19}{section.4.6}
+\contentsline {section}{\numberline {4.7}Live Tiles}{20}{section.4.7}
+\contentsline {section}{\numberline {4.8}Toast Notifications}{20}{section.4.8}
+\contentsline {section}{\numberline {4.9}Push Notifications}{21}{section.4.9}
+\contentsline {section}{\numberline {4.10}Sensoren}{22}{section.4.10}
+\contentsline {chapter}{\numberline {5}Praktisches Beispiel anhand einer einfachen Line Of Business Applikation}{23}{chapter.5}
+\contentsline {chapter}{Literaturverzeichnis}{24}{chapter*.8}
+\contentsline {chapter}{Abbildungsverzeichnis}{25}{chapter*.9}
+\contentsline {chapter}{Listingverzeichnis}{26}{chapter*.10}
+\contentsline {chapter}{Tabellenverzeichnis}{27}{chapter*.11}
+\contentsline {chapter}{Abk"urzungsverzeichnis}{28}{chapter*.12}
+\contentsline {chapter}{\numberline {A}Erster Anhang}{29}{appendix.A}
+\contentsline {chapter}{\numberline {B}Zweiter Anhang}{30}{appendix.B}
