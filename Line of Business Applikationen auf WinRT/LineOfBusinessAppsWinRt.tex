@@ -608,7 +608,31 @@ Das \textit{x:Name} Attribut einer VisualStateGroup entspricht dabei einer mögl
 Auf Animationen wird in dieser Bachelorarbeit aus Platzmangel jedoch nicht näher eingegangen. \cite{ana12}, S.428ff
 
 \subsubsection[DataTemplate]{DataTemplate}\label{ref:datatemplate}
-lorem 17, wpf10 s. 602ff
+Oftmals steht im Vorhinein noch nicht fest, welche Elemente eine Aufzählung tatsächlich beinhalten wird, da diese erst später programmatisch und durch Data Binding hinzugefügt werden. Wenn es die Elemente aber im XAML noch nicht gibt, kann man sie auch nicht stylen oder Properties setzen.
+\newline
+\newline
+Um mehrere Objekte innerhalb einer Aufzählung gleichzeitig zu formatieren, werden aus diesem Grund Data Templates eingesetzt. Diese werden hierarchisch direkt unter dem gewünschten Aufzählungscontrol definiert. \cite{ana12}, S.447
+\newline
+\newline
+Für eine ListView würde ein DataTemplate in etwa so aussehen, wie in Listing \ref{lst:datatemplate} dargestellt.
+\begin{lstlisting}[caption={Data Template}\label{lst:datatemplate},captionpos=t]
+<ListView ItemsSource="{Binding Patients}>
+   <ListView.Resources>
+      <Style x:Key="ListViewTextBlockStyle" TargetType="TextBlock" >
+         <Setter Property="FontWeight" Value="Bold" />
+         <Setter Property="Padding" Value="20,0,0,0" />                         
+      </Style>
+   </ListView.Resources>
+
+   <ListView.ItemTemplate>
+      <DataTemplate>
+          <TextBlock Text="{Binding Path=Name}"
+		Style="{StaticResource ListViewTextBlockStyle}" />
+      </DataTemplate>
+   </ListView.ItemTemplate>
+</ListView>
+\end{lstlisting}
+Die ListView bekommt hier ein \textit{DataTemplate} gesetzt, in dem für \textit{TextBlock}-Elemente ein neuer Style gesetzt wird. Dieser ist in diesem Codebeispiel nicht direkt gesetzt, sondern als Style innerhalb der ListView referenziert. Styles wurden im Unterkapitel \ref{ref:styles} erklärt. Der Content des TextBlock-Elements ist das \textit{Name}-Property eines Elements, das sich in eine Liste namens \textit{Patients} im CodeBehind befindet.
 
 \subsubsection[ItemsPanelTemplate]{ItemsPanelTemplate}\label{itemspaneltemplate}
 lorem 9, wpf10 s. 601
