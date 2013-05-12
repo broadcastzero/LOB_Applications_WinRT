@@ -594,11 +594,24 @@ Um dieses Problem zu lösen, muss man in die Template-Definition des Buttons ein
 Durch das explizite Setzen des Contents auf ein Control kann das Problem also gelöst werden. XAML bedient sich hierbei an einem Konzept, das als \textit{DataBinding} bekannt ist und bereits im Abschnitt \ref{ref:dependencyprops} verwendet wurde. Die Funktionsweise dieses Konzepts wird in dieser Bachelorarbeit nicht detailliert erläutert.
 \cite{ana12}, S. 418ff
 
+\subsubsection[Visual States]{Visual States}\label{ref:visualstates}
+Bisher wurde erklärt, wie das Aussehen eines Controls verändert werden kann. Ein solches kann aber auch unterschiedliche Zustände besitzen, bei einem Button würde so in etwa zwischen gedrückt und nicht gedrückt unterschieden werden. Wenn dieser je nach Zustand eine andere Darstellung besitzen soll, kommen Visual States ins Spiel.
+\newline
+\newline
+Zustände, die ein Control annehmen kann, werden in so genannte \textit{State Groups} gruppiert, die einander ausschließen. Definieren kann man solche hierarchisch direkt unter dem gewünschten Control-Root-Element mit dem Attached Property \textit{VisualStateManager.VisualStateGroups}, welche wiederum \textit{VisualStateGroup}-Elemente und abermals eine hierarchische Ebene darunter \textit{VisualStates} enthalten.
+\newline
+Das \textit{x:Name} Attribut einer VisualStateGroup entspricht dabei einer möglichen Zustandsgruppe (zum Beispiel \textit{CommonStates}), das eines VisualStates einem möglichen Zustand (zum Beispiel \textit{Focused}). Welche Zustände es gibt, ist individuell pro Control verschieden und als Attribut auf der Klasse im Code Behind definiert.
+\newline
+\newline
+Übergänge zwischen verschiedenen Visual States werden gerne durch Animationen durchgeführt, für die man das \textit{Storyboard}-Element verwendet. \textit{Visual Transitions} erleichtern dabei viele Animationsvorgänge, indem man nur angeben muss, welches Property sich von welchem auf welchen Wert ändern soll. Die Animation wird dann berechnet und automatisch durchgeführt. Auch gewünschte Verzögerungen können dabei angegeben und somit die Schnelligkeit der Transformation kontrolliert werden.
+\newline
+Auf Animationen wird in dieser Bachelorarbeit aus Platzmangel jedoch nicht näher eingegangen. \cite{ana12}, S.428ff
+
 \subsubsection[DataTemplate]{DataTemplate}\label{ref:datatemplate}
-lorem
+lorem 17, wpf10 s. 602ff
 
 \subsubsection[ItemsPanelTemplate]{ItemsPanelTemplate}\label{itemspaneltemplate}
-lorem
+lorem 9, wpf10 s. 601
 
 \section[Diagramme]{Diagramme}
 TODO: write about diagrams
@@ -607,6 +620,7 @@ TODO: write about diagrams
 TODO: mention frameworks as syncfusion
 
 \section[Custom Control für Practitioner Mobile]{Custom Control für Practitioner Mobile}
+wpf10 kap.17
 
 %-------------------------------------------------------------------------------------------------------------------------------------------------------
 
