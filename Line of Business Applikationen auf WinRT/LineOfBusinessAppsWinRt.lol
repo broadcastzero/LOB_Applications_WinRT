@@ -8,6 +8,7 @@
 \contentsline {lstlisting}{\numberline {3.5}{Definition eines Styles}}{15}{lstlisting.3.5}
 \contentsline {lstlisting}{\numberline {3.6}{Definition eines Templates. Modifiziert von \cite {ana12}, S.421}}{17}{lstlisting.3.6}
 \contentsline {lstlisting}{\numberline {3.7}{Data Template}}{18}{lstlisting.3.7}
+\contentsline {lstlisting}{\numberline {3.8}{ItemsPanelTemplate, aus \cite {ana12}, S.210}}{19}{lstlisting.3.8}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

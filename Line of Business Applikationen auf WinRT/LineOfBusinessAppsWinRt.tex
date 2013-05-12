@@ -635,7 +635,17 @@ Für eine ListView würde ein DataTemplate in etwa so aussehen, wie in Listing \
 Die ListView bekommt hier ein \textit{DataTemplate} gesetzt, in dem für \textit{TextBlock}-Elemente ein neuer Style gesetzt wird. Dieser ist in diesem Codebeispiel nicht direkt gesetzt, sondern als Style innerhalb der ListView referenziert. Styles wurden im Unterkapitel \ref{ref:styles} erklärt. Der Content des TextBlock-Elements ist das \textit{Name}-Property eines Elements, das sich in eine Liste namens \textit{Patients} im CodeBehind befindet.
 
 \subsubsection[ItemsPanelTemplate]{ItemsPanelTemplate}\label{itemspaneltemplate}
-lorem 9, wpf10 s. 601
+Mit einem ItemsPanelTemplate können Items innerhalb eines Controls einfach gestaltet werden. Im Gegensatz zum im Unterkapitel \ref{ref:datatemplate} vorgestellten Data Template, das sich auf Daten innerhalb einer Liste bezieht, werden hier nicht deren Properties verändert, sondern die des Listenelements selbst. Will man in etwa erreichen, dass sich jedes Listenelement innerhalb eines VirtualizingStackPanels befindet, das eine horizontale Orientierung hat, so kann man dies einfach durch in Listing \ref{lst:itemspaneltemplate} dargestelltes XAML erreichen.
+\begin{lstlisting}[caption={ItemsPanelTemplate, aus \cite{ana12}, S.210}\label{lst:itemspaneltemplate},captionpos=t]
+<ListBox>
+   <ListBox.ItemsPanel>
+      <ItemsPanelTemplate>
+         <VirtualizingStackPanel Orientation="Horizontal" />
+      </ItemsPanelTemplate>
+   </ListBox.ItemsPanel>
+</ListBox>
+\end{lstlisting}
+\cite{ana12}, S.210f
 
 \section[Diagramme]{Diagramme}
 TODO: write about diagrams
@@ -771,6 +781,7 @@ Infos über Motivation für Applikation, Highlights der Anwendung präsentieren,
 - Suche implementieren für Patienten / Medis
 \newline
 - Share: Kontakt wählen, als Patient hinzufügen (mit App teilen) bzw. Info per Mail teilen (Graph an Patient)
+- thumbnail on list?
 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------------------
