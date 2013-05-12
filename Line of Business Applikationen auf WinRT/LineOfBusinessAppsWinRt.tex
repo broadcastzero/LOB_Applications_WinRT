@@ -395,7 +395,7 @@ Wie bei den meisten Möglichkeiten, die WinRT Applikationen beherrschen, macht d
 
 \section[Entwicklung von eigenen Controls]{Entwicklung von eigenen Controls}
 Wie auch schon bei WPF, stehen mit XAML dem Entwickler eine große Anzahl von Möglichkeiten für das Erstellen von eigenen Controls zur Verfügung.
-\subsection[Dependency Properties]{Dependency Properties}
+\subsection[Dependency Properties]{Dependency Properties}\label{ref:dependencyprops}
 Dependency Properties zählen zu den wichtigsten Elementen in XAML. Von einem normalen Property unterscheiden sie sich dabei nur durch XAML-spezifische Zusatzfunktionalitäten: Änderungsnotifikationen an gebundene Elemente, Wertevererbung an Kindelemente und die Unterstützung für mehrere Provider. 
 Man erklärt die Motivation für Dependency Properties und die Funktion der automatischen Änderungsnotifikation am Besten an einem einfachen Beispiel.
 \newline
@@ -507,7 +507,7 @@ Auch sonst gibt es eine definierte Prioritätsliste, welche genau angibt, welche
 Über Styles und Templates wird an späterer Stelle dieser Arbeit noch geschrieben.
 \cite{ana12}, S. 104ff
 
-\subsection[Styles]{Styles}
+\subsection[Styles]{Styles}\label{ref:styles}
 Angenommen, man will das Aussehen eines Buttons verändern. In diesem Fall setzt man im XAML-File die entsprechenden Properties und bekommt so einen Button, der genauso gerendert wird, wie man es möchte.
 \newline
 Wenn man nun aber nicht nur eines Controls ändern möchte, sondern eine ganze Reihe von einem bestimmten Control, wird es mühsam und unübersichtlich: man müsste bei jedem einzelnen die selben Properties setzen, was das XAML-File unnötig aufbläht.
@@ -518,11 +518,11 @@ An dieser Stelle kommen Styles ins Spiel.
 Styles machen es möglich, mehrere Eigenschaften auf einmal zu gruppieren und auf alle Elemente eines Typs einfach anzuwenden. Definiert werden Styles direkt auf Controls, sodass alle in der Hierarchie darunterliegenden Kindelemente dieses Typs besagte Eigenschaften nutzen können. \cite{ana12}, S. 410ff
 \newline
 \newline
-In Listing \ref{lst:styles_templates} ist dargestellt, wie ein Style für TextBlock-Elemente innerhalb der definierten ListView definiert wird, der die \textit{FontWeight} auf \textit{Bold}, die \textit{Foreground}-Farbe auf \textit{Red}, und ein \textit{Padding} von links auf 20 setzt.
+In Listing \ref{lst:styles} ist dargestellt, wie ein Style für TextBlock-Elemente innerhalb der definierten ListView definiert wird, der die \textit{FontWeight} auf \textit{Bold}, die \textit{Foreground}-Farbe auf \textit{Red}, und ein \textit{Padding} von links auf 20 setzt.
 \newline
 Der Style wird dazu als Resource der ListView definiert und in den gewünschten TextBlock-Elementen mit \textit{Style="\{StaticResource ListViewTextBlockStyle\}"} angewendet.
 \newline
-\begin{lstlisting}[caption={Styles und Templates}\label{lst:styles_templates},captionpos=t]
+\begin{lstlisting}[caption={Definition eines Styles}\label{lst:styles},captionpos=t]
 <ListView Name="elementPanel">
    <ListView.Resources>
        <Style x:Key="ListViewTextBlockStyle" TargetType="TextBlock" >
@@ -560,7 +560,45 @@ WinRT-Applikationen können unter drei verschiedenen Themes laufen: \textit{Defa
 Schlussendlich ist es auch möglich, für jedes dieser Themes einen anderen Style zu definieren. \cite{ana12}, S. 413ff
 
 \subsection[Templates]{Templates}
+Die Einführung von XAML hat es ermöglicht, die Darstellung eines Objekts im UI vollständig von dessen Logik zu trennen. Somit kann in etwa die Darstellung eines Buttons nach Belieben verändert werden, ohne dass sich an der Funktionalität etwas ändert.
+\newline
+Das vorherige Unterkapitel \ref{ref:styles} hat gezeigt, wie einfach es ist, mittels Styles das Erscheinungsbilds eines Controls zu verändern. Dies hat sich aber auf einfache Properties beschränkt, will man das Design von Grund auf neu schreiben, bedient man sich am besten Templates.
+\newline
+\newline
+Es gibt mehrere verschiedene Arten von Templates, drei davon erben von der Klasse \textit{FrameworkTemplate}: \textit{ControlTemplate}, \textit{DataTemplate} und \textit{ItemsPanelTemplate}.
+
+\subsubsection[ControlTemplate]{ControlTemplate}\label{ref:controltemplate}
+ControlTemplates ermöglichen es, das Aussehen eines Controls vollkommen nach Belieben neu zu gestalten. Ein Button muss somit nicht mehr rechteckig sein, sondern kann durchaus auch als Kreis oder Ellipse dargestellt werden. Die Funktionalität bleibt dabei erhalten, er verfügt zum Beispiel immer noch über sein \textit{OnClick}-Event.
+\newline
+\newline
+ControlTemplates kann man direkt im XAML definieren, aber auch wie Styles in ein Resources-File auslagern. Ebenfalls möglich ist es, in der Definition eines Styles (zum Beispiel im File \textit{StandardStyles.xaml})  ein Template zu inkludieren.
+\newline
+\newline
+Ein Problem taucht aber dennoch auf: wenn man das Design eines Controls, zum Beispiel eines Buttons, neu schreibt, woher weiß dieser, an welcher Stelle er sein Content-Property anzeigen soll? Angenommen, er würde als Content den String \textit{Mein Button} und als Design einen Kreis statt ein Rechteck gesetzt haben - der String würde nie angezeigt werden.
+\newline
+Um dieses Problem zu lösen, muss man in die Template-Definition des Buttons ein Control definieren, welches diese Aufgabe übernimmt. Das könnte eine TextBox sein, generischer ist allerdings eine ViewBox - der Content beschränkt sich dann nicht nur auf Text, sondern könnte ebensogut ein Bild oder ein sonstiges Element sein. Das Template könnte dann so aussehen, wie in Listing \ref{lst:templates}.
+\begin{lstlisting}[caption={Definition eines Templates. Modifiziert von \cite{ana12}, S.421}\label{lst:templates},captionpos=t]
+<Button Content="Mein Button">
+   <Button.Template>
+      <ControlTemplate TargetType="Button">
+	[...]
+	<ViewBox Width="100" Height="100">
+	   <ContentControl Margin="20"
+		Content="{TemplateBinding Content}" />
+	</ViewBox>
+	[...]
+      </ControlTemplate>
+   </Button.Template>
+</Button>
+\end{lstlisting}
+Durch das explizite Setzen des Contents auf ein Control kann das Problem also gelöst werden. XAML bedient sich hierbei an einem Konzept, das als \textit{DataBinding} bekannt ist und bereits im Abschnitt \ref{ref:dependencyprops} verwendet wurde. Die Funktionsweise dieses Konzepts wird in dieser Bachelorarbeit nicht detailliert erläutert.
 \cite{ana12}, S. 418ff
+
+\subsubsection[DataTemplate]{DataTemplate}\label{ref:datatemplate}
+lorem
+
+\subsubsection[ItemsPanelTemplate]{ItemsPanelTemplate}\label{itemspaneltemplate}
+lorem
 
 \section[Diagramme]{Diagramme}
 TODO: write about diagrams
