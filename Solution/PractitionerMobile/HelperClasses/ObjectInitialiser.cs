@@ -9,7 +9,8 @@ namespace PractitionerMobile.HelperClasses
 {
     public static class ObjectInitialiser
     {
-        private static string[] patientNames = new string[]
+        #region Patient Fields
+        private static string[] _patientNames = new string[]
         {
             "Berta Ransch",
             "Julia Hafner",
@@ -23,7 +24,23 @@ namespace PractitionerMobile.HelperClasses
             "Xaver Neuner"
         };
 
-        private static string[] medicamentNames = new string[]
+        private static DateTime[] _patientLastOrdinations = new DateTime[]
+        {
+            DateTime.Now.AddDays(-3),
+            DateTime.Now.AddDays(-8),
+            DateTime.Now.AddDays(-12),
+            DateTime.Now.AddDays(-17),
+            DateTime.Now.AddDays(-5),
+            DateTime.Now.AddDays(-50),
+            DateTime.Now.AddDays(-21),
+            DateTime.Now.AddDays(-6),
+            DateTime.Now.AddDays(-9),
+            DateTime.Now.AddDays(-1),
+        };
+        #endregion
+
+        #region Medicament Fields
+        private static string[] _medicamentNames = new string[]
         {
             "ABC Pflaster (sensitiv)",
             "Diclabeta",
@@ -48,18 +65,26 @@ namespace PractitionerMobile.HelperClasses
             "Voltaren Emulgel",
             "Schmerzgel"
         };
+        #endregion
 
         /// <summary>
-        /// Creates a collection of patients and returns it.        /// 
+        /// Creates a collection of patients and returns it.
         /// </summary>
         /// <returns></returns>
         internal static ObservableCollection<Patient> CreatePatients()
         {
             ObservableCollection<Patient> patients = new ObservableCollection<Patient>();
 
-            foreach (string name in patientNames)
+            // Create names
+            foreach (string name in _patientNames)
             {
                 patients.Add(new Patient(name));
+            }
+
+            // Create last ordination date
+            for(int i=0; i < _patientLastOrdinations.Count(); i++)
+            {
+                patients[i].LastOrdination = _patientLastOrdinations[i];
             }
 
             return patients;
@@ -73,7 +98,7 @@ namespace PractitionerMobile.HelperClasses
         {
             ObservableCollection<Medicament> medicaments = new ObservableCollection<Medicament>();
 
-            foreach (string name in medicamentNames)
+            foreach (string name in _medicamentNames)
             {
                 medicaments.Add(new Medicament(name));
             }

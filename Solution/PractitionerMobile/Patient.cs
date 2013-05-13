@@ -7,15 +7,21 @@ namespace PractitionerMobile
 {
     public class Patient
     {
+        public Patient(string name)
+        {
+            this.Name = name;
+        }
+
         public string Name
         {
             get;
             set;
         }
 
-        public Patient(string name)
+        public DateTime LastOrdination
         {
-            this.Name = name;
+            get;
+            set;
         }
     }
 }
