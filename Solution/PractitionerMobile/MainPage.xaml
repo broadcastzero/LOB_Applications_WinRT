@@ -41,37 +41,25 @@
 
             <!-- Content View -->
         <Grid Grid.Column="1" Margin="25">
-                <Grid>
+            <ScrollViewer HorizontalScrollMode="Enabled" VerticalScrollMode="Disabled" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled">
+                <Grid Width="2100">
                     <Grid.RowDefinitions>
-                        <RowDefinition />
                         <RowDefinition />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
+                        <ColumnDefinition Width="700" />
+                        <ColumnDefinition Width="700" />
+                        <ColumnDefinition Width="700" />
                     </Grid.ColumnDefinitions>
-
-                    <TextBlock Grid.Row="0" Grid.Column="0" FontSize="15">Button pressed:</TextBlock>
+                      
+                    <TextBlock Grid.Column="0">Eins</TextBlock>
+                    <TextBlock Grid.Column="1">Zwei</TextBlock>
+                    <TextBlock Grid.Column="2">Drei</TextBlock>
+                    <!-- <TextBlock Grid.Row="0" Grid.Column="0" FontSize="15">Button pressed:</TextBlock>
                     <TextBlock Grid.Row="0" Grid.Column="0" FontSize="15" Text="{Binding ElementName=baseButton, Path=IsPressed}" Margin="110,0,0,0"></TextBlock>
-                    <pc:ButtonBase x:Name="baseButton" Grid.Row="0" Width="150" Height="50" VerticalAlignment="Top" Content="BaseButton" Tapped="baseButton_Tapped" HorizontalAlignment="Center" FontSize="15" />
-
-                <ListView Name="elPanel" Grid.Row="1" Grid.Column="0">
-                    <ListView.Resources>
-                        <Style x:Key="ListViewTextBlockStyle" TargetType="TextBlock" >
-                            <Setter Property="FontWeight" Value="Bold" />
-                            <Setter Property="Padding" Value="20,0,0,0" />
-                            <Setter Property="Foreground" Value="Red" />
-                        </Style>
-                    </ListView.Resources>
-                    <ListViewItem>
-                        <TextBlock Text="TextBlock 1" Style="{StaticResource ListViewTextBlockStyle}" />
-                    </ListViewItem>
-                    <ListViewItem>
-                        <TextBlock Text="TextBlock 2" />
-                    </ListViewItem>
-                </ListView>
-            </Grid>
-                
-            </Grid>
+                    <pc:ButtonBase x:Name="baseButton" Grid.Row="0" Width="150" Height="50" VerticalAlignment="Top" Content="BaseButton" Tapped="baseButton_Tapped" HorizontalAlignment="Center" FontSize="15" /> -->
+                </Grid>
+                </ScrollViewer>
+        </Grid>
     </Grid>
 </Page>
