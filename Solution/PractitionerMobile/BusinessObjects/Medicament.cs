@@ -7,15 +7,21 @@ namespace PractitionerMobile
 {
     public class Medicament
     {
+        public Medicament(string name)
+        {
+            this.Name = name;
+        }
+        
         public string Name
         {
             get;
             set;
         }
 
-        public Medicament(string name)
+        public string Description
         {
-            this.Name = name;
+            get;
+            set;
         }
     }
 }

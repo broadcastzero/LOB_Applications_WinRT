@@ -32,8 +32,8 @@ namespace PractitionerMobile
             DataContext = this;
 
             // Fill lists with values
-            this.Patients = ObjectInitialiser.CreatePatients();
-            this.Medicaments = ObjectInitialiser.CreateMedicaments();
+            this.Patients = PatientInitialiser.Create();
+            this.Medicaments = MedicamentInitialiser.Create();
 
             // Create dropdown
             this.InitialiseFieldList();
@@ -58,10 +58,10 @@ namespace PractitionerMobile
         /// </summary>
         private void InitialiseFieldList()
         {
-            this.fieldSelector.Items.Add("Patienten");
-            this.fieldSelector.Items.Add("Medikamente");
-
-            this.fieldSelector.SelectedIndex = 0;
+            this.FieldSelector.Items.Add("Patienten");
+            this.FieldSelector.Items.Add("Medikamente");
+                 
+            this.FieldSelector.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -87,8 +87,13 @@ namespace PractitionerMobile
             }
         }
 
+        /// <summary>
+        /// Changes the binding Patient vs. Medicament details.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ChangeListBinding(object sender, SelectionChangedEventArgs e)
-        {
+        {            
             ComboBox combobox = (sender as ComboBox);
 
             if (combobox.SelectedIndex < 0)
@@ -96,13 +101,25 @@ namespace PractitionerMobile
 
             switch(combobox.SelectedIndex)
             {
-                case 0: this.elementPanel.ItemsSource = this.Patients;
+                case 0: this.ElementPanel.ItemsSource = this.Patients;
+                    this.MedicamentDetails.Visibility = Visibility.Collapsed;
+                    this.PatientDetails.Visibility = Visibility.Visible;
                     break;
-                case 1: this.elementPanel.ItemsSource = this.Medicaments;
+                case 1: this.ElementPanel.ItemsSource = this.Medicaments;
+                    this.PatientDetails.Visibility = Visibility.Collapsed;
+                    this.MedicamentDetails.Visibility = Visibility.Visible;
                     break;
                 default:
                     break;
             }
+        }
+
+        /// <summary>
+        /// This method is called when the selection of the field (Patient / Medicament / ...) has changed.
+        /// </summary>
+        private void OnFieldSelectorSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            this.ChangeListBinding(sender, e);
         }
     }
 }

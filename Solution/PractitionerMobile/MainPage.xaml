@@ -21,9 +21,9 @@
             </Grid.RowDefinitions>
             <Image Source="Assets/Logo.png" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="0" />
             <TextBlock Text="Practitioner Mobile" VerticalAlignment="Center" FontSize="20" HorizontalAlignment="Right" Margin="0,0,25,0" Grid.Row="0" />
-            <ComboBox Name="fieldSelector" Grid.Row="1" Margin="10,10,10,10" SelectionChanged="ChangeListBinding" />
+            <ComboBox Name="FieldSelector" Grid.Row="1" Margin="10,10,10,10" SelectionChanged="OnFieldSelectorSelectionChanged" />
             <ScrollViewer Grid.Row ="2" HorizontalAlignment="Left" Margin="0,20,0,0" VerticalAlignment="Stretch" Width="256">
-                <ListView Name="elementPanel" Width="250" VerticalAlignment="Stretch" ItemsSource="{Binding Patients}">
+                <ListView Name="ElementPanel" Width="250" VerticalAlignment="Stretch" ItemsSource="{Binding Patients}">
                     <ListView.Resources>
                         <Style x:Key="ListViewTextBlockStyle" TargetType="TextBlock" >
                             <Setter Property="FontWeight" Value="Bold" />
@@ -58,22 +58,34 @@
                     <StackPanel Name="PatientDetails" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center">
                         <StackPanel.Resources>
                             <ResourceDictionary>
-                                <Style x:Key="PatientDetailsStyle" TargetType="TextBlock">
+                                <Style TargetType="TextBlock">
                                     <Setter Property="HorizontalAlignment" Value="Center" />
                                     <Setter Property="Margin" Value="0,20,0,0" />
-                                    <Setter Property="FontSize" Value="20" />
+                                    <Setter Property="FontSize" Value="18" />
                                 </Style>
                             </ResourceDictionary>
                         </StackPanel.Resources>
-                        <TextBlock Text="Name:" Style="{StaticResource PatientDetailsStyle}" />
-                        <TextBlock Text="{Binding SelectedItem.Name, ElementName=elementPanel}" Style="{StaticResource PatientDetailsStyle}" />
-                        <TextBlock Text="Last Ordination:" Style="{StaticResource PatientDetailsStyle}" />
-                        <TextBlock Text="{Binding SelectedItem.LastOrdination, ElementName=elementPanel}" Style="{StaticResource PatientDetailsStyle}" />
+                        <TextBlock Text="Name:" FontWeight="Bold" />
+                        <TextBlock Text="{Binding SelectedItem.Name, ElementName=ElementPanel}" />
+                        <TextBlock Text="Last Ordination:" FontWeight="Bold" />
+                        <TextBlock Text="{Binding SelectedItem.LastOrdination, ElementName=ElementPanel}" />
                     </StackPanel>
                     
                     <!-- Information about Medication -->
-                    <StackPanel Name="MedicamentDetails" Visibility="Collapsed">
-                        <TextBlock Text="Name: " HorizontalAlignment="Center" />
+                    <StackPanel Name="MedicamentDetails" Visibility="Collapsed" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center">
+                        <StackPanel.Resources>
+                            <ResourceDictionary>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="HorizontalAlignment" Value="Center" />
+                                    <Setter Property="Margin" Value="0,20,0,0" />
+                                    <Setter Property="FontSize" Value="18" />
+                                </Style>
+                            </ResourceDictionary>
+                        </StackPanel.Resources>
+                        <TextBlock Text="Name:" FontWeight="Bold" />
+                        <TextBlock Text="{Binding SelectedItem.Name, ElementName=ElementPanel}" />
+                        <TextBlock Text="Beschreibung: " FontWeight="Bold" />
+                        <TextBlock Text="{Binding SelectedItem.Description, ElementName=ElementPanel}" TextWrapping="Wrap" />
                     </StackPanel>
                     
                     <!-- Second column -->

@@ -110,12 +110,13 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\ButtonBase.cs" />
-    <Compile Include="HelperClasses\ObjectInitialiser.cs" />
+    <Compile Include="HelperClasses\MedicamentInitialiser.cs" />
+    <Compile Include="HelperClasses\PatientInitialiser.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Medicament.cs" />
-    <Compile Include="Patient.cs" />
+    <Compile Include="BusinessObjects\Medicament.cs" />
+    <Compile Include="BusinessObjects\Patient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -150,6 +151,7 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
     <VisualStudioVersion>11.0</VisualStudioVersion>
   </PropertyGroup>
