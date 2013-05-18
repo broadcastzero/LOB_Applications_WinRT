@@ -102,29 +102,28 @@ namespace PractitionerMobile
             switch(combobox.SelectedIndex)
             {
                 case 0: this.ElementPanel.ItemsSource = this.Patients;
+                    // Elements of first column
                     this.MedicamentDetails.Visibility = Visibility.Collapsed;
                     this.PatientDetails.Visibility = Visibility.Visible;
+
+                    // Elements of third column
                     this.PatientAppointmentCalender.Visibility = Visibility.Visible;
                     this.PatientAppointmentCalendarDetails.Visibility = Visibility.Visible;
-
-                    this.PatientAppointmentCalender.Visibility = Visibility.Visible;
                     this.MedicationThirdColumn.Visibility = Visibility.Collapsed;
                     break;
                 case 1: this.ElementPanel.ItemsSource = this.Medicaments;
+                    // ELements of first column
                     this.PatientDetails.Visibility = Visibility.Collapsed;
                     this.MedicamentDetails.Visibility = Visibility.Visible;
+
+                    // Elements of third column
                     this.PatientAppointmentCalender.Visibility = Visibility.Collapsed;
                     this.PatientAppointmentCalendarDetails.Visibility = Visibility.Collapsed;
-
-                    this.PatientAppointmentCalender.Visibility = Visibility.Collapsed;
                     this.MedicationThirdColumn.Visibility = Visibility.Visible;
-
                     break;
                 default:
                     break;
             }
-
-            this.ContentGrid.UpdateLayout();
         }
 
         /// <summary>
