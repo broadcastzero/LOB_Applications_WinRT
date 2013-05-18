@@ -92,7 +92,7 @@ namespace PractitionerMobile
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ChangeListBinding(object sender, SelectionChangedEventArgs e)
+        private void ChangeContentDependingOnSelectedListEntry(object sender, SelectionChangedEventArgs e)
         {            
             ComboBox combobox = (sender as ComboBox);
 
@@ -104,14 +104,27 @@ namespace PractitionerMobile
                 case 0: this.ElementPanel.ItemsSource = this.Patients;
                     this.MedicamentDetails.Visibility = Visibility.Collapsed;
                     this.PatientDetails.Visibility = Visibility.Visible;
+                    this.PatientAppointmentCalender.Visibility = Visibility.Visible;
+                    this.PatientAppointmentCalendarDetails.Visibility = Visibility.Visible;
+
+                    this.PatientAppointmentCalender.Visibility = Visibility.Visible;
+                    this.MedicationThirdColumn.Visibility = Visibility.Collapsed;
                     break;
                 case 1: this.ElementPanel.ItemsSource = this.Medicaments;
                     this.PatientDetails.Visibility = Visibility.Collapsed;
                     this.MedicamentDetails.Visibility = Visibility.Visible;
+                    this.PatientAppointmentCalender.Visibility = Visibility.Collapsed;
+                    this.PatientAppointmentCalendarDetails.Visibility = Visibility.Collapsed;
+
+                    this.PatientAppointmentCalender.Visibility = Visibility.Collapsed;
+                    this.MedicationThirdColumn.Visibility = Visibility.Visible;
+
                     break;
                 default:
                     break;
             }
+
+            this.ContentGrid.UpdateLayout();
         }
 
         /// <summary>
@@ -119,7 +132,7 @@ namespace PractitionerMobile
         /// </summary>
         private void OnFieldSelectorSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            this.ChangeListBinding(sender, e);
+            this.ChangeContentDependingOnSelectedListEntry(sender, e);
         }
     }
 }
