@@ -109,6 +109,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BusinessObjects\Ordination.cs" />
     <Compile Include="Controls\ButtonBase.cs" />
     <Compile Include="HelperClasses\MedicamentInitialiser.cs" />
     <Compile Include="HelperClasses\PatientInitialiser.cs" />
