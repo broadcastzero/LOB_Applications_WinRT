@@ -80,9 +80,25 @@
                     <ListBox x:Name="ListedOrdinations" Grid.Column="2" Grid.Row="1" VerticalAlignment="Stretch" ItemsSource="{Binding OrdinationsOfPatientAndDate}" Margin="0,120,0,0">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding SocialInsurance}" />
-                                </StackPanel>                                
+                                <StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Datum" Margin="0,0,15,0" Width="60" />
+                                        <TextBlock Text="{Binding Date}" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Kasse" Margin="0,0,15,0" Width="60" />
+                                        <TextBlock Text="{Binding SocialInsurance}" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Dauer" Margin="0,0,15,0" Width="60" />
+                                        <TextBlock Text="{Binding DurationMinutes}" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Diagnose" Margin="0,0,15,0" Width="60" />
+                                        <TextBlock Text="{Binding Diagnosis}" />
+                                    </StackPanel>
+                                    <TextBlock />
+                                </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
