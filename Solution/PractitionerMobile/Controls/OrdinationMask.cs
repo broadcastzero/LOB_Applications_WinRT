@@ -1,25 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+﻿using System.Collections.Generic;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Documents;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Imaging;
 
-// The Templated Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234235
-
+// The Templated Control item template is documented at
+// http://go.microsoft.com/fwlink/?LinkId=234235
 namespace PractitionerMobile.Controls
 {
     /// <summary>
-    /// This class contains Practitioner Mobiles' custom control - a control, in which data of an ordination can be entered.
+    /// This class contains Practitioner Mobiles' custom control -
+    /// a control, in which data of an ordination can be entered.
     /// </summary>
-    [TemplatePart(Name = "OkButton", Type = typeof(Button))]
-    [TemplatePart(Name = "CancelButton", Type = typeof(Button))]
-    public sealed class OrdinationMask : ContentControl
+    [TemplatePart(Name = "Ok", Type = typeof(Button))]
+    [TemplatePart(Name = "Cancel", Type = typeof(Button))]
+    [TemplatePart(Name = "SocialInsurance", Type = typeof(ComboBox))]
+    [TemplatePart(Name = "Duration", Type = typeof(TextBox))]
+    [TemplatePart(Name = "Diagnosis", Type = typeof(TextBox))]
+    public sealed class OrdinationMask : Control
     {
         public OrdinationMask()
         {
@@ -33,7 +31,8 @@ namespace PractitionerMobile.Controls
             set { SetValue(ImagePathProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        // Using a DependencyProperty as the backing store for MyProperty.
+        // This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ImagePathProperty = 
             DependencyProperty.Register("ImagePath", typeof(ImageSource), typeof(OrdinationMask), new PropertyMetadata(null));
         #endregion
@@ -69,6 +68,8 @@ namespace PractitionerMobile.Controls
             {
 	            OnOkButtonHit(this, null);            
             }
+
+            this.ClearFields();
 	    }
 
         /// <summary>
@@ -94,8 +95,8 @@ namespace PractitionerMobile.Controls
         {
             base.OnApplyTemplate();
 
-            Button okButton = (Button)GetTemplateChild("OkButton");
-            Button cancelButton= (Button)GetTemplateChild("CancelButton");
+            Button okButton = (Button)GetTemplateChild("Ok");
+            Button cancelButton= (Button)GetTemplateChild("Cancel");
 
             okButton.Tapped += okButton_Tapped;
             cancelButton.Tapped += cancelButton_Tapped;

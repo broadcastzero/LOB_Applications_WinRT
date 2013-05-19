@@ -19,25 +19,24 @@
 \BOOKMARK [2][-]{subsection.3.7.3}{Property Wertevererbung und mehrere Provider}{section.3.7}% 19
 \BOOKMARK [2][-]{subsection.3.7.4}{Styles}{section.3.7}% 20
 \BOOKMARK [2][-]{subsection.3.7.5}{Templates}{section.3.7}% 21
-\BOOKMARK [1][-]{section.3.8}{Diagramme}{chapter.3}% 22
-\BOOKMARK [1][-]{section.3.9}{Frameworks}{chapter.3}% 23
-\BOOKMARK [1][-]{section.3.10}{Custom Control f\374r Practitioner Mobile}{chapter.3}% 24
-\BOOKMARK [0][-]{chapter.4}{Schnittstellen und Charms}{}% 25
-\BOOKMARK [1][-]{section.4.1}{Suchen}{chapter.4}% 26
-\BOOKMARK [1][-]{section.4.2}{Teilen}{chapter.4}% 27
-\BOOKMARK [1][-]{section.4.3}{Ger\344te}{chapter.4}% 28
-\BOOKMARK [1][-]{section.4.4}{Einstellungen}{chapter.4}% 29
-\BOOKMARK [1][-]{section.4.5}{Lokale Daten und Datenbankanbindung}{chapter.4}% 30
-\BOOKMARK [1][-]{section.4.6}{App Bars}{chapter.4}% 31
-\BOOKMARK [1][-]{section.4.7}{Live Tiles}{chapter.4}% 32
-\BOOKMARK [1][-]{section.4.8}{Toast Notifications}{chapter.4}% 33
-\BOOKMARK [1][-]{section.4.9}{Push Notifications}{chapter.4}% 34
-\BOOKMARK [1][-]{section.4.10}{Sensoren}{chapter.4}% 35
-\BOOKMARK [0][-]{chapter.5}{Praktisches Beispiel anhand einer einfachen Line Of Business Applikation}{}% 36
-\BOOKMARK [0][-]{chapter*.12}{Literaturverzeichnis}{}% 37
-\BOOKMARK [0][-]{chapter*.13}{Abbildungsverzeichnis}{}% 38
-\BOOKMARK [0][-]{chapter*.14}{Listingverzeichnis}{}% 39
-\BOOKMARK [0][-]{chapter*.15}{Tabellenverzeichnis}{}% 40
-\BOOKMARK [0][-]{chapter*.16}{Abk\374rzungsverzeichnis}{}% 41
-\BOOKMARK [0][-]{appendix.A}{Erster Anhang}{}% 42
-\BOOKMARK [0][-]{appendix.B}{Zweiter Anhang}{}% 43
+\BOOKMARK [1][-]{section.3.8}{Frameworks}{chapter.3}% 22
+\BOOKMARK [1][-]{section.3.9}{Custom Control f\374r Practitioner Mobile}{chapter.3}% 23
+\BOOKMARK [0][-]{chapter.4}{Schnittstellen und Charms}{}% 24
+\BOOKMARK [1][-]{section.4.1}{Suchen}{chapter.4}% 25
+\BOOKMARK [1][-]{section.4.2}{Teilen}{chapter.4}% 26
+\BOOKMARK [1][-]{section.4.3}{Ger\344te}{chapter.4}% 27
+\BOOKMARK [1][-]{section.4.4}{Einstellungen}{chapter.4}% 28
+\BOOKMARK [1][-]{section.4.5}{Lokale Daten und Datenbankanbindung}{chapter.4}% 29
+\BOOKMARK [1][-]{section.4.6}{App Bars}{chapter.4}% 30
+\BOOKMARK [1][-]{section.4.7}{Live Tiles}{chapter.4}% 31
+\BOOKMARK [1][-]{section.4.8}{Toast Notifications}{chapter.4}% 32
+\BOOKMARK [1][-]{section.4.9}{Push Notifications}{chapter.4}% 33
+\BOOKMARK [1][-]{section.4.10}{Sensoren}{chapter.4}% 34
+\BOOKMARK [0][-]{chapter.5}{Praktisches Beispiel anhand einer einfachen Line Of Business Applikation}{}% 35
+\BOOKMARK [0][-]{chapter*.12}{Literaturverzeichnis}{}% 36
+\BOOKMARK [0][-]{chapter*.13}{Abbildungsverzeichnis}{}% 37
+\BOOKMARK [0][-]{chapter*.14}{Listingverzeichnis}{}% 38
+\BOOKMARK [0][-]{chapter*.15}{Tabellenverzeichnis}{}% 39
+\BOOKMARK [0][-]{chapter*.16}{Abk\374rzungsverzeichnis}{}% 40
+\BOOKMARK [0][-]{appendix.A}{Generic.xaml}{}% 41
+\BOOKMARK [0][-]{appendix.B}{OrdinationMask.cs}{}% 42
