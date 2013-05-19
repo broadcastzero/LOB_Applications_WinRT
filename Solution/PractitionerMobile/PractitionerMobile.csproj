@@ -111,6 +111,7 @@
     </Compile>
     <Compile Include="BusinessObjects\Ordination.cs" />
     <Compile Include="Controls\ButtonBase.cs" />
+    <Compile Include="Controls\OrdinationMask.cs" />
     <Compile Include="HelperClasses\MedicamentInitialiser.cs" />
     <Compile Include="HelperClasses\PatientInitialiser.cs" />
     <Compile Include="MainPage.xaml.cs">
@@ -137,17 +138,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Common\CustomStyles.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Page>
     <Page Include="Common\StandardStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

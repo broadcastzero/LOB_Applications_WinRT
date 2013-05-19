@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using PractitionerMobile.HelperClasses;
@@ -106,21 +107,31 @@ namespace PractitionerMobile
                     this.MedicamentDetails.Visibility = Visibility.Collapsed;
                     this.PatientDetails.Visibility = Visibility.Visible;
 
+                    // Elements of second column
+                    this.PatientOrdinationMask.Visibility = Visibility.Visible;
+                    this.MedicationSecondColumn.Visibility = Visibility.Collapsed;
+
                     // Elements of third column
                     this.PatientAppointmentCalender.Visibility = Visibility.Visible;
                     this.PatientAppointmentCalendarDetails.Visibility = Visibility.Visible;
                     this.MedicationThirdColumn.Visibility = Visibility.Collapsed;
                     break;
+
                 case 1: this.ElementPanel.ItemsSource = this.Medicaments;
                     // ELements of first column
                     this.PatientDetails.Visibility = Visibility.Collapsed;
                     this.MedicamentDetails.Visibility = Visibility.Visible;
+
+                    // Elements of second column
+                    this.PatientOrdinationMask.Visibility = Visibility.Collapsed;
+                    this.MedicationSecondColumn.Visibility = Visibility.Visible;
 
                     // Elements of third column
                     this.PatientAppointmentCalender.Visibility = Visibility.Collapsed;
                     this.PatientAppointmentCalendarDetails.Visibility = Visibility.Collapsed;
                     this.MedicationThirdColumn.Visibility = Visibility.Visible;
                     break;
+
                 default:
                     break;
             }
@@ -133,5 +144,15 @@ namespace PractitionerMobile
         {
             this.ChangeContentDependingOnSelectedListEntry(sender, e);
         }
+
+        private void SaveOrdinationEntry(object sender, TappedRoutedEventArgs e)
+        {
+            Debug.WriteLine("ok button hit");
+        }
+
+        private void CancelOrdinationEntry(object sender, TappedRoutedEventArgs e)
+        {
+            Debug.WriteLine("cancel button hit");
+        }    
     }
 }

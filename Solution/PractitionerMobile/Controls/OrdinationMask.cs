@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -16,11 +17,13 @@ namespace PractitionerMobile.Controls
     /// <summary>
     /// This class contains Practitioner Mobiles' custom control - a control, in which data of an ordination can be entered.
     /// </summary>
-    public sealed class OrdinationMask : Control
+    [TemplatePart(Name = "OkButton", Type = typeof(Button))]
+    [TemplatePart(Name = "CancelButton", Type = typeof(Button))]
+    public sealed class OrdinationMask : ContentControl
     {
         public OrdinationMask()
         {
-            this.DefaultStyleKey = typeof(OrdinationMask);
+            this.DefaultStyleKey = typeof(OrdinationMask);            
         }
 
         #region Image
@@ -50,5 +53,66 @@ namespace PractitionerMobile.Controls
             set { SetValue(SocialInsurancesProperty, value); }
         }
         #endregion
+
+        #region Button logic
+        public event TappedEventHandler OnOkButtonHit;
+        public event TappedEventHandler OnCancelButtonHit;
+	
+        /// <summary>
+        /// Calls custom OK event.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+	    private void okButton_Tapped(object sender, TappedRoutedEventArgs e)
+	    {
+            if(OnOkButtonHit != null)
+            {
+	            OnOkButtonHit(this, null);            
+            }
+	    }
+
+        /// <summary>
+        /// Calls custom event and clears fields.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cancelButton_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if(OnCancelButtonHit != null)
+            {
+                OnCancelButtonHit(this, null);
+            }
+
+            this.ClearFields();
+        }
+        #endregion
+
+        /// <summary>
+        /// Sets events to buttons.
+        /// </summary>
+        protected override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+
+            Button okButton = (Button)GetTemplateChild("OkButton");
+            Button cancelButton= (Button)GetTemplateChild("CancelButton");
+
+            okButton.Tapped += okButton_Tapped;
+            cancelButton.Tapped += cancelButton_Tapped;
+        }
+
+        /// <summary>
+        /// Clears all fields of the control.
+        /// </summary>
+        private void ClearFields()
+        {
+            ComboBox socialInsurance = (ComboBox)GetTemplateChild("SocialInsurance");
+            TextBox duration = (TextBox)GetTemplateChild("Duration");
+            TextBox diagnosis = (TextBox)GetTemplateChild("Diagnosis");
+
+            socialInsurance.SelectedIndex = -1;
+            duration.Text = string.Empty;
+            diagnosis.Text = string.Empty;
+        }
     }
 }

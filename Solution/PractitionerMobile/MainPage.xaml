@@ -1,114 +1,118 @@
 ﻿<Page
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:PractitionerMobile"
-    xmlns:pc="using:PractitionerMobile.Controls"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:Input="using:Syncfusion.UI.Xaml.Controls.Input"
-    x:Class="PractitionerMobile.MainPage"
-    mc:Ignorable="d">
-    
-    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*" />
-            <ColumnDefinition Width="12*" />
-        </Grid.ColumnDefinitions>
-        <Grid x:Name="ApplicationLogoGrid" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,20,0,0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="40" />
-                <RowDefinition Height="70" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <Image Source="Assets/Logo.png" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="0" />
-            <TextBlock Text="Practitioner Mobile" VerticalAlignment="Center" FontSize="20" HorizontalAlignment="Right" Margin="0,0,25,0" Grid.Row="0" />
-            <ComboBox x:Name="FieldSelector" Grid.Row="1" Margin="10,10,10,10" SelectionChanged="OnFieldSelectorSelectionChanged" />
-            <ScrollViewer Grid.Row ="2" HorizontalAlignment="Left" Margin="0,20,0,0" VerticalAlignment="Stretch" Width="256">
-                <ListView x:Name="ElementPanel" Width="250" VerticalAlignment="Stretch" ItemsSource="{Binding Patients}">
-                    <ListView.Resources>
-                        <Style x:Key="ListViewTextBlockStyle" TargetType="TextBlock" >
-                            <Setter Property="FontWeight" Value="Bold" />
-                            <Setter Property="Padding" Value="20,0,0,0" />
-                        </Style>
-                    </ListView.Resources>
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Name}" Style="{StaticResource ListViewTextBlockStyle}" />
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </ScrollViewer>
-        </Grid>
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="using:PractitionerMobile"
+	xmlns:pc="using:PractitionerMobile.Controls"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:Input="using:Syncfusion.UI.Xaml.Controls.Input"
+	x:Class="PractitionerMobile.MainPage"
+	mc:Ignorable="d">
+	
+	<Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="3*" />
+			<ColumnDefinition Width="12*" />
+		</Grid.ColumnDefinitions>
+		<Grid x:Name="ApplicationLogoGrid" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,20,0,0">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="40" />
+				<RowDefinition Height="70" />
+				<RowDefinition Height="*" />
+			</Grid.RowDefinitions>
+			<Image Source="Assets/Logo.png" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="0" />
+			<TextBlock Text="Practitioner Mobile" VerticalAlignment="Center" FontSize="20" HorizontalAlignment="Right" Margin="0,0,25,0" Grid.Row="0" />
+			<ComboBox x:Name="FieldSelector" Grid.Row="1" Margin="10,10,10,10" SelectionChanged="OnFieldSelectorSelectionChanged" />
+			<ScrollViewer Grid.Row ="2" HorizontalAlignment="Left" Margin="0,20,0,0" VerticalAlignment="Stretch" Width="256">
+				<ListView x:Name="ElementPanel" Width="250" VerticalAlignment="Stretch" ItemsSource="{Binding Patients}">
+					<ListView.Resources>
+						<Style x:Key="ListViewTextBlockStyle" TargetType="TextBlock" >
+							<Setter Property="FontWeight" Value="Bold" />
+							<Setter Property="Padding" Value="20,0,0,0" />
+						</Style>
+					</ListView.Resources>
+					<ListView.ItemTemplate>
+						<DataTemplate>
+							<TextBlock Text="{Binding Name}" Style="{StaticResource ListViewTextBlockStyle}" />
+						</DataTemplate>
+					</ListView.ItemTemplate>
+				</ListView>
+			</ScrollViewer>
+		</Grid>
 
-        <!-- Content View -->
-        <Grid Name="ContentGrid" Grid.Column="1" Margin="25">
-            <ScrollViewer HorizontalScrollMode="Enabled" VerticalScrollMode="Disabled" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled">
-                <Grid Width="2100">
-                    <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="700" />
-                        <ColumnDefinition Width="700" />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
+		<!-- Content View -->
+		<Grid Name="ContentGrid" Grid.Column="1" Margin="25">
+			<ScrollViewer HorizontalScrollMode="Enabled" VerticalScrollMode="Disabled" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled">
+				<Grid Width="2100">
+					<Grid.RowDefinitions>
+						<RowDefinition />
+						<RowDefinition />
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="700" />
+						<ColumnDefinition Width="700" />
+						<ColumnDefinition />
+					</Grid.ColumnDefinitions>
 
-                    <!-- First column -->
-                    <Image Source="Assets/Logo.png" Margin="30" />
-                    <StackPanel x:Name="PatientDetails" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center">
-                        <StackPanel.Resources>
-                            <ResourceDictionary>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="HorizontalAlignment" Value="Center" />
-                                    <Setter Property="Margin" Value="0,20,0,0" />
-                                    <Setter Property="FontSize" Value="18" />
-                                </Style>
-                            </ResourceDictionary>
-                        </StackPanel.Resources>
-                        <TextBlock Text="Name:" FontWeight="Bold" />
-                        <TextBlock Text="{Binding SelectedItem.Name, ElementName=ElementPanel}" />
-                        <TextBlock Text="Last Ordination:" FontWeight="Bold" />
-                        <TextBlock Text="{Binding SelectedItem.LastOrdination, ElementName=ElementPanel}" />
-                    </StackPanel>
+					<!-- First column -->
+					<Image Source="Assets/Logo.png" Margin="30" />
+					<StackPanel x:Name="PatientDetails" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center">
+						<StackPanel.Resources>
+							<ResourceDictionary>
+								<Style TargetType="TextBlock">
+									<Setter Property="HorizontalAlignment" Value="Center" />
+									<Setter Property="Margin" Value="0,20,0,0" />
+									<Setter Property="FontSize" Value="18" />
+								</Style>
+							</ResourceDictionary>
+						</StackPanel.Resources>
+						<TextBlock Text="Name:" FontWeight="Bold" />
+						<TextBlock Text="{Binding SelectedItem.Name, ElementName=ElementPanel}" />
+						<TextBlock Text="Last Ordination:" FontWeight="Bold" />
+						<TextBlock Text="{Binding SelectedItem.LastOrdination, ElementName=ElementPanel}" />
+					</StackPanel>
 
-                    <Input:SfCalendar x:Name="PatientAppointmentCalender" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" Margin="0,0,0,-100" Width="Auto" Height="Auto" />
-                    <TextBlock Name="PatientAppointmentCalendarDetails" Grid.Column="2" Margin="0,110,0,0" Visibility="Collapsed" Grid.Row="1">
+					<!-- Second column -->
+					<pc:OrdinationMask x:Name="PatientOrdinationMask" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" ImagePath="Assets/Logo.png" OnOkButtonHit="SaveOrdinationEntry" OnCancelButtonHit="CancelOrdinationEntry" />
+
+					<!-- Third column -->
+					<Input:SfCalendar x:Name="PatientAppointmentCalender" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" Margin="0,0,0,-100" Width="Auto" Height="Auto" />
+					<TextBlock Name="PatientAppointmentCalendarDetails" Grid.Column="2" Margin="0,110,0,0" Visibility="Collapsed" Grid.Row="1">
 						<Run Text="drei"/>
-                    </TextBlock>
+					</TextBlock>
 
-                    <!-- Information about Medication -->
-                    <StackPanel x:Name="MedicamentDetails" Visibility="Collapsed" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center">
-                        <StackPanel.Resources>
-                            <ResourceDictionary>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="HorizontalAlignment" Value="Center" />
-                                    <Setter Property="Margin" Value="0,20,0,0" />
-                                    <Setter Property="FontSize" Value="18" />
-                                </Style>
-                            </ResourceDictionary>
-                        </StackPanel.Resources>
-                        <TextBlock Text="Name:" FontWeight="Bold" />
-                        <TextBlock Text="{Binding SelectedItem.Name, ElementName=ElementPanel}" />
-                        <TextBlock Text="Beschreibung: " FontWeight="Bold" />
-                        <TextBlock Text="{Binding SelectedItem.Description, ElementName=ElementPanel}" TextWrapping="Wrap" />
-                    </StackPanel>
+					<!-- Information about Medication -->
+					<StackPanel x:Name="MedicamentDetails" Visibility="Collapsed" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center">
+						<StackPanel.Resources>
+							<ResourceDictionary>
+								<Style TargetType="TextBlock">
+									<Setter Property="HorizontalAlignment" Value="Center" />
+									<Setter Property="Margin" Value="0,20,0,0" />
+									<Setter Property="FontSize" Value="18" />
+								</Style>
+							</ResourceDictionary>
+						</StackPanel.Resources>
+						<TextBlock Text="Name:" FontWeight="Bold" />
+						<TextBlock Text="{Binding SelectedItem.Name, ElementName=ElementPanel}" />
+						<TextBlock Text="Beschreibung: " FontWeight="Bold" />
+						<TextBlock Text="{Binding SelectedItem.Description, ElementName=ElementPanel}" TextWrapping="Wrap" />
+					</StackPanel>
 
-                    <!-- Second column -->
-                    <TextBlock Grid.Column="1">
+					<!-- Second column -->
+					<TextBlock Name="MedicationSecondColumn" Grid.Column="1">
 						<Run Text="Zwei"/>
-                    </TextBlock>
+					</TextBlock>
 
-                    <!-- Third column -->
-                    <TextBlock Name="MedicationThirdColumn" Grid.Column="2" Visibility="Collapsed" Grid.Row="0">
+					<!-- Third column -->
+					<TextBlock Name="MedicationThirdColumn" Grid.Column="2" Visibility="Collapsed" Grid.Row="0">
 						<Run Text="drei"/>
-                    </TextBlock>
+					</TextBlock>
 
-                    <!-- <TextBlock Grid.Row="0" Grid.Column="0" FontSize="15">Button pressed:</TextBlock>
-                    <TextBlock Grid.Row="0" Grid.Column="0" FontSize="15" Text="{Binding ElementName=baseButton, Path=IsPressed}" Margin="110,0,0,0"></TextBlock>
-                    <pc:ButtonBase x:Name="baseButton" Grid.Row="0" Width="150" Height="50" VerticalAlignment="Top" Content="BaseButton" Tapped="baseButton_Tapped" HorizontalAlignment="Center" FontSize="15" /> -->
-                </Grid>
-            </ScrollViewer>
-        </Grid>
-    </Grid>
+					<!-- <TextBlock Grid.Row="0" Grid.Column="0" FontSize="15">Button pressed:</TextBlock>
+					<TextBlock Grid.Row="0" Grid.Column="0" FontSize="15" Text="{Binding ElementName=baseButton, Path=IsPressed}" Margin="110,0,0,0"></TextBlock>
+					<pc:ButtonBase x:Name="baseButton" Grid.Row="0" Width="150" Height="50" VerticalAlignment="Top" Content="BaseButton" Tapped="baseButton_Tapped" HorizontalAlignment="Center" FontSize="15" /> -->
+				</Grid>
+			</ScrollViewer>
+		</Grid>
+	</Grid>
 </Page>
