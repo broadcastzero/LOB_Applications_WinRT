@@ -24,7 +24,7 @@
 			<TextBlock Text="Practitioner Mobile" VerticalAlignment="Center" FontSize="20" HorizontalAlignment="Right" Margin="0,0,25,0" Grid.Row="0" />
 			<ComboBox x:Name="FieldSelector" Grid.Row="1" Margin="10,10,10,10" SelectionChanged="OnFieldSelectorSelectionChanged" />
 			<ScrollViewer Grid.Row ="2" HorizontalAlignment="Left" Margin="0,20,0,0" VerticalAlignment="Stretch" Width="256">
-				<ListView x:Name="ElementPanel" Width="250" VerticalAlignment="Stretch" ItemsSource="{Binding Patients}">
+				<ListView x:Name="ElementPanel" Width="250" VerticalAlignment="Stretch" ItemsSource="{Binding Patients}" SelectionChanged="PatientChanged">
 					<ListView.Resources>
 						<Style x:Key="ListViewTextBlockStyle" TargetType="TextBlock" >
 							<Setter Property="FontWeight" Value="Bold" />
@@ -76,10 +76,16 @@
 					<pc:OrdinationMask x:Name="PatientOrdinationMask" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" ImagePath="Assets/Logo.png" OnOkButtonHit="SaveOrdinationEntry" OnCancelButtonHit="CancelOrdinationEntry" />
 
 					<!-- Third column -->
-					<Input:SfCalendar x:Name="PatientAppointmentCalender" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" Margin="0,0,0,-100" Width="Auto" Height="Auto" />
-					<TextBlock Name="PatientAppointmentCalendarDetails" Grid.Column="2" Margin="0,110,0,0" Visibility="Collapsed" Grid.Row="1">
-						<Run Text="drei"/>
-					</TextBlock>
+					<Input:SfCalendar x:Name="PatientAppointmentCalender" Grid.Column="2" Grid.Row="0"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,-100" Width="Auto" Height="Auto" Tapped="PatientAppointmentCalender_Tapped"/>
+                    <ListBox x:Name="ListedOrdinations" Grid.Column="2" Grid.Row="1" VerticalAlignment="Stretch" ItemsSource="{Binding OrdinationsOfDate}" Margin="0,120,0,0">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding SocialInsurance}" />
+                                </StackPanel>                                
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
 
 					<!-- Information about Medication -->
 					<StackPanel x:Name="MedicamentDetails" Visibility="Collapsed" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center">

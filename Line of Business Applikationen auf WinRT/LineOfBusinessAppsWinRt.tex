@@ -651,7 +651,7 @@ Mit einem ItemsPanelTemplate können Items innerhalb eines Controls einfach gest
 TODO: mention frameworks as syncfusion
 
 \section[Custom Control für Practitioner Mobile]{Custom Control für Practitioner Mobile}
-Für die Anwendung Practitioner Mobile wurde ein eigenes Control entwickelt, das es erlaubt, für einen bestimmten Patienten einen Ordinationseintrag hinzuzufügen. Das Control ist in Abbildung \ref{img:customcontrol} ersichtlich. Der vollständige Code dazu befindet sich im Anhang.
+Für die Anwendung Practitioner Mobile wurde ein eigenes Control entwickelt, das es erlaubt, für einen bestimmten Patienten einen Ordinationseintrag hinzuzufügen. Das Control ist in Abbildung \ref{img:customcontrol} ersichtlich. Der vollständige Code dazu befindet sich im Anhang unter \ref{app:generic} und \ref{app:ordinationmask}.
 \newline
 \newline
  Die folgenden Schritte beziehen sich alle auf ein englische Version der Entwicklungsumgebung Visual Studio 2012 Ultimate.
@@ -674,6 +674,12 @@ XAML-Files, welche das Custom Control implementieren, können diese durch das ex
 \includegraphics[scale=0.7]{images/customcontrol.png}
 \caption[Custom Control]{Custom Control}\label{img:customcontrol}
 \end{figure}
+\newline
+Neben den Dependency Properties werden auch zwei \textit{TappedEventHandler} deklariert, die für die Logik beim Betätigen des \textit{OK-} oder \textit{Cancel-}Buttons verantwortlich sind.
+\newline
+\newline
+Das fertige Control kann man im \textit{ToolExplorer} von Visual Studio wiederfinden. Von dort muss es nur noch in ein XAML-File gezogen werden und ist anschließend vollständig einsatzbereit.
+
 % http://stackoverflow.com/questions/15179188/cant-find-element-in-winrt-xaml
 % Ok, it all seemed to work pretty well. Thanks! Last question though, what exactly does this do? [TemplatePart(Name = "_OK", % Type = typeof(Button))]
 % I think it defines which elements are required in the template if someone changes the template of your control.
@@ -865,7 +871,7 @@ XML & Extensible Markup Language
 
 % Anh"ange
 \begin{appendix}
-\chapter[Generic.xaml]{Generic.xaml}
+\chapter[Generic.xaml]{Generic.xaml}\label{app:generic}
 \begin{lstlisting}[caption={Generic.xaml}\label{lst:Generic.xaml},captionpos=t]
 <ResourceDictionary
  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -943,7 +949,7 @@ XML & Extensible Markup Language
 \end{lstlisting}
  
 
-\chapter[OrdinationMask.cs]{OrdinationMask.cs}
+\chapter[OrdinationMask.cs]{OrdinationMask.cs}\label{app:ordinationmask}
 \begin{lstlisting}[caption={OrdinationMask.cs}\label{lst:OrdinationMask.cs},captionpos=t]
 using System.Collections.Generic;
 using Windows.UI.Xaml;
@@ -1077,7 +1083,6 @@ namespace PractitionerMobile.Controls
     }
 }
 \end{lstlisting}
-
 \end{appendix}
 
 \end{document}

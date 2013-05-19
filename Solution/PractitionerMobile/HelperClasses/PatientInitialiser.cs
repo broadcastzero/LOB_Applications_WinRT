@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using PractitionerMobile.BusinessObjects;
 
 namespace PractitionerMobile.HelperClasses
 {

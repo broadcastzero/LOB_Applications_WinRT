@@ -24,6 +24,26 @@ namespace PractitionerMobile.Controls
             this.DefaultStyleKey = typeof(OrdinationMask);            
         }
 
+        #region Public properties
+        public string SocialInsurance
+        {
+            get;
+            private set;
+        }
+
+        public int DurationMinutes
+        {
+            get;
+            private set;
+        }
+
+        public string Diagnosis
+        {
+            get;
+            private set;
+        }
+        #endregion
+
         #region Image
         public ImageSource ImagePath
         {
@@ -58,7 +78,7 @@ namespace PractitionerMobile.Controls
         public event TappedEventHandler OnCancelButtonHit;
 	
         /// <summary>
-        /// Calls custom OK event.
+        /// Saves TextBox values to properties and calls custom OK event.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -66,7 +86,19 @@ namespace PractitionerMobile.Controls
 	    {
             if(OnOkButtonHit != null)
             {
-	            OnOkButtonHit(this, null);            
+                var selectedListBoxitem = ((ComboBox)GetTemplateChild("SocialInsurance")).SelectedItem;
+                if (selectedListBoxitem == null)
+                    return;
+
+                this.SocialInsurance = selectedListBoxitem.ToString();
+                this.Diagnosis = ((TextBox)GetTemplateChild("Diagnosis")).Text;
+
+                string duration = ((TextBox)GetTemplateChild("DurationMinutes")).Text;
+                int minutes;
+                bool couldParse = int.TryParse(duration, out minutes);
+                this.DurationMinutes = couldParse && minutes >= 0 ? minutes : 0;
+
+	            OnOkButtonHit(this, null);          
             }
 
             this.ClearFields();
@@ -108,7 +140,7 @@ namespace PractitionerMobile.Controls
         private void ClearFields()
         {
             ComboBox socialInsurance = (ComboBox)GetTemplateChild("SocialInsurance");
-            TextBox duration = (TextBox)GetTemplateChild("Duration");
+            TextBox duration = (TextBox)GetTemplateChild("DurationMinutes");
             TextBox diagnosis = (TextBox)GetTemplateChild("Diagnosis");
 
             socialInsurance.SelectedIndex = -1;

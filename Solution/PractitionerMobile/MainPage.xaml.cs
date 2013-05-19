@@ -4,9 +4,11 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using PractitionerMobile.BusinessObjects;
 using PractitionerMobile.HelperClasses;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -35,6 +37,8 @@ namespace PractitionerMobile
             // Fill lists with values
             this.Patients = PatientInitialiser.Create();
             this.Medicaments = MedicamentInitialiser.Create();
+
+            this.OrdinationsOfDate = new ObservableCollection<Ordination>();
 
             // Create dropdown
             this.InitialiseFieldList();
@@ -113,7 +117,7 @@ namespace PractitionerMobile
 
                     // Elements of third column
                     this.PatientAppointmentCalender.Visibility = Visibility.Visible;
-                    this.PatientAppointmentCalendarDetails.Visibility = Visibility.Visible;
+                    this.ListedOrdinations.Visibility = Visibility.Visible;
                     this.MedicationThirdColumn.Visibility = Visibility.Collapsed;
                     break;
 
@@ -128,7 +132,7 @@ namespace PractitionerMobile
 
                     // Elements of third column
                     this.PatientAppointmentCalender.Visibility = Visibility.Collapsed;
-                    this.PatientAppointmentCalendarDetails.Visibility = Visibility.Collapsed;
+                    this.ListedOrdinations.Visibility = Visibility.Collapsed;
                     this.MedicationThirdColumn.Visibility = Visibility.Visible;
                     break;
 
@@ -145,14 +149,72 @@ namespace PractitionerMobile
             this.ChangeContentDependingOnSelectedListEntry(sender, e);
         }
 
-        private void SaveOrdinationEntry(object sender, TappedRoutedEventArgs e)
+        private async void SaveOrdinationEntry(object sender, TappedRoutedEventArgs e)
         {
             Debug.WriteLine("ok button hit");
+            Ordination ordination = new Ordination();
+            ordination.Date = DateTime.Today;
+            ordination.SocialInsurance = this.PatientOrdinationMask.SocialInsurance;
+            ordination.DurationMinutes = this.PatientOrdinationMask.DurationMinutes;
+            ordination.Diagnosis = this.PatientOrdinationMask.Diagnosis;
+
+            string message = "Die Ordination wurde erfolgreich gespeichert.";
+
+            try
+            {
+                Patient selectedPatient = Patients.Where(p => p.Name == (this.ElementPanel.SelectedItem as Patient).Name).FirstOrDefault();
+                selectedPatient.Ordinations.Add(ordination);
+                GetOrdinationsForDateAndPatient();
+
+            }
+            catch (NullReferenceException)
+            {
+                message = "Bitte wählen Sie zuerst einen Patienten aus!";
+            }
+
+            MessageDialog dialog = new MessageDialog(message, "Speichern einer Ordination");
+            await dialog.ShowAsync();
         }
 
         private void CancelOrdinationEntry(object sender, TappedRoutedEventArgs e)
         {
             Debug.WriteLine("cancel button hit");
-        }    
+        }
+
+        /// <summary>
+        ///  Gets or sets the ordinations of a patient on a certain date.
+        /// </summary>
+        public ObservableCollection<Ordination> OrdinationsOfDate { get; set; }
+
+        private void GetOrdinationsForDateAndPatient()
+        {
+            var ordinations = new List<Ordination>();
+            try
+            {
+                Patient selectedPatient = Patients.Where(p => p.Name == (this.ElementPanel.SelectedItem as Patient).Name).FirstOrDefault();
+                ordinations = selectedPatient.Ordinations.Where(o => o.Date == DateTime.Today).ToList();
+
+                this.OrdinationsOfDate.Clear();
+                foreach(Ordination ordination in ordinations)
+                {
+                    this.OrdinationsOfDate.Add(ordination);
+                }
+            }
+            catch (NullReferenceException)
+            {
+                this.OrdinationsOfDate.Clear();
+                return;
+            }           
+        }
+
+        private void PatientAppointmentCalender_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            GetOrdinationsForDateAndPatient();
+        }
+
+        private void PatientChanged(object sender, SelectionChangedEventArgs e)
+        {
+            GetOrdinationsForDateAndPatient();
+        }
     }
 }

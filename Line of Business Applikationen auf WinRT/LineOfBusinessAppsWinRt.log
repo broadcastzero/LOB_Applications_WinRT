@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/W32TeX) (format=pdflatex 2012.11.14)  19 MAY 2013 17:42
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/W32TeX) (format=pdflatex 2012.11.14)  19 MAY 2013 17:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1218,123 +1218,128 @@ Overfull \hbox (4.73958pt too wide) in paragraph at lines 621--622
 [][][][][][][][][][][][][][][][][][][][] 
  []
 
-[18] <images/customcontrol.png, id=536, 519.44063pt x 567.62062pt>
+[18] <images/customcontrol.png, id=538, 519.44063pt x 567.62062pt>
 File: images/customcontrol.png Graphic file (type png)
 
 <use images/customcontrol.png>
 Package pdftex.def Info: images/customcontrol.png used on input line 674.
 (pdftex.def)             Requested size: 363.60596pt x 397.33171pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 654--681
+Underfull \hbox (badness 10000) in paragraph at lines 654--682
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 654--681
+Underfull \hbox (badness 10000) in paragraph at lines 654--682
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 654--681
+Underfull \hbox (badness 10000) in paragraph at lines 654--682
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 654--681
+Underfull \hbox (badness 10000) in paragraph at lines 654--682
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 654--681
+Underfull \hbox (badness 10000) in paragraph at lines 654--682
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 654--682
 
  []
 
 [19] [20 <./images/customcontrol.png>]
 Kapitel 4.
-<images/charms.png, id=555, 1027.58907pt x 569.12625pt>
+<images/charms.png, id=557, 1027.58907pt x 569.12625pt>
 File: images/charms.png Graphic file (type png)
 
 <use images/charms.png>
-Package pdftex.def Info: images/charms.png used on input line 690.
+Package pdftex.def Info: images/charms.png used on input line 696.
 (pdftex.def)             Requested size: 436.72742pt x 241.87979pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 685--694
+Underfull \hbox (badness 10000) in paragraph at lines 691--700
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 696--706
+Underfull \hbox (badness 10000) in paragraph at lines 702--712
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 696--706
+Underfull \hbox (badness 10000) in paragraph at lines 702--712
 
  []
 
 [21
 
  <./images/charms.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 708--716
+Underfull \hbox (badness 10000) in paragraph at lines 714--722
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 718--722
+Underfull \hbox (badness 10000) in paragraph at lines 724--728
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 724--734
+Underfull \hbox (badness 10000) in paragraph at lines 730--740
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 724--734
+Underfull \hbox (badness 10000) in paragraph at lines 730--740
 
  []
 
 
-Underfull \hbox (badness 1320) in paragraph at lines 724--734
+Underfull \hbox (badness 1320) in paragraph at lines 730--740
 \T1/cmss/m/n/10.95 WinRT bie-tet au-ÿer-dem noch ei-ne zu-sätz-li-che Funk-tio-
 na-li-tät an - Ein-stel-lun-gen kön-nen
  []
 
 [22]
-Underfull \hbox (badness 10000) in paragraph at lines 736--746
+Underfull \hbox (badness 10000) in paragraph at lines 742--752
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 736--746
+Underfull \hbox (badness 10000) in paragraph at lines 742--752
 
  []
 
-[23] <images/livetile.png, id=584, 185.19188pt x 88.07906pt>
+[23] <images/livetile.png, id=586, 185.19188pt x 88.07906pt>
 File: images/livetile.png Graphic file (type png)
 
 <use images/livetile.png>
-Package pdftex.def Info: images/livetile.png used on input line 767.
+Package pdftex.def Info: images/livetile.png used on input line 773.
 (pdftex.def)             Requested size: 222.22911pt x 105.69432pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 754--770
+Underfull \hbox (badness 10000) in paragraph at lines 760--776
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 754--770
+Underfull \hbox (badness 10000) in paragraph at lines 760--776
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 754--770
+Underfull \hbox (badness 10000) in paragraph at lines 760--776
 
  []
 
-<images/push.png, id=586, 437.38406pt x 316.93407pt>
+<images/push.png, id=588, 437.38406pt x 316.93407pt>
 File: images/push.png Graphic file (type png)
  <use images/push.png>
-Package pdftex.def Info: images/push.png used on input line 780.
+Package pdftex.def Info: images/push.png used on input line 786.
 (pdftex.def)             Requested size: 349.90771pt x 253.54759pt.
 
 [24 <./images/livetile.png>] [25 <./images/push.png>] [26]
@@ -1368,7 +1373,7 @@ Class scrbook Warning: Usage of deprecated \float@listhead!
 (scrbook)              instead of \float@listhead.
 (scrbook)              Definition of \float@listhead my be removed from
 (scrbook)              `scrbook' soon, so it should not be used  on input line 
-837.
+843.
 
 (./LineOfBusinessAppsWinRt.lol)
 \tf@lol=\write6
@@ -1392,33 +1397,33 @@ Anhang A.
 ] [34]
 Anhang B.
 
-Overfull \hbox (4.73958pt too wide) in paragraph at lines 978--979
+Overfull \hbox (4.73958pt too wide) in paragraph at lines 984--985
 [][][][][][][][][][][][][][][][][][][] 
  []
 
 [35
 
 ] [36]
-Overfull \hbox (4.73958pt too wide) in paragraph at lines 1057--1059
+Overfull \hbox (4.73958pt too wide) in paragraph at lines 1063--1065
 [][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (11.26765pt too wide) in paragraph at lines 1070--1071
+Overfull \hbox (11.26765pt too wide) in paragraph at lines 1076--1077
 [][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (24.3238pt too wide) in paragraph at lines 1071--1073
+Overfull \hbox (24.3238pt too wide) in paragraph at lines 1077--1079
 [][][][][][][][][][][][][][][][][] 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1083.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1088.
 [37]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1083.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1088.
  (./LineOfBusinessAppsWinRt.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1083.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1083.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1088.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1088.
 
 Package rerunfilecheck Info: File `LineOfBusinessAppsWinRt.out' has not changed
 .
@@ -1427,13 +1432,13 @@ Package rerunfilecheck Info: File `LineOfBusinessAppsWinRt.out' has not changed
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1083.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1088.
  ) 
 Here is how much of TeX's memory you used:
- 10378 strings out of 493488
- 147944 string characters out of 3144747
- 292979 words of memory out of 3000000
- 13073 multiletter control sequences out of 15000+200000
+ 10380 strings out of 493488
+ 147977 string characters out of 3144747
+ 293060 words of memory out of 3000000
+ 13075 multiletter control sequences out of 15000+200000
  30537 words of font info for 50 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
  38i,12n,51p,716b,1863s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1444,10 +1449,10 @@ public/cm-super/sfsi1095.pfb><c:/texlive/2012/texmf-dist/fonts/type1/public/cm-
 super/sfss0900.pfb><c:/texlive/2012/texmf-dist/fonts/type1/public/cm-super/sfss
 1095.pfb><c:/texlive/2012/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb><c:/te
 xlive/2012/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on LineOfBusinessAppsWinRt.pdf (44 pages, 387463 bytes).
+Output written on LineOfBusinessAppsWinRt.pdf (44 pages, 387941 bytes).
 PDF statistics:
- 1019 PDF objects out of 1200 (max. 8388607)
- 942 compressed objects within 10 object streams
+ 1021 PDF objects out of 1200 (max. 8388607)
+ 944 compressed objects within 10 object streams
  452 named destinations out of 1000 (max. 500000)
  402 words of extra memory for PDF output out of 10000 (max. 10000000)
 
