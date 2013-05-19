@@ -38,7 +38,6 @@ namespace PractitionerMobile.HelperClasses
         /// <summary>
         /// Creates a collection of patients and returns it.
         /// </summary>
-        /// <returns></returns>
         internal static ObservableCollection<Patient> Create()
         {
             ObservableCollection<Patient> patients = new ObservableCollection<Patient>();

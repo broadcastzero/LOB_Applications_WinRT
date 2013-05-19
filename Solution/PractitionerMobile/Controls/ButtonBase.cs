@@ -9,6 +9,9 @@ using Windows.UI.Xaml.Controls;
 
 namespace PractitionerMobile.Controls
 {
+    /// <summary>
+    /// The custom control which is implemented for demonstration purposes only and not used in solution.
+    /// </summary>
     public class ButtonBase : ContentControl
     {
         public bool IsPressed
@@ -17,7 +20,7 @@ namespace PractitionerMobile.Controls
             set { SetValue(IsPressedProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        // Using a DependencyProperty as the backing store for IsPressedProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsPressedProperty = 
             DependencyProperty.Register("IsPressed", typeof(bool), typeof(ButtonBase), new PropertyMetadata(false, OnIsPressedChanged));
 

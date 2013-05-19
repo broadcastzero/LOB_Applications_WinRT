@@ -35,7 +35,7 @@ namespace PractitionerMobile.HelperClasses
         };
 
         /// <summary>
-        /// Definitionen von http://www.apotheken-umschau.de, Zugriff am 14.5.2013
+        /// Definitions from http://www.apotheken-umschau.de, access at May 14th, 2013
         /// </summary>
         private static string[] _medicamentDescriptions = new string[]
         {

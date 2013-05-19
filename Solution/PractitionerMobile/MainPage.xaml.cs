@@ -2,28 +2,21 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using PractitionerMobile.BusinessObjects;
 using PractitionerMobile.HelperClasses;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using CustomBaseButton = PractitionerMobile.Controls.ButtonBase;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace PractitionerMobile
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// The main page of this application.
     /// </summary>
     public sealed partial class MainPage : Page
     {
@@ -38,13 +31,14 @@ namespace PractitionerMobile
             this.Patients = PatientInitialiser.Create();
             this.Medicaments = MedicamentInitialiser.Create();
 
-            this.OrdinationsOfDate = new ObservableCollection<Ordination>();
+            // Initialise the list of ordination for a certain date and patient.
+            this.OrdinationsOfPatientAndDate = new ObservableCollection<Ordination>();
 
-            // Create dropdown
+            // Create dropdown with Patient / Medicametion selection
             this.InitialiseFieldList();
         }
 
-        #region Public Fields
+        #region Public Properties
         public ObservableCollection<Patient> Patients
         {
             get;
@@ -59,7 +53,7 @@ namespace PractitionerMobile
         #endregion
 
         /// <summary>
-        /// Initialises the second ComboBox in which the user can select, results from which field should be displayed below.
+        /// Initialises the ComboBox in which the user can select if he wants patients or medicaments displayed
         /// </summary>
         private void InitialiseFieldList()
         {
@@ -78,6 +72,10 @@ namespace PractitionerMobile
         {
         }
 
+        /// <summary>
+        /// This is the code which sets the custom toggle button 'ButtonBase'.
+        /// It is not used within the application, but could be used, if the button would be used.
+        /// </summary>
         private void baseButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
             CustomBaseButton button = (sender as CustomBaseButton);
@@ -93,10 +91,8 @@ namespace PractitionerMobile
         }
 
         /// <summary>
-        /// Changes the binding Patient vs. Medicament details.
+        /// Changes the binding Patient vs. Medicament details
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void ChangeContentDependingOnSelectedListEntry(object sender, SelectionChangedEventArgs e)
         {            
             ComboBox combobox = (sender as ComboBox);
@@ -122,7 +118,7 @@ namespace PractitionerMobile
                     break;
 
                 case 1: this.ElementPanel.ItemsSource = this.Medicaments;
-                    // ELements of first column
+                    // Elements of first column
                     this.PatientDetails.Visibility = Visibility.Collapsed;
                     this.MedicamentDetails.Visibility = Visibility.Visible;
 
@@ -152,6 +148,7 @@ namespace PractitionerMobile
         private async void SaveOrdinationEntry(object sender, TappedRoutedEventArgs e)
         {
             Debug.WriteLine("ok button hit");
+
             Ordination ordination = new Ordination();
             ordination.Date = DateTime.Today;
             ordination.SocialInsurance = this.PatientOrdinationMask.SocialInsurance;
@@ -176,6 +173,11 @@ namespace PractitionerMobile
             await dialog.ShowAsync();
         }
 
+        /// <summary>
+        /// In here, custom logic could be implemented for the case that the cancel button of the custom control is hit.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CancelOrdinationEntry(object sender, TappedRoutedEventArgs e)
         {
             Debug.WriteLine("cancel button hit");
@@ -184,27 +186,32 @@ namespace PractitionerMobile
         /// <summary>
         ///  Gets or sets the ordinations of a patient on a certain date.
         /// </summary>
-        public ObservableCollection<Ordination> OrdinationsOfDate { get; set; }
+        public ObservableCollection<Ordination> OrdinationsOfPatientAndDate { get; set; }
 
         private void GetOrdinationsForDateAndPatient()
         {
-            var ordinations = new List<Ordination>();
+            var ordinationsOfPatientAndDate = new List<Ordination>();
+            Patient selectedPatient;
+
             try
             {
-                Patient selectedPatient = Patients.Where(p => p.Name == (this.ElementPanel.SelectedItem as Patient).Name).FirstOrDefault();
-                ordinations = selectedPatient.Ordinations.Where(o => o.Date == DateTime.Today).ToList();
-
-                this.OrdinationsOfDate.Clear();
-                foreach(Ordination ordination in ordinations)
-                {
-                    this.OrdinationsOfDate.Add(ordination);
-                }
+                selectedPatient = Patients.Where(p => p.Name == (this.ElementPanel.SelectedItem as Patient).Name).FirstOrDefault();
             }
             catch (NullReferenceException)
             {
-                this.OrdinationsOfDate.Clear();
+                // Either no patient is selected, or the medicament panel is selected.
+                this.OrdinationsOfPatientAndDate.Clear();
                 return;
-            }           
+            }
+
+            ordinationsOfPatientAndDate = selectedPatient.Ordinations.Where(o => o.Date == DateTime.Today).ToList();
+
+            this.OrdinationsOfPatientAndDate.Clear();
+
+            foreach (Ordination ordination in ordinationsOfPatientAndDate)
+            {
+                this.OrdinationsOfPatientAndDate.Add(ordination);
+            }
         }
 
         private void PatientAppointmentCalender_Tapped(object sender, TappedRoutedEventArgs e)

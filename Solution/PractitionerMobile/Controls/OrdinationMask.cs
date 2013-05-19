@@ -8,144 +8,138 @@ using Windows.UI.Xaml.Media;
 // http://go.microsoft.com/fwlink/?LinkId=234235
 namespace PractitionerMobile.Controls
 {
-    /// <summary>
-    /// This class contains Practitioner Mobiles' custom control -
-    /// a control, in which data of an ordination can be entered.
-    /// </summary>
-    [TemplatePart(Name = "Ok", Type = typeof(Button))]
-    [TemplatePart(Name = "Cancel", Type = typeof(Button))]
-    [TemplatePart(Name = "SocialInsurance", Type = typeof(ComboBox))]
-    [TemplatePart(Name = "Duration", Type = typeof(TextBox))]
-    [TemplatePart(Name = "Diagnosis", Type = typeof(TextBox))]
-    public sealed class OrdinationMask : Control
-    {
-        public OrdinationMask()
-        {
-            this.DefaultStyleKey = typeof(OrdinationMask);            
-        }
+	/// <summary>
+	/// This class contains Practitioner Mobiles' custom control -
+	/// a control, in which data of an ordination can be entered.
+	/// </summary>
+	[TemplatePart(Name = "Ok", Type = typeof(Button))]
+	[TemplatePart(Name = "Cancel", Type = typeof(Button))]
+	[TemplatePart(Name = "SocialInsurance", Type = typeof(ComboBox))]
+	[TemplatePart(Name = "DurationMinutes", Type = typeof(TextBox))]
+	[TemplatePart(Name = "Diagnosis", Type = typeof(TextBox))]
+	public sealed class OrdinationMask : Control
+	{
+		public OrdinationMask()
+		{
+			this.DefaultStyleKey = typeof(OrdinationMask);            
+		}
 
-        #region Public properties
-        public string SocialInsurance
-        {
-            get;
-            private set;
-        }
+		#region Public properties
+		public string SocialInsurance
+		{
+			get;
+			private set;
+		}
 
-        public int DurationMinutes
-        {
-            get;
-            private set;
-        }
+		public int DurationMinutes
+		{
+			get;
+			private set;
+		}
 
-        public string Diagnosis
-        {
-            get;
-            private set;
-        }
-        #endregion
+		public string Diagnosis
+		{
+			get;
+			private set;
+		}
+		#endregion
 
-        #region Image
-        public ImageSource ImagePath
-        {
-            get { return (ImageSource)GetValue(ImagePathProperty); }
-            set { SetValue(ImagePathProperty, value); }
-        }
+		#region Image
+		public ImageSource ImagePath
+		{
+			get { return (ImageSource)GetValue(ImagePathProperty); }
+			set { SetValue(ImagePathProperty, value); }
+		}
 
-        // Using a DependencyProperty as the backing store for MyProperty.
-        // This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty ImagePathProperty = 
-            DependencyProperty.Register("ImagePath", typeof(ImageSource), typeof(OrdinationMask), new PropertyMetadata(null));
-        #endregion
+		public static readonly DependencyProperty ImagePathProperty = 
+			DependencyProperty.Register("ImagePath", typeof(ImageSource), typeof(OrdinationMask), new PropertyMetadata(null));
+		#endregion
 
-        #region Social Insurances
-        private static List<string> _defaultSocialInsurances = new List<string>() { "NoeGkk", "Wgkk", "BVA" };
+		#region Social Insurances
+		private static List<string> _defaultSocialInsurances = new List<string>() { "NoeGkk", "Wgkk", "BVA" };
 
-        public static readonly DependencyProperty SocialInsurancesProperty =
-              DependencyProperty.Register("SocialInsurances",
-              typeof(IEnumerable<string>),
-              typeof(OrdinationMask),
-              new PropertyMetadata(_defaultSocialInsurances));
+		public static readonly DependencyProperty SocialInsurancesProperty =
+			  DependencyProperty.Register("SocialInsurances",
+			  typeof(IEnumerable<string>),
+			  typeof(OrdinationMask),
+			  new PropertyMetadata(_defaultSocialInsurances));
 
-        public IEnumerable<string> SocialInsurances
-        {
-            get { return (IEnumerable<string>) GetValue(SocialInsurancesProperty); }
-            set { SetValue(SocialInsurancesProperty, value); }
-        }
-        #endregion
+		public IEnumerable<string> SocialInsurances
+		{
+			get { return (IEnumerable<string>) GetValue(SocialInsurancesProperty); }
+			set { SetValue(SocialInsurancesProperty, value); }
+		}
+		#endregion
 
-        #region Button logic
-        public event TappedEventHandler OnOkButtonHit;
-        public event TappedEventHandler OnCancelButtonHit;
+		#region Button logic
+		public event TappedEventHandler OkButtonHit;
+		public event TappedEventHandler CancelButtonHit;
 	
-        /// <summary>
-        /// Saves TextBox values to properties and calls custom OK event.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-	    private void okButton_Tapped(object sender, TappedRoutedEventArgs e)
-	    {
-            if(OnOkButtonHit != null)
-            {
-                var selectedListBoxitem = ((ComboBox)GetTemplateChild("SocialInsurance")).SelectedItem;
-                if (selectedListBoxitem == null)
-                    return;
+		/// <summary>
+		/// Saves TextBox values to properties and calls custom OK-event.
+		/// </summary>
+		private void okButton_Tapped(object sender, TappedRoutedEventArgs e)
+		{
+			if(OkButtonHit != null)
+			{
+				var selectedListBoxItem = ((ComboBox)GetTemplateChild("SocialInsurance")).SelectedItem;
+				if (selectedListBoxItem == null)
+					return;
 
-                this.SocialInsurance = selectedListBoxitem.ToString();
-                this.Diagnosis = ((TextBox)GetTemplateChild("Diagnosis")).Text;
+				this.SocialInsurance = selectedListBoxItem.ToString();
+				this.Diagnosis = ((TextBox)GetTemplateChild("Diagnosis")).Text;
 
-                string duration = ((TextBox)GetTemplateChild("DurationMinutes")).Text;
-                int minutes;
-                bool couldParse = int.TryParse(duration, out minutes);
-                this.DurationMinutes = couldParse && minutes >= 0 ? minutes : 0;
+				string duration = ((TextBox)GetTemplateChild("DurationMinutes")).Text;
+				int minutes;
+				bool couldParse = int.TryParse(duration, out minutes);
+				this.DurationMinutes = couldParse && minutes >= 0 ? minutes : 0;
 
-	            OnOkButtonHit(this, null);          
-            }
+				OkButtonHit(this, null);
+			}
 
-            this.ClearFields();
-	    }
+			this.ClearFields();
+		}
 
-        /// <summary>
-        /// Calls custom event and clears fields.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void cancelButton_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            if(OnCancelButtonHit != null)
-            {
-                OnCancelButtonHit(this, null);
-            }
+		/// <summary>
+		/// Calls custom cancel event and clears fields.
+		/// </summary>
+		private void cancelButton_Tapped(object sender, TappedRoutedEventArgs e)
+		{
+			if(CancelButtonHit != null)
+			{
+				CancelButtonHit(this, null);
+			}
 
-            this.ClearFields();
-        }
-        #endregion
+			this.ClearFields();
+		}
+		#endregion
 
-        /// <summary>
-        /// Sets events to buttons.
-        /// </summary>
-        protected override void OnApplyTemplate()
-        {
-            base.OnApplyTemplate();
+		/// <summary>
+		/// Sets events to OK and cancel button.
+		/// </summary>
+		protected override void OnApplyTemplate()
+		{
+			base.OnApplyTemplate();
 
-            Button okButton = (Button)GetTemplateChild("Ok");
-            Button cancelButton= (Button)GetTemplateChild("Cancel");
+			Button okButton = (Button)GetTemplateChild("Ok");
+			Button cancelButton= (Button)GetTemplateChild("Cancel");
 
-            okButton.Tapped += okButton_Tapped;
-            cancelButton.Tapped += cancelButton_Tapped;
-        }
+			okButton.Tapped += okButton_Tapped;
+			cancelButton.Tapped += cancelButton_Tapped;
+		}
 
-        /// <summary>
-        /// Clears all fields of the control.
-        /// </summary>
-        private void ClearFields()
-        {
-            ComboBox socialInsurance = (ComboBox)GetTemplateChild("SocialInsurance");
-            TextBox duration = (TextBox)GetTemplateChild("DurationMinutes");
-            TextBox diagnosis = (TextBox)GetTemplateChild("Diagnosis");
+		/// <summary>
+		/// Clears all fields of the control.
+		/// </summary>
+		private void ClearFields()
+		{
+			ComboBox socialInsurance = (ComboBox)GetTemplateChild("SocialInsurance");
+			TextBox duration = (TextBox)GetTemplateChild("DurationMinutes");
+			TextBox diagnosis = (TextBox)GetTemplateChild("Diagnosis");
 
-            socialInsurance.SelectedIndex = -1;
-            duration.Text = string.Empty;
-            diagnosis.Text = string.Empty;
-        }
-    }
+			socialInsurance.SelectedIndex = -1;
+			duration.Text = string.Empty;
+			diagnosis.Text = string.Empty;
+		}
+	}
 }

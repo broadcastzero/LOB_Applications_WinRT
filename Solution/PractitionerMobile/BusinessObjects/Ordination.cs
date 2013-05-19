@@ -17,7 +17,7 @@ namespace PractitionerMobile.BusinessObjects
         public DateTime Date { get; set; }
 
         /// <summary>
-        /// Gets or sets information about how long the ordination has lasted (in Minutes).
+        /// Gets or sets information about how long the ordination has lasted (in minutes).
         /// </summary>
         public int DurationMinutes { get; set; }
 
@@ -30,6 +30,5 @@ namespace PractitionerMobile.BusinessObjects
         /// Gets or sets the name of the patients social insurance.
         /// </summary>
         public string SocialInsurance { get; set; }
-
     }
 }
