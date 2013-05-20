@@ -726,7 +726,7 @@ Ein zusätzliches Feature der Suche ist das Anbieten von Suchvorschlägen beim E
 \newline
 Auch die später vorgestellte Applikation Practitioner Mobile verwendet die erwähnten Funktionalitäten. Demonstriert werden diese in Kapitel \ref{practmobile}.
 
-\section[Teilen]{Teilen}
+\section[Teilen]{Teilen}\label{ref:share}
 Die Teilen-Funktionalität ermöglicht es auf einfache Weise, Inhalte einer App mit anderen Applikationen zu teilen. Anstatt in etwa einen Text innerhalb einer Anwendung zu kopieren, das Mailprogramm zu öffnen, den Text dort einzufügen und anschließend zu versenden, könnte man dasselbe Resultat einfacher erzielen, indem man die Teilen-Funktion der Charm-Bar öffnet, ein Programm auswählt, das sich selbst als möglicher Empfänger klassifiziert (wie zum Beispiel das Mailprogramm), und direkt aus der gerade offenen Anwendung die Mail mit den gewünschten Inhalt verschickt.
 \newline
 \newline
@@ -847,13 +847,67 @@ Das UI der erstellten Suche für Pracitioner Mobile ist in Abbildung \ref{img:se
 \end{figure}
 \newline
 \subsection[Teilen]{Teilen}
-Infos über Motivation für Applikation, Highlights der Anwendung präsentieren, im vorherigen Abschnitt erstelle Custom Control implementieren, Verwendung von Schnittstellen ...
+Im Unterkapitel \ref{ref:share} wurde bereits erwähnt, welche Möglichkeiten es für eine Applikation gibt, um Inhalte zu teilen und anderen Applikationen zur Verfügung zu stellen.
 \newline
-- Suche implementieren für Patienten / Medis
+Practitioner Mobile soll die Möglichkeit unterstützen, Daten eines Patienten an eine andere Applikation, wie einem Druck- oder Mailprogramm, weiterzugeben.
 \newline
-- Share: Kontakt wählen, als Patient hinzufügen (mit App teilen) bzw. Info per Mail teilen (Graph an Patient)
-- thumbnail on list?
+Umgekehrt könnte auch unsere Applikation in etwa Patientendaten von einem anderen Programm empfangen und verarbeiten, dieser Schritt wird allerdings in Practitioner Mobile nicht demonstriert.
+\newline
+\newline
+Daten zu teilen ist denkbar simpel. Es reicht aus, in der betreffenden View ein zusätzliches Event zu registrieren, das aufgerufen werden soll, wenn vom \textit{DataTransferManager} Daten angefragt werden:
+\begin{lstlisting}[caption={Daten teilen}\label{lst:sharing},captionpos=t]
+public MainPage()
+{
+[...]
+DataTransferManager dataTransferManager = 
+	DataTransferManager.GetForCurrentView();
+ dataTransferManager.DataRequested += 
+	OnDataRequested;
+}
+[...]
+private void OnDataRequested
+	(DataTransferManager sender, DataRequestedEventArgs args)
+        {
+            // Get selected patient
+            Patient selectedPatient;
+            try
+            {
+                selectedPatient = Patients
+		.Where(p => p.Name == (this.ElementPanel.SelectedItem
+				 as Patient).Name).FirstOrDefault();
+            }
+            catch(NullReferenceException)
+            {
+                // No patient selected - nothing to share
+                return;
+            }
 
+            // Shown data in Share pane
+            args.Request.Data.Properties.Title = selectedPatient.Name;
+            args.Request.Data.Properties.Description 
+		= "Last ordination: " + selectedPatient.LastOrdination;
+
+            // Ordination data
+            StringBuilder textToSet = new StringBuilder();
+            textToSet.AppendLine("Ordinations:");
+
+            foreach(Ordination o in selectedPatient.Ordinations)
+            {
+                textToSet.AppendLine( o.Date.ToString() + ", " +
+		 o.SocialInsurance + ", " + o.DurationMinutes + 
+		"Minutes, " + o.Diagnosis);
+                textToSet.AppendLine("---");
+            }
+
+            args.Request.Data.SetText(textToSet.ToString());
+        }
+\end{lstlisting}
+Wie das fertig aussieht, ist in Abbildung \ref{img:share} visualisert.
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.4]{images/share.png}
+\caption[Daten teilen]{Daten teilen}\label{img:share}
+\end{figure}
 
 %-------------------------------------------------------------------------------------------------------------------------------------------------------
 

@@ -11,7 +11,8 @@
 \contentsline {lstlisting}{\numberline {3.8}{ItemsPanelTemplate, aus \cite {ana12}, S.210}}{19}{lstlisting.3.8}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {lstlisting}{\numberline {5.1}{Daten teilen}}{29}{lstlisting.5.1}
 \addvspace {10\p@ }
-\contentsline {lstlisting}{\numberline {A.1}{Generic.xaml}}{35}{lstlisting.A.1}
+\contentsline {lstlisting}{\numberline {A.1}{Generic.xaml}}{37}{lstlisting.A.1}
 \addvspace {10\p@ }
-\contentsline {lstlisting}{\numberline {B.1}{OrdinationMask.cs}}{37}{lstlisting.B.1}
+\contentsline {lstlisting}{\numberline {B.1}{OrdinationMask.cs}}{39}{lstlisting.B.1}

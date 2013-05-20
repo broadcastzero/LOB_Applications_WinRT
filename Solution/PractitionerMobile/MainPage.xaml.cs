@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Text;
 using PractitionerMobile.BusinessObjects;
 using PractitionerMobile.HelperClasses;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -36,6 +38,10 @@ namespace PractitionerMobile
 
             // Create dropdown with Patient / Medicametion selection
             this.InitialiseFieldList();
+
+            // Declare that this view can be used as a sharing source
+            DataTransferManager dataTransferManager = DataTransferManager.GetForCurrentView();
+            dataTransferManager.DataRequested += OnDataRequested;
         }
 
         #region Public Properties
@@ -223,5 +229,38 @@ namespace PractitionerMobile
         {
             GetOrdinationsForDateAndPatient();
         }
+
+        #region Sharing
+        private void OnDataRequested(DataTransferManager sender, DataRequestedEventArgs args)
+        {
+            // Get selected patient
+            Patient selectedPatient;
+            try
+            {
+                selectedPatient = Patients.Where(p => p.Name == (this.ElementPanel.SelectedItem as Patient).Name).FirstOrDefault();
+            }
+            catch(NullReferenceException)
+            {
+                // No patient selected - nothing to share
+                return;
+            }
+
+            // Shown data in Share pane
+            args.Request.Data.Properties.Title = selectedPatient.Name;
+            args.Request.Data.Properties.Description = "Last ordination: " + selectedPatient.LastOrdination;
+
+            // Ordination data
+            StringBuilder textToSet = new StringBuilder();
+            textToSet.AppendLine("Ordinations:");
+
+            foreach(Ordination o in selectedPatient.Ordinations)
+            {
+                textToSet.AppendLine( o.Date.ToString() + ", " + o.SocialInsurance + ", " + o.DurationMinutes + "Minutes, " + o.Diagnosis);
+                textToSet.AppendLine("---");
+            }
+
+            args.Request.Data.SetText(textToSet.ToString());
+        }
+        #endregion
     }
 }
