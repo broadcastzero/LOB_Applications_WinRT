@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace PractitionerMobile.BusinessObjects
 {
@@ -11,7 +13,10 @@ namespace PractitionerMobile.BusinessObjects
         {
             this.Name = name;
             this.Ordinations = new List<Ordination>();
+            this.Picture = new BitmapImage(new Uri(_uriToPicture));
         }
+
+        private string _uriToPicture = "ms-appx:///Assets/Logo.png";
 
         /// <summary>
         /// Gets or sets the name of the patient.
@@ -27,5 +32,10 @@ namespace PractitionerMobile.BusinessObjects
         /// Gets or sets the DateTime of the last ordination of this patient.
         /// </summary>
         public DateTime LastOrdination { get; set; }
+
+        /// <summary>
+        /// Gets or sets an image of the patient.
+        /// </summary>
+        public BitmapImage Picture { get; set; }
     }
 }

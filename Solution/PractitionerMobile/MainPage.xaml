@@ -55,7 +55,7 @@
 					</Grid.ColumnDefinitions>
 
 					<!-- First column -->
-					<Image Source="Assets/Logo.png" Margin="30" />
+					<Image Source="{Binding SelectedItem.Picture, ElementName=ElementPanel}" Margin="30" />
 					<StackPanel x:Name="PatientDetails" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center">
 						<StackPanel.Resources>
 							<ResourceDictionary>
