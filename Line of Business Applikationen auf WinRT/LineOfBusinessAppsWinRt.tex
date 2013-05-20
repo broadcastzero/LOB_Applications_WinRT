@@ -648,7 +648,23 @@ Mit einem ItemsPanelTemplate können Items innerhalb eines Controls einfach gest
 \cite{ana12}, S.210f
 
 \section[Frameworks]{Frameworks}
-TODO: mention frameworks as syncfusion
+Durch die Möglichkeit, nach Belieben mit XAML Custom Controls zu entwickeln, gibt es bereits erste Frameworks, die Sammlungen an individuellen Steuerelementen anbieten. Diese müssen nur noch aus der Visual Studio Toolbox in die eigene Solution mit Drag and Drop hineingezogen werden, und sind sofort so verwendbar, wie jedes andere Control auch.
+\newline
+\newline
+Den Entwicklungsaufwand lassen sich die Hersteller der Custom-Lösungen natürlich auch etwas kosten, vor allem jetzt, wo WinRT-Applikationen noch am Anfang sind und noch nicht viel Konkurrenz am Markt ist.
+\newline
+Die Firma \textit{Syncfusion} bietet ein Set an Business-Controls zum derzeitigen Zeitpunkt um 199 Dollar an (\cite{syncfn}), deutlich teuerer kommen die Lösungen schon beim Konkurrenten \textit{Componenent One}: hier bezahlt man schon ab 895 Dollar für zusätzliche Elemente. Will man exklusiven Support dazu, wird es noch einmal teurer. \cite{cone}
+\newline
+\newline
+Doch auch Gratis-Lösungen sind mittlerweile zu finden, wie in etwa das WinRT XAML Toolkit \cite{cptk}. Als Entwickler stehen einem also bereits einige Möglichkeiten zur Verfügung, wenn man ein Custom Control benötigt, aber keine Zeit und Energie für eine Eigenentwicklung investieren möchte.
+\newline
+\newline
+Die im Rahmen dieser Bachelorarbeit erstellte Applikation Practitioner Mobile verwendet einen Kalender aus dem Control-Set von der Demoversion des \textit{Essential Studio for WinRT /XAML/} von Syncfusion. Das Control ist in Abbildung \ref{img:calendar} dargestellt.
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.7]{images/calendar.png}
+\caption[Syncfusion Kalender Control]{Syncfusion Kalender Control}\label{img:calendar}
+\end{figure}
 
 \section[Custom Control für Practitioner Mobile]{Custom Control für Practitioner Mobile}
 Für die Anwendung Practitioner Mobile wurde ein eigenes Control entwickelt, das es erlaubt, für einen bestimmten Patienten einen Ordinationseintrag hinzuzufügen. Das Control ist in Abbildung \ref{img:customcontrol} ersichtlich. Der vollständige Code dazu befindet sich im Anhang unter \ref{app:generic} und \ref{app:ordinationmask}.

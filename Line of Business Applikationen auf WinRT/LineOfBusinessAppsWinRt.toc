@@ -26,22 +26,22 @@
 \contentsline {subsubsection}{ItemsPanelTemplate}{18}{section*.11}
 \contentsline {section}{\numberline {3.8}Frameworks}{19}{section.3.8}
 \contentsline {section}{\numberline {3.9}Custom Control f\IeC {\"u}r Practitioner Mobile}{19}{section.3.9}
-\contentsline {chapter}{\numberline {4}Schnittstellen und Charms}{21}{chapter.4}
-\contentsline {section}{\numberline {4.1}Suchen}{21}{section.4.1}
-\contentsline {section}{\numberline {4.2}Teilen}{22}{section.4.2}
-\contentsline {section}{\numberline {4.3}Ger\IeC {\"a}te}{22}{section.4.3}
-\contentsline {section}{\numberline {4.4}Einstellungen}{23}{section.4.4}
-\contentsline {section}{\numberline {4.5}Lokale Daten und Datenbankanbindung}{23}{section.4.5}
-\contentsline {section}{\numberline {4.6}App Bars}{23}{section.4.6}
-\contentsline {section}{\numberline {4.7}Live Tiles}{24}{section.4.7}
-\contentsline {section}{\numberline {4.8}Toast Notifications}{24}{section.4.8}
-\contentsline {section}{\numberline {4.9}Push Notifications}{25}{section.4.9}
-\contentsline {section}{\numberline {4.10}Sensoren}{26}{section.4.10}
-\contentsline {chapter}{\numberline {5}Praktisches Beispiel anhand einer einfachen Line Of Business Applikation}{27}{chapter.5}
-\contentsline {chapter}{Literaturverzeichnis}{28}{chapter*.12}
-\contentsline {chapter}{Abbildungsverzeichnis}{29}{chapter*.13}
-\contentsline {chapter}{Listingverzeichnis}{30}{chapter*.14}
-\contentsline {chapter}{Tabellenverzeichnis}{31}{chapter*.15}
-\contentsline {chapter}{Abk"urzungsverzeichnis}{32}{chapter*.16}
-\contentsline {chapter}{\numberline {A}Generic.xaml}{33}{appendix.A}
-\contentsline {chapter}{\numberline {B}OrdinationMask.cs}{35}{appendix.B}
+\contentsline {chapter}{\numberline {4}Schnittstellen und Charms}{22}{chapter.4}
+\contentsline {section}{\numberline {4.1}Suchen}{22}{section.4.1}
+\contentsline {section}{\numberline {4.2}Teilen}{23}{section.4.2}
+\contentsline {section}{\numberline {4.3}Ger\IeC {\"a}te}{23}{section.4.3}
+\contentsline {section}{\numberline {4.4}Einstellungen}{24}{section.4.4}
+\contentsline {section}{\numberline {4.5}Lokale Daten und Datenbankanbindung}{24}{section.4.5}
+\contentsline {section}{\numberline {4.6}App Bars}{24}{section.4.6}
+\contentsline {section}{\numberline {4.7}Live Tiles}{25}{section.4.7}
+\contentsline {section}{\numberline {4.8}Toast Notifications}{25}{section.4.8}
+\contentsline {section}{\numberline {4.9}Push Notifications}{26}{section.4.9}
+\contentsline {section}{\numberline {4.10}Sensoren}{27}{section.4.10}
+\contentsline {chapter}{\numberline {5}Praktisches Beispiel anhand einer einfachen Line Of Business Applikation}{28}{chapter.5}
+\contentsline {chapter}{Literaturverzeichnis}{29}{chapter*.12}
+\contentsline {chapter}{Abbildungsverzeichnis}{30}{chapter*.13}
+\contentsline {chapter}{Listingverzeichnis}{31}{chapter*.14}
+\contentsline {chapter}{Tabellenverzeichnis}{32}{chapter*.15}
+\contentsline {chapter}{Abk"urzungsverzeichnis}{33}{chapter*.16}
+\contentsline {chapter}{\numberline {A}Generic.xaml}{34}{appendix.A}
+\contentsline {chapter}{\numberline {B}OrdinationMask.cs}{36}{appendix.B}
