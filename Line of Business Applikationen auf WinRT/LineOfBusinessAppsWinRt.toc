@@ -41,6 +41,7 @@
 \contentsline {section}{\numberline {5.1}Charms}{28}{section.5.1}
 \contentsline {subsection}{\numberline {5.1.1}Suche}{28}{subsection.5.1.1}
 \contentsline {subsection}{\numberline {5.1.2}Teilen}{29}{subsection.5.1.2}
+\contentsline {subsection}{\numberline {5.1.3}Ger\IeC {\"a}te}{30}{subsection.5.1.3}
 \contentsline {chapter}{Literaturverzeichnis}{32}{chapter*.12}
 \contentsline {chapter}{Abbildungsverzeichnis}{33}{chapter*.13}
 \contentsline {chapter}{Listingverzeichnis}{34}{chapter*.14}

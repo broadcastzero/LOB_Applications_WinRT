@@ -7,11 +7,15 @@ using System.Text;
 using PractitionerMobile.BusinessObjects;
 using PractitionerMobile.HelperClasses;
 using Windows.ApplicationModel.DataTransfer;
+using Windows.Graphics.Printing;
+using Windows.UI;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.UI.Xaml.Printing;
 using CustomBaseButton = PractitionerMobile.Controls.ButtonBase;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -22,6 +26,8 @@ namespace PractitionerMobile
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        PrintDocument printDocument;
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -42,6 +48,15 @@ namespace PractitionerMobile
             // Declare that this view can be used as a sharing source
             DataTransferManager dataTransferManager = DataTransferManager.GetForCurrentView();
             dataTransferManager.DataRequested += OnDataRequested;
+
+            // Devices / Printing events
+            this.printDocument = new PrintDocument();
+            this.printDocument.Paginate += OnPaginate;
+            this.printDocument.GetPreviewPage += OnGetPreviewPage;
+            this.printDocument.AddPages += OnAddPages;
+
+            PrintManager printManager = PrintManager.GetForCurrentView();
+            printManager.PrintTaskRequested += OnPrintTaskRequested;
         }
 
         #region Public Properties
@@ -262,5 +277,80 @@ namespace PractitionerMobile
             args.Request.Data.SetText(textToSet.ToString());
         }
         #endregion
+
+        #region Devices / Printing
+        /// <summary>
+        /// Sets preview pages.
+        /// </summary>
+        private void OnGetPreviewPage(object sender, GetPreviewPageEventArgs e)
+        {
+            this.printDocument.SetPreviewPageCount(1, PreviewPageCountType.Final);
+
+            Patient selectedPatient = this.GetSelectedPatient();
+            if (selectedPatient == null)
+            {
+                this.printDocument.SetPreviewPage(1, new Viewbox { Child = new Button { Content = "Kein Patient ausgewählt", Background = new SolidColorBrush(Colors.Red) }});
+            }
+            else
+            {
+                this.printDocument.SetPreviewPage(1, new Viewbox { Child = new Button { Content = selectedPatient.Name, Background = new SolidColorBrush(Colors.Green) } });
+            }
+        }
+
+        /// <summary>
+        /// Sets actual pages.
+        /// </summary>
+        private void OnAddPages(object sender, AddPagesEventArgs e)
+        {
+            Patient selectedPatient = this.GetSelectedPatient();
+            if (selectedPatient == null)
+            {
+                this.printDocument.AddPage(new Viewbox { Child = new Button { Content = "Kein Patient ausgewählt", Background = new SolidColorBrush(Colors.Red) } });
+            }
+            else 
+            {
+                this.printDocument.AddPage(new Viewbox { Child = new Button { Content = selectedPatient.Name, Background = new SolidColorBrush(Colors.Green) } });
+            }
+
+            this.printDocument.AddPagesComplete();
+        }
+
+        /// <summary>
+        /// Does actual printing - performed, when device entry in Charms bar is selected
+        /// </summary>
+        private void OnPrintTaskRequested(PrintManager sender, PrintTaskRequestedEventArgs args)
+        {
+            PrintTask printTask = args.Request.CreatePrintTask("Practitioner Mobile",
+                async (taskArgs) =>
+                {
+                    var deferral = taskArgs.GetDeferral();
+                    await this.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                        {
+                            taskArgs.SetSource(printDocument.DocumentSource);
+                            deferral.Complete();
+                        });
+                });
+        }
+
+        private void OnPaginate(object sender, PaginateEventArgs e)
+        {
+            this.printDocument.SetPreviewPageCount(1, PreviewPageCountType.Intermediate);
+        }
+        #endregion
+
+        private Patient GetSelectedPatient()
+        {
+            Patient selectedPatient;
+            try
+            {
+                selectedPatient = Patients.Where(p => p.Name == (this.ElementPanel.SelectedItem as Patient).Name).FirstOrDefault();
+                return selectedPatient;
+            }
+            catch (NullReferenceException)
+            {
+                // No patient selected
+                return null;
+            }
+        }
     }
 }
