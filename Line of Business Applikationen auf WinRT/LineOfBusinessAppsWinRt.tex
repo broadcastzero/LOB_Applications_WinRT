@@ -827,9 +827,26 @@ Practitioner Mobile ist ein Programm, dass es praktischen Ärzten ermöglichen s
 In diesem Abschnitt werden einige der bereits unter Kapitel \ref{charms} vorgestellten Möglichkeiten durch Charms in die Praxis umgesetzt.
 
 \subsection{Suche}
-suche
+Um einen Vertrag für die Suche zu erstellen, sind nur wenige Klicks notwendig. Der Großteil der Arbeit wird von Visual Studio selbst erledigt, selbst braucht man nur einen neuen \textit{Search Contract} über \textit{Add -> New Item -> Search Contract} erstellen und anschließend das neu erstellte File \textit{SearchResultsPage1.xaml.cs} mit eigener Suchlogik füllen. Außerdem muss eine neue sealed Klasse erstellt werden, die für die Suchresultate verwendet wird und mindestens folgende vier Properties besitzen muss:
+\begin{itemize}
+    \item public Uri Image
+    \item public string Title
+    \item public string Subtitle
+    \item public string Description
+\end{itemize}
+Über die gefundenen Suchresultate kann anschließend zu einer anderen Seite innerhalb der Applikation navigiert werden, die zusätzliche Details über den Sucheintrag oder Ähnliches anzeigt.
+\newline
+Da Practitioner Mobile keinen persistenten Speicher implementiert, wird dieser Schritt übersprungen und auch nur statische Suchresultate zurückgegeben, anstatt die, welche einer echten Suche entsprechen würden.
 \newline
 \newline
+Das UI der erstellten Suche für Pracitioner Mobile ist in Abbildung \ref{img:search} zu sehen.
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.4]{images/search.png}
+\caption[Suche]{Suche}\label{img:search}
+\end{figure}
+\newline
+\subsection[Teilen]{Teilen}
 Infos über Motivation für Applikation, Highlights der Anwendung präsentieren, im vorherigen Abschnitt erstelle Custom Control implementieren, Verwendung von Schnittstellen ...
 \newline
 - Suche implementieren für Patienten / Medis
