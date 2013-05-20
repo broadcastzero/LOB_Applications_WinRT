@@ -667,7 +667,7 @@ Die im Rahmen dieser Bachelorarbeit erstellte Applikation Practitioner Mobile ve
 \end{figure}
 
 \section[Custom Control für Practitioner Mobile]{Custom Control für Practitioner Mobile}
-Für die Anwendung Practitioner Mobile wurde ein eigenes Control entwickelt, das es erlaubt, für einen bestimmten Patienten einen Ordinationseintrag hinzuzufügen. Das Control ist in Abbildung \ref{img:customcontrol} ersichtlich. Der vollständige Code dazu befindet sich im Anhang unter \ref{app:generic} und \ref{app:ordinationmask}.
+Für die Anwendung Practitioner Mobile wurde ein eigenes Control entwickelt, das es erlaubt, für einen bestimmten Patienten einen Ordinationseintrag hinzuzufügen. Das Control ist in Abbildung \ref{img:customcontrol} ersichtlich. Der vollständige Code dazu befindet sich im Anhang unter \ref{app:customcontrol}.
 \newline
 \newline
  Die folgenden Schritte beziehen sich alle auf ein englische Version der Entwicklungsumgebung Visual Studio 2012 Ultimate.
@@ -910,11 +910,40 @@ Wie das fertig aussieht, ist in Abbildung \ref{img:share} visualisert.
 \end{figure}
 
 \subsection[Geräte]{Geräte}
-Wenn die Daten nicht geteilt, sondern in etwa an einen Drucker gesendet werden können, kommt der Charm-Eintrag \textit{Geräte} ins Spiel. Auch die Verwendung dieser Funktionalität ist sehr trivial.
+Wenn die Daten nicht geteilt, sondern in etwa an einen Drucker gesendet werden sollen, kommt der Charm-Eintrag \textit{Geräte} ins Spiel. Auch die Verwendung dieser Funktionalität ist sehr trivial, das exakte Positionieren der Elemente kann allerdings einige Zeit in Anspruch nehmen.
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.4]{images/print.png}
+\caption[Daten drucken]{Daten drucken}\label{img:print}
+\end{figure}
 \newline
+\newline
+Der Einfachheit halber soll in Practitioner Mobile nicht mehr als der Name des Patienten gedruckt werden, grün hinterlegt, falls ein Patient ausgewählt ist, ein Hinweistext rot hinterlegt, falls das nicht der Fall ist. Angelehnt ist dieses Beispiel an das in \cite{ana12}, S. 493f.
+\newline
+\newline
+Um die Druck-Funktionalität nutzen zu können, erzeugt man in der betroffenen View eine Instanz der Klasse \textit{PrintDocument} und sichert diese in einem lokalen Feld.
+Anschließend registriert man eigene Eventhandler für die Events \textit{Paginate}, \textit{GetPreviewPage} und \textit{AddPages}.
+\newline
+Außerdem holt man sich die PrintManager-Instanz für die aktuelle View und hängt sich an das Event \textit{PrintTaskRequested} mit einer eigenen Methode an, wie in Listing \ref{lst:print} dargestellt.
+\begin{lstlisting}[caption={Daten drucken}\label{lst:print},captionpos=t]
+PrintDocument printDocument;
 
+public MainPage()
+{
+     [...]
+     this.printDocument = new PrintDocument();
+     this.printDocument.Paginate += OnPaginate;
+     this.printDocument.GetPreviewPage += OnGetPreviewPage;
+     this.printDocument.AddPages += OnAddPages;
+ 
+    PrintManager printManager = PrintManager.GetForCurrentView();
+    printManager.PrintTaskRequested += OnPrintTaskRequested;
+}
+\end{lstlisting}
+Die ausimplementierten Methoden sind in Appendix \ref{app:print} dargestellt.
 
 \chapter[Fazit]{Fazit}
+fazit
 %-------------------------------------------------------------------------------------------------------------------------------------------------------
 
 % Literaturverzeichnis
@@ -973,7 +1002,7 @@ XML & Extensible Markup Language
 
 % Anh"ange
 \begin{appendix}
-\chapter[Generic.xaml]{Generic.xaml}\label{app:generic}
+\chapter[Custom Control]{Custom Control}\label{app:customcontrol}
 \begin{lstlisting}[caption={Generic.xaml}\label{lst:Generic.xaml},captionpos=t]
 <ResourceDictionary
  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -1049,9 +1078,7 @@ XML & Extensible Markup Language
  </Style>
 </ResourceDictionary>
 \end{lstlisting}
- 
 
-\chapter[OrdinationMask.cs]{OrdinationMask.cs}\label{app:ordinationmask}
 \begin{lstlisting}[caption={OrdinationMask.cs}\label{lst:OrdinationMask.cs},captionpos=t]
 using System.Collections.Generic;
 using Windows.UI.Xaml;
@@ -1080,136 +1107,232 @@ namespace PractitionerMobile.Controls
             this.DefaultStyleKey = typeof(OrdinationMask);            
         }
 
-        #region Image
-        public ImageSource ImagePath
-        {
-            get { return (ImageSource)GetValue(ImagePathProperty); }
-            set { SetValue(ImagePathProperty, value); }
-        }
+     #region Public properties
+     public string SocialInsurance
+     {
+	get;
+	private set;
+      }
 
-        // Using a DependencyProperty as the backing store
-       // for ImagePathProperty. This enables animation, styling, 
-       // binding, etc...
-        public static readonly DependencyProperty 
+    public int DurationMinutes
+    {
+	get;
+	private set;
+    }
+
+    public string Diagnosis
+    {
+	get;
+	private set;
+    }
+    #endregion
+
+    #region Image
+    public ImageSource ImagePath
+    {
+        get { return (ImageSource)GetValue(ImagePathProperty); }
+        set { SetValue(ImagePathProperty, value); }
+    }
+
+    // Using a DependencyProperty as the backing store
+    // for ImagePathProperty. This enables animation, styling, 
+    // binding, etc...
+    public static readonly DependencyProperty 
 	ImagePathProperty = 
            	 DependencyProperty.Register("ImagePath",
 			 typeof(ImageSource),
 			 typeof(OrdinationMask), 
 			new PropertyMetadata(null));
-        #endregion
+    #endregion
 
-        #region Social Insurances
-        private static List<string> _defaultSocialInsurances = 
-		new List<string>() { "NoeGkk", "Wgkk", "BVA" };
+    #region Social Insurances
+    private static List<string> _defaultSocialInsurances = 
+	new List<string>() { "NoeGkk", "Wgkk", "BVA" };
 
-        public static readonly DependencyProperty 
+    public static readonly DependencyProperty 
 	SocialInsurancesProperty =
               DependencyProperty.Register("SocialInsurances",
               typeof(IEnumerable<string>),
               typeof(OrdinationMask),
               new PropertyMetadata(_defaultSocialInsurances));
 
-        public IEnumerable<string> SocialInsurances
-        {
-            get { return (IEnumerable<string>) 
-		GetValue(SocialInsurancesProperty); }
-            set { SetValue(SocialInsurancesProperty, value); }
-        }
-        #endregion
-
-        #region Button logic
-        public event TappedEventHandler OnOkButtonHit;
-        public event TappedEventHandler OnCancelButtonHit;
-	
-        /// <summary>
-        /// Calls custom OK event.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-	 private void okButton_Tapped(object sender, 
-		TappedRoutedEventArgs e)
-	 {
-               if(OnOkButtonHit != null)
-               {
-                   OnOkButtonHit(this, null);            
-               }
-
-              this.ClearFields();
-	 }
-
-        /// <summary>
-        /// Calls custom event and clears fields.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void cancelButton_Tapped(object sender, 
-		TappedRoutedEventArgs e)
-        {
-            if(OnCancelButtonHit != null)
-            {
-                OnCancelButtonHit(this, null);
-            }
-
-            this.ClearFields();
-        }
-        #endregion
-
-        /// <summary>
-        /// Sets events to buttons.
-        /// </summary>
-        protected override void OnApplyTemplate()
-        {
-            base.OnApplyTemplate();
-
-            Button okButton = (Button)GetTemplateChild("Ok");
-            Button cancelButton= (Button)GetTemplateChild("Cancel");
-
-            okButton.Tapped += okButton_Tapped;
-            cancelButton.Tapped += cancelButton_Tapped;
-        }
-
-        /// <summary>
-        /// Clears all fields of the control.
-        /// </summary>
-        private void ClearFields()
-        {
-            ComboBox socialInsurance = 
-		(ComboBox)GetTemplateChild("SocialInsurance");
-            TextBox duration = (TextBox)GetTemplateChild("Duration");
-            TextBox diagnosis = (TextBox)GetTemplateChild("Diagnosis");
-
-            socialInsurance.SelectedIndex = -1;
-            duration.Text = string.Empty;
-            diagnosis.Text = string.Empty;
-        }
+    public IEnumerable<string> SocialInsurances
+    {
+        get { return (IEnumerable<string>) 
+	GetValue(SocialInsurancesProperty); }
+        set { SetValue(SocialInsurancesProperty, value); }
     }
+    #endregion
+
+    #region Button logic
+    public event TappedEventHandler OnOkButtonHit;
+    public event TappedEventHandler OnCancelButtonHit;
+	
+    /// <summary>
+    /// Saves TextBox values to properties and calls 
+    /// custom OK-event.
+    /// </summary>
+    private void okButton_Tapped(object sender, 
+	TappedRoutedEventArgs e)
+    {
+	if(OkButtonHit != null)
+	{
+		var selectedListBoxItem = ((ComboBox)GetTemplateChild
+			("SocialInsurance")).SelectedItem;
+		if (selectedListBoxItem == null)
+			return;
+
+		this.SocialInsurance = selectedListBoxItem.ToString();
+		this.Diagnosis = ((TextBox)GetTemplateChild
+			("Diagnosis")).Text;
+
+		string duration = ((TextBox)GetTemplateChild
+			("DurationMinutes")).Text;
+		int minutes;
+		bool couldParse = int.TryParse(duration, out minutes);
+		this.DurationMinutes = couldParse && 
+			minutes >= 0 ? minutes : 0;
+
+		OkButtonHit(this, null);
+	}
+
+	this.ClearFields();
+    }
+
+    /// <summary>
+    /// Calls custom event and clears fields.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void cancelButton_Tapped(object sender, 
+	TappedRoutedEventArgs e)
+    {
+        if(OnCancelButtonHit != null)
+        {
+            OnCancelButtonHit(this, null);
+        }
+
+        this.ClearFields();
+    }
+    #endregion
+
+    /// <summary>
+    /// Sets events to buttons.
+    /// </summary>
+    protected override void OnApplyTemplate()
+    {
+    base.OnApplyTemplate();
+
+    Button okButton = (Button)GetTemplateChild("Ok");
+    Button cancelButton= (Button)GetTemplateChild("Cancel");
+
+    okButton.Tapped += okButton_Tapped;
+    cancelButton.Tapped += cancelButton_Tapped;
+    }
+
+    /// <summary>
+    /// Clears all fields of the control.
+    /// </summary>
+    private void ClearFields()
+    {
+        ComboBox socialInsurance = 
+	(ComboBox)GetTemplateChild("SocialInsurance");
+        TextBox duration = (TextBox)GetTemplateChild("Duration");
+        TextBox diagnosis = (TextBox)GetTemplateChild("Diagnosis");
+
+        socialInsurance.SelectedIndex = -1;
+        duration.Text = string.Empty;
+        diagnosis.Text = string.Empty;
+    }
+  }
 }
 \end{lstlisting}
+
+\chapter[Drucken]{Drucken}\label{app:print}
+\begin{lstlisting}[caption={Ausschnitt aus MainPage.xaml.cs}\label{lst:print},captionpos=t]
+#region Devices / Printing
+/// <summary>
+/// Sets preview pages.
+/// </summary>
+private void OnGetPreviewPage(object sender, 
+	GetPreviewPageEventArgs e)
+{
+   this.printDocument.SetPreviewPageCount(1, 
+	PreviewPageCountType.Final);
+
+   Patient selectedPatient = this.GetSelectedPatient();
+   if (selectedPatient == null)
+   {
+      this.printDocument.SetPreviewPage
+	(1, new Viewbox { Child = new Button 
+		{ Content = "Kein Patient ausgewaehlt",
+		Background = new SolidColorBrush(Colors.Red) }});
+   }
+   else
+   {
+         this.printDocument.SetPreviewPage
+		(1, new Viewbox { Child = new Button 
+		{ Content = selectedPatient.Name, 
+		Background =
+		new SolidColorBrush(Colors.Green) } });
+   }
+}
+
+/// <summary>
+/// Sets actual pages.
+/// </summary>
+private void OnAddPages(object sender, AddPagesEventArgs e)
+{
+    Patient selectedPatient = this.GetSelectedPatient();
+   if (selectedPatient == null)
+   {
+       this.printDocument.AddPage(new Viewbox 
+		{ Child = new Button 
+			{ Content = "Kein Patient ausgewaehlt", 
+			Background =
+			new SolidColorBrush(Colors.Red) }});
+   }
+    else 
+    {
+       this.printDocument.AddPage(new Viewbox 
+	{ Child = new Button
+		 { Content = selectedPatient.Name, 
+		Background = 
+		new SolidColorBrush(Colors.Green) }});
+     }
+
+     this.printDocument.AddPagesComplete();
+}
+
+/// <summary>
+/// Does actual printing - performed, when device
+/// entry in Charms bar is selected.
+/// </summary>
+private void OnPrintTaskRequested(PrintManager sender,
+	PrintTaskRequestedEventArgs args)
+{
+     PrintTask printTask = args.Request
+		.CreatePrintTask("Practitioner Mobile",
+           	async (taskArgs) =>
+           	{
+               	var deferral = taskArgs.GetDeferral();
+              	 await this.Dispatcher.RunAsync(Windows.UI.Core
+			.CoreDispatcherPriority.Normal, () =>
+                   	{
+                    	   taskArgs.SetSource(printDocument
+						.DocumentSource);
+                     	  deferral.Complete();
+                   	});
+           });
+}
+
+private void OnPaginate(object sender, PaginateEventArgs e)
+{
+    this.printDocument.SetPreviewPageCount(1, 
+	PreviewPageCountType.Intermediate);
+}
+#endregion
+\end{lstlisting}
+
 \end{appendix}
-
 \end{document}
-
-
-%Im Folgenden werden einige Beispiele f"ur h"aufig gebrauchte Anweisungen gegeben. Sie dienen als Einstiegshilfe in \LaTeX\ und 
-%nicht als starre Formatvorgaben.  
-%\\[2\baselineskip]
-%Hier wird auf Abbildung~\ref{Abb1} verwiesen. 
-%\begin{figure}[htbp]
-%\centering
-%\includegraphics[width=75mm]{Buchruecken}
-%\caption[Beschriftung eines Buchr"uckens.]{Beispiel f"ur die Beschriftung eines Buchr"uckens.}\label{Abb1}
-%\end{figure}
-%Tabelle~\ref{Tab1} ist ein Beispiel daf"ur, wie eine Tabelle aussehen k"onnte.
-%\begin{table}[htbp]
-%\centering
-%\begin{tabular}{ | c | c | c | }\hline
-%{\bf Datum} & {\bf Thema} & {\bf Raum}\\ \hline
-%\hline
-%20. 08. 2008 & Graphentheorie & HS 3.13\\ \hline
-%01. 10. 2008 & Biomathematik & HS 1.05\\ \hline
-%\end{tabular}
-%\caption[Semesterplan "`Angewandte Mathematik"'.]{Beispiel f"ur einen Semesterplan "`Angewandte Mathematik"'.}\label{Tab1}
-%\end{table}
-
-%\noindent
-%Hier ist ein Hyperlink auf die  \href{http://www.technikum-wien.at}{Homepage} der FH Technikum Wien. Email-Adressen k"onnen %so verlinkt werden: \href{mailto:homer.simpson@springfield.com}{\texttt{homer.simpson@springfield.com}}\\
