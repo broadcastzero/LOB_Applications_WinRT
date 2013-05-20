@@ -39,7 +39,7 @@ namespace PractitionerMobile.HelperClasses
         private static string[] _pathToImage = new string[]
         {
             "ms-appx:///Assets/Patients/bertaransch.png",
-            "ms-appx:///Assets/Logo.png",
+            "ms-appx:///Assets/Patients/juliahafner.png",
             "ms-appx:///Assets/Logo.png",
             "ms-appx:///Assets/Logo.png",
             "ms-appx:///Assets/Logo.png",
