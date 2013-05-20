@@ -13,10 +13,7 @@ namespace PractitionerMobile.BusinessObjects
         {
             this.Name = name;
             this.Ordinations = new List<Ordination>();
-            this.Picture = new BitmapImage(new Uri(_uriToPicture));
         }
-
-        private string _uriToPicture = "ms-appx:///Assets/Logo.png";
 
         /// <summary>
         /// Gets or sets the name of the patient.

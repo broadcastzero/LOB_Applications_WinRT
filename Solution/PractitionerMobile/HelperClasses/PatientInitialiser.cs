@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using PractitionerMobile.BusinessObjects;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace PractitionerMobile.HelperClasses
 {
@@ -35,6 +36,20 @@ namespace PractitionerMobile.HelperClasses
             DateTime.Now.AddDays(-1),
         };
 
+        private static string[] _pathToImage = new string[]
+        {
+            "ms-appx:///Assets/Patients/bertaransch.png",
+            "ms-appx:///Assets/Logo.png",
+            "ms-appx:///Assets/Logo.png",
+            "ms-appx:///Assets/Logo.png",
+            "ms-appx:///Assets/Logo.png",
+            "ms-appx:///Assets/Logo.png",
+            "ms-appx:///Assets/Logo.png",
+            "ms-appx:///Assets/Logo.png",
+            "ms-appx:///Assets/Logo.png",
+            "ms-appx:///Assets/Logo.png"
+        };
+
         /// <summary>
         /// Creates a collection of patients and returns it.
         /// </summary>
@@ -54,6 +69,12 @@ namespace PractitionerMobile.HelperClasses
                 patients[i].LastOrdination = _patientLastOrdinations[i];
             }
 
+            // Create image
+            for (int i=0; i < _pathToImage.Count(); i++)
+            {
+                patients[i].Picture = new BitmapImage(new Uri(_pathToImage[i]));
+            }
+            
             return patients;
         }
     }

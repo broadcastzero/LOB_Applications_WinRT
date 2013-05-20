@@ -746,7 +746,7 @@ Wie einfach diese Art des Teilens ist, wird in Kapitel \ref{practmobile} gezeigt
 Wie auch die zuvor erwähnten Funktionen, sollen auch die Applikationseinstellungen an einem zentralen Punkt auffindbar sein. Der letzte Eintrag in der Charms-Bar ist genau dafür reserviert. Bis zu acht eigene Anpassungen lassen sich so zentral an einer Stelle durchführen.
 \newline
 \newline
-Beim Klicken auf einen Link innerhalb dieses Einstellungs-Tabs kann im Prinzip jeder beliebige Code ausgeführt werden. Konvention ist es allerdings, im XAML einen neuen Bereich zu definieren, der dem Settings-Screen sehr ähnlich sieht und in welchem man genauere Anpassungen durchführen kann. Der Name des Controls, das für diesen Zweck häufig verwendet wird, ist Popup. Dieses besitzt bereits von Haus aus Animationen und einen Zurück-Button, dessen Funktionalität man allerdings programmatisch selbst implementieren muss. \cite{ana12}, S. 503f
+Beim Klicken auf einen Link innerhalb dieses Einstellungs-Tabs kann im Prinzip jeder beliebige Code ausgeführt werden. Konvention ist es allerdings, im XAML einen neuen Bereich zu definieren, der dem Settings-Screen sehr ähnlich sieht und in welchem man genauere Anpassungen durchführen kann. Der Name des Controls, das für diesen Zweck häufig verwendet wird, ist \textit{Popup}. Dieses besitzt bereits von Haus aus Animationen und einen Zurück-Button, dessen Funktionalität man allerdings programmatisch selbst implementieren muss. \cite{ana12}, S. 503f
 \newline
 \newline
 WinRT bietet außerdem noch eine zusätzliche Funktionalität an - Einstellungen können nun auch zwischen unterschiedlichen Geräten, auf denen der User mit derselben Live-ID angemeldet ist, synchronisiert werden. Microsoft nennt diese Funktion \textit{Roaming Settings}. Die Menge der Daten, die synchron gehalten werden können, ist allerdings sehr begrenzt - lediglich 100 Kilobytes werden derzeit von Microsoft erlaubt. Aus diesem Grund sollten nur wichtige Informationen geroamt werden, wie in etwa ein Spielstand, an welcher Stelle man die App verlassen hat, oder eben Einstellungen.
@@ -1249,7 +1249,7 @@ namespace PractitionerMobile.Controls
 \end{lstlisting}
 
 \chapter[Drucken]{Drucken}\label{app:print}
-\begin{lstlisting}[caption={Ausschnitt aus MainPage.xaml.cs}\label{lst:print},captionpos=t]
+\begin{lstlisting}[caption={Ausschnitt aus MainPage.xaml.cs},captionpos=t]
 #region Devices / Printing
 /// <summary>
 /// Sets preview pages.

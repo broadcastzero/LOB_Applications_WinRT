@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace PractitionerMobile.HelperClasses
 {
@@ -62,6 +63,31 @@ namespace PractitionerMobile.HelperClasses
             "lorem"
         };
 
+        private static string[] _pathToImage = new string[]
+        {
+            "ms-appx:///Assets/Logo.png",
+            "ms-appx:///Assets/Logo.png",
+            "ms-appx:///Assets/Logo.png",
+            "ms-appx:///Assets/Logo.png",
+            "ms-appx:///Assets/Logo.png",
+            "ms-appx:///Assets/Logo.png",
+            "ms-appx:///Assets/Logo.png",
+            "ms-appx:///Assets/Logo.png",
+            "ms-appx:///Assets/Logo.png",
+            "ms-appx:///Assets/Logo.png",
+            "ms-appx:///Assets/Logo.png",
+            "ms-appx:///Assets/Logo.png",
+            "ms-appx:///Assets/Logo.png",
+            "ms-appx:///Assets/Logo.png",
+            "ms-appx:///Assets/Logo.png",
+            "ms-appx:///Assets/Logo.png",
+            "ms-appx:///Assets/Logo.png",
+            "ms-appx:///Assets/Logo.png",
+            "ms-appx:///Assets/Logo.png",
+            "ms-appx:///Assets/Logo.png",
+            "ms-appx:///Assets/Logo.png"
+        };
+
         /// <summary>
         /// Creates a collection of medicaments and returns it.
         /// </summary>
@@ -80,6 +106,12 @@ namespace PractitionerMobile.HelperClasses
             for (int i=0; i < _medicamentDescriptions.Count(); i++)
             {
                 medicaments[i].Description = _medicamentDescriptions[i];
+            }
+
+            // Create image
+            for (int i=0; i < _pathToImage.Count(); i++)
+            {
+                medicaments[i].Picture = new BitmapImage(new Uri(_pathToImage[i]));
             }
 
             return medicaments;
