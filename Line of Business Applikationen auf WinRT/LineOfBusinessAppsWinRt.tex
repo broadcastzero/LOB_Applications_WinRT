@@ -830,8 +830,26 @@ In diesem Abschnitt werden die Highlights der für diese Bachelorarbeit entwicke
 \newline
 Practitioner Mobile ist ein Programm, dass es praktischen Ärzten ermöglichen soll, auch unterwegs Informationen über ihre Patienten und über Medikamente abrufen zu können. Die Anwendung ist simpel gehalten und mit nicht persistenten Testdaten befüllt. Ihr Zweck ist es nicht, tatsächlich einmal im Windows Store zu erscheinen, sondern dient rein zu Demonstrationszwecken.
 
-\section[Aufbau der Applikation]{Aufbau der Applikation}
-TODO: write about application, screenshot, ...
+\section[Die Applikation]{Die Applikation}
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.4]{images/practitionermobile.png}
+\caption[Practitioner Mobile]{Practitioner Mobile}\label{img:practitionermobile}
+\end{figure}
+Die Applikation wurde in Visual Studio 2012 Ultimate Edition in der englischen Version erstellt. Alles, was damit programmiert wurde, wäre aber prinzipiell auch mit der kostenfreien Express-Edition möglich gewesen.
+\newline
+Außerdem wurde auf die Verwendung eines Projektes mit bereits existierendem Layout bewusst verzichtet und stattdessen mit einer leeren Solution gestartet.
+\newline
+\newline
+Am linken Rand befindet sich, wie in Abbildung \ref{img:practitionermobile} ersichtlich, eine Auswahlliste mit darunterliegender scrollbarer ListView, welche sich wiederum in einem ScrollViewer befindet, damit die Anzahl der von dem in der Auswahlliste gewählten Wert bestimmten Elemente nicht auf die Höhe des Screens beschränkt ist.
+\newline
+\newline
+Rechts davon befindet sich - abermals abhängig von dem in der ComboBox gewählten Wert - ein dreigeteiltes Grid, welches für die Anzeige von zusätzlichen Details verantwortlich ist und in welchem sich auch das erstellte Custom Control befindet, falls der Wert \textit{Patienten} und nicht \textit{Medikamente} ausgewählt ist. Außerdem ist in diesem Fall in der dritten Spalte des Grids ein Kalender zu finden, der die letzten Ordinationen für den selektierten Patienten und Tag im Kalender in einem TextBlock darunter anzeigen lässt.
+\newline
+Die erste Spalte des Grids wird für das Anzeigen von Patienten-, beziehungsweise Medikamenteninformationen verwendet.
+\newline
+\newline
+Die Spalten zwei und drei sind für den Fall, dass der Wert \textit{Medikamente} ausgewählt wurde, nicht befüllt. Hier könnten zusätzliche Informationen stehen, in etwa darüber, welche Patienten dieses Medikament nehmen, oder welche Nebenwirkungen bekannt sind. Da diese Applikation jedoch nicht in Echtbetrieb gehen wird und nur die Möglichkeiten einer Entwicklung aufzeigen soll, wird auf das Einfügen zusätzlicher Informationen und Designs bewusst verzichtet.
 
 \section[Charms]{Charms}
 In diesem Abschnitt werden einige der bereits unter Kapitel \ref{charms} vorgestellten Möglichkeiten durch Charms in die Praxis umgesetzt.

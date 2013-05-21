@@ -38,16 +38,16 @@
 \contentsline {section}{\numberline {4.9}Push Notifications}{26}{section.4.9}
 \contentsline {section}{\numberline {4.10}Sensoren}{27}{section.4.10}
 \contentsline {chapter}{\numberline {5}Praktisches Beispiel anhand einer einfachen Line Of Business Applikation}{28}{chapter.5}
-\contentsline {section}{\numberline {5.1}Aufbau der Applikation}{28}{section.5.1}
-\contentsline {section}{\numberline {5.2}Charms}{28}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Suche}{28}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}Teilen}{29}{subsection.5.2.2}
-\contentsline {subsection}{\numberline {5.2.3}Ger\IeC {\"a}te}{30}{subsection.5.2.3}
-\contentsline {chapter}{\numberline {6}Fazit}{33}{chapter.6}
-\contentsline {chapter}{Literaturverzeichnis}{34}{chapter*.12}
-\contentsline {chapter}{Abbildungsverzeichnis}{35}{chapter*.13}
-\contentsline {chapter}{Listingverzeichnis}{36}{chapter*.14}
-\contentsline {chapter}{Tabellenverzeichnis}{37}{chapter*.15}
-\contentsline {chapter}{Abk"urzungsverzeichnis}{38}{chapter*.16}
-\contentsline {chapter}{\numberline {A}Custom Control}{39}{appendix.A}
-\contentsline {chapter}{\numberline {B}Drucken}{45}{appendix.B}
+\contentsline {section}{\numberline {5.1}Die Applikation}{28}{section.5.1}
+\contentsline {section}{\numberline {5.2}Charms}{29}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Suche}{29}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Teilen}{30}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.3}Ger\IeC {\"a}te}{31}{subsection.5.2.3}
+\contentsline {chapter}{\numberline {6}Fazit}{34}{chapter.6}
+\contentsline {chapter}{Literaturverzeichnis}{35}{chapter*.12}
+\contentsline {chapter}{Abbildungsverzeichnis}{36}{chapter*.13}
+\contentsline {chapter}{Listingverzeichnis}{37}{chapter*.14}
+\contentsline {chapter}{Tabellenverzeichnis}{38}{chapter*.15}
+\contentsline {chapter}{Abk"urzungsverzeichnis}{39}{chapter*.16}
+\contentsline {chapter}{\numberline {A}Custom Control}{40}{appendix.A}
+\contentsline {chapter}{\numberline {B}Drucken}{46}{appendix.B}
