@@ -114,9 +114,9 @@ Welche Möglichkeiten die neuen Betriebssysteme von Microsoft, Windows 8 und Win
 \section*{Abstract}\thispagestyle{empty}
 As mobile devices are used more and more commonly nowadays, also the kind of their usage changes. Not so long time ago, work at the computer had to be done on a stationary device, while today it gets more and more easier and comfortable to work without having to be at home or at the office.
 \newline
-Also, first mobile line of business applications can be found on the market, which try to replace classical desktop applications.
+Also, first mobile Line of Business applications can be found on the market, which try to replace classical desktop applications.
 \newline
-This bachelor thesis is about the possibilities Microsofts new operating systems - Windows 8 and Windows RT - which are both based on WinRT, offer to programmers and customers. After providingthese information theoretically, a practical example is used for demonstration purposes.
+This bachelor thesis is about the possibilities Microsofts new operating systems - Windows 8 and Windows RT - which are both based on WinRT, offer to programmers and customers. After providing this information theoretically, a practical example is used for demonstration purposes.
 \\ \vfill
 % Bitte 3-5 englische Keywords eingeben, die die Arbeit charakterisieren:
 \paragraph*{Keywords:} Line of Business, WinRT, Windows 8
@@ -124,16 +124,16 @@ This bachelor thesis is about the possibilities Microsofts new operating systems
 
 \section*{Danksagung}
 \thispagestyle{empty}
-Danken möchte ich zu Beginn meinem Bachelorarbeitsbetreuer, Dipl.Ing. (FH) Arthul M. Zaczek, der mich bereits in früheren Lehrveranstaltung für die Kunst der Softwareentwicklung begeistern konnte und während der Zeit des Entstehens dieser Arbeit kompetent betreut hat.
+Danken möchte ich zu Beginn meinem Bachelorarbeitsbetreuer, Dipl. Ing. (FH) Arthul M. Zaczek, der mich bereits in früheren Lehrveranstaltung für die Kunst der Softwareentwicklung begeistern konnte und während der Zeit des Entstehens dieser Arbeit kompetent betreut hat.
 \newline
 \newline
-Ebenso danke ich meinen Freunden, die mir in stressigen und motivationslosen Phasen geholfen haben, die Schreibblockaden zu überwinden und diese Arbeit fertigzustellen.
+Ebenso danke ich meinen Freunden und meiner Familie, die mir in stressigen und motivationslosen Phasen geholfen haben, die Schreibblockaden zu überwinden und diese Arbeit fertigzustellen.
 \newline
 \newline
 Nicht zuletzt auch ein großes Danke an die Mitarbeiter der Starbucksfilialen Handelskai und Neubaugasse, die mich mangels eigenes Internetzugangs mit diesem, wie auch stets mit einer produktivitätssteigernden Portion Koffein versorgt haben, dabei immer ein Lächeln auf den Lippen hatten und mich somit beim Schreibprozess unterstützten. In diesen Filialen ist ein Großteil der Arbeit entstanden.
 \newline
 \newline
-Zum Schluss möchte ich meiner Fachhochschule, dem Technikum Wien, danken, das mir die Ausbildung erst ermöglicht hat und mich seit drei Jahren jeden Tag dem Beruf des Softwareentwicklers und dem Bachelor der Informatik näher brachte.
+Zum Schluss möchte ich meiner Fachhochschule, dem Technikum Wien, danken, das mir die Ausbildung erst ermöglicht hat und mich seit drei Jahren jeden Tag dem Beruf des Softwareentwicklers und dem Bachelor der Informatik näher bringt.
 
 \newpage
 
@@ -248,12 +248,12 @@ Näher wird in dieser Bachelorarbeit jedoch nicht auf die Hardwareanforderungen 
 %-------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \chapter[Layout]{Layout}
-Im Rahmen dieser Bachelorarbeit wird eine einfache Line of Business Applikation namens \textit{Practitioner Mobile} erstellt. Auf diese wird vereinzeilt bereits in diesem Kapitel zu praktischen Demonstrationszwecken eingegangen. Der genaue Zweck dieser Applikation wird in einem späteren Kapitel erläutert, in diesem stehen hingegen Basics im Bereich des Layouts einer typischen Windows 8 / Windows RT Applikation im Vordergrund.
+Im Rahmen dieser Bachelorarbeit wird eine einfache Line of Business Applikation namens \textit{Practitioner Mobile} erstellt. Auf diese wird vereinzelt bereits in diesem Kapitel zu praktischen Demonstrationszwecken eingegangen. Der genaue Zweck dieser Applikation wird in einem späteren Kapitel erläutert, in diesem stehen hingegen Basics im Bereich des Layouts einer typischen Windows 8 / Windows RT Applikation im Vordergrund.
 \section[XAML]{XAML}\label{sec:XAML}
-Die Extensible Application Markup Language (XAML) ist kein neues Konzept, das für WinRT entwickelt wurde. Vielmehr existiert diese bereits seit .NET 3.0 und wurde erstmalig für die Benutzeroberflächenerstellung bei Windows Presentation Foundation (WPF) Anwendungen eingesetzt. Grund für die Einführung war der Wunsch einer besseren Trennung von User Interface (UI) Design und Logik, wobei die Oberfläche prinzipiell immer noch rein programmatisch erstellt werden kann.
+Die \textit{Extensible Application Markup Language} (XAML) ist kein neues Konzept, das für WinRT entwickelt wurde. Vielmehr existiert diese bereits seit .NET 3.0 und wurde erstmalig für die Benutzeroberflächenerstellung bei \textit{Windows Presentation Foundation} (WPF) Anwendungen eingesetzt. Grund für die Einführung war der Wunsch einer besseren Trennung von User Interface (UI) Design und Logik, wobei die Oberfläche prinzipiell immer noch rein programmatisch erstellt werden kann.
 \newline
 \newline
-XAML basiert, wie der Name bereits suggeriert, auf der Extensible Markup Language (XML), wobei den Elementen Klassen im Code zugeordnet werden. Attribute werden als Properties und Events interpretiert. Um verschiedene Klassen dabei unterscheiden und kategorisieren zu können, werden diese in Namespaces eingeteilt, die im XAML Code deklariert werden müssen. 
+XAML basiert, wie der Name bereits suggeriert, auf der \textit{Extensible Markup Language} (XML), wobei den Elementen Klassen im Code zugeordnet werden. Attribute werden als Properties und Events interpretiert. Um verschiedene Klassen dabei unterscheiden und kategorisieren zu können, werden diese in Namespaces eingeteilt, die im XAML Code deklariert werden müssen. 
 \cite{wpf10}, S.141ff
 \newline
 \newline
@@ -287,11 +287,12 @@ Ein aus Visual Studio frisch erzeugtes Windows 8 / Windows RT Projekt in XAML Co
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:CustomNamespace"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-
+		compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
-
+    <Grid Background="{StaticResource 
+		ApplicationPageBackgroundThemeBrush}">
     </Grid>
 </Page>
 
@@ -303,7 +304,7 @@ Wie man anhand des \textit{local} Namespaces sieht, können eigene Namespaces ga
 \textit{CustomNamespace} ist dabei der Namespace der Klasse oder Klassen, in welchen eigene Funktionen definiert sind. Die Rolle des \textit{Grid} Elements wird später in dieser Arbeit erklärt.
 \newline
 \newline
-Näher wird an dieser Stelle aus Platzgründen nicht auf die Grundlagen von XAML eingegangen, diese werden zum weiteren Verständnis dieser Bachelorarbeit vorrausgesetzt und können bei Bedarf in den erwähnten Quellen selbst erarbeitet werden.
+Näher wird an dieser Stelle aus Platzgründen nicht auf die Grundlagen von XAML eingegangen, diese werden zum weiteren Verständnis dieser Bachelorarbeit vorausgesetzt und können bei Bedarf in den erwähnten Quellen selbst erarbeitet werden.
 
 \section{Struktur einer Applikation}
 Jedes XAML File besitzt auch ein Code Behind File, in welchem der Großteil der Logik ausprogrammiert wird. So wird die in \ref{sec:XAML} erwähnte Trennung dieser vom UI Design realisiert.
@@ -322,12 +323,12 @@ Bilder finden sich im Folder \textit{Assets}, Styles im Folder \textit{Common} w
 \newline
 Der klassische Aufbau eines frisch generierten Solution ist in Abbildung \ref{Abb3} ersichtlich.
 \newpage
-Wählt man beim Erstellen des Projekts kein leeres Projekt aus, sondern eines der anderen verfügbaren Templates, wird etwas mehr (XAML) Code automatisch generiert. Wählen kann man zwischen einer Grid App oder einer Split App, die bereits Listen von Elementen beinhalten und auch die Navigation zu einer Detailseite ist bereits vorimplementiert. In der Practitioner Mobile Applikation wird von diesen Templates jedoch kein Gebrauch gemacht, alle Elemente können auch später bei Bedarf ergänzt werden.
+Wählt man beim Erstellen des Projekts kein leeres Projekt aus, sondern eines der anderen verfügbaren Vorlagen, wird etwas mehr (XAML) Code automatisch generiert. Wählen kann man zwischen einer Grid App oder einer Split App, die bereits Listen von Elementen beinhalten und auch die Navigation zu einer Detailseite ist bereits vorimplementiert. In der Practitioner Mobile Applikation wird von diesen Vorlagen jedoch kein Gebrauch gemacht, alle Elemente können auch später bei Bedarf ergänzt werden.
 
 \section[Portrait und Landscape]{Portrait, Landscape und Snapped View}
 Die Tatsache, dass sich bei Tablets nicht nur die Bildschirmgröße, sondern auch die Orientierung ändern kann, stellt Entwickler vor eine zusätzliche Herausforderung. Außerdem hat Microsoft in seinen neuen Betriebssystemen den Snapped View integriert, welcher es ermöglicht, zwei Anwendungen gleichzeitig am Bildschirm anzuzeigen, normalerweise nimmt eine Anwendung immer den gesamten Bildschirm ein. Dieser Snapped View eröffnet viele neue Möglichkeiten, man kann in etwa einen Texteditor und ein Wörterbuch parallel laufen lassen, um beim Schreiben eines fremdsprachlichen Textes ein Wort schnell und einfach nachschlagen zu können. 
 \newline
-Abbildung \ref{Abb4} visualisiert dieses Beispiel anhand zweier bereits im Windows Store verfügbaren Apps: Microsofts OneNote Notizbuch, und dem Übersetzungstool Leo. In den Snapped View kann nur im Landscape Mode gewechselt werden und ist verpflichtend für jede Applikation.
+Abbildung \ref{Abb4} visualisiert dieses Beispiel anhand zweier bereits im Windows Store verfügbaren Apps: Microsofts \textit{OneNote} Notizbuch, und dem Übersetzungstool \textit{Leo}. In den Snapped View kann nur im Landscape Mode gewechselt werden und ist verpflichtend für jede Applikation.
 \newline
 \newline
 Um Entwicklern die Arbeit zu erleichtern, bestimmt Microsoft eine Mindestbreite für die verschiedenen Viewstates. Für die beiden Fullscreen Views (Portrait und Landscape) wird so eine Mindestauflösung von 1024x768 Pixel garantiert. Um den Snapped View zu unterstützen, muss das Gerät bereits eine Breite von 1366 Pixel aufweisen - 320 Pixel extra für die gesnappte App und 22 Pixel für den Splitter zwischen den beiden Applikationen. \cite{ana12}, S.65ff
@@ -349,7 +350,7 @@ Wie jedes XML basierte Dokument besitzt auch ein XAML File ein Root-Element, bei
 \subsection[Panels]{Panels}\label{ref:panels}
 Ein Panel ist ein Wrapper-Element - ein so genanntes Content Control -, das für das Basis-Layout seiner Kindelemente verantwortlich ist.
 \newline
-Die am häufigsten verwendetsten Panels sind:
+Die am häufigsten verwendeten Panels sind:
 \begin{itemize}
 \item \textit{Canvas}:
 \newline
@@ -375,18 +376,18 @@ Als übergeordnetes Element besitzen Items Controls ebenfalls Panels, die meiste
 \newline
 Die bekanntesten Aufzählungscontrols sind:
 \begin{itemize}
-\item \textit{ComboBox}: Die ComboBox ist ein Control, die es erlaubt, aus mehreren verfügbaren Elementen genau eines aus einer Drop Down Liste auszuwählen. Sie nimmt dabei nicht viel Platz am UI weg, da sie im geschlossenen Zustand nur das aktuell gewählte Element anzeigt und wird aus diesem Grund gerne verwendet. Neue Elemente zu einer bestehenden ComboBox kann der User allerdings vom UI aus nicht.
+\item \textit{ComboBox}: Die ComboBox ist ein Control, die es erlaubt, aus mehreren verfügbaren Elementen genau eines aus einer Drop Down Liste auszuwählen. Sie nimmt dabei nicht viel Platz am UI weg, da sie im geschlossenen Zustand nur das aktuell gewählte Element anzeigt und wird aus diesem Grund gerne verwendet. Neue Elemente zu einer bestehenden ComboBox hinzufügen kann der User allerdings zumindest vom UI aus nicht.
 \newline
-\item \textit{ListBox}: Die ListBox ähnelt der CoboBox, mit dem Unterschied, dass alle Elemente am UI angezeigt werden, und dass man - je nach Konfiugration - auch mehrere Elemente auf einmal auswählen kann.
+\item \textit{ListBox}: Die ListBox ähnelt der ComboBox, mit dem Unterschied, dass alle Elemente am UI angezeigt werden, und dass man - je nach Konfiguration - auch mehrere Elemente auf einmal auswählen kann.
 \newline
 \item \textit{ListView}: Die ListView ist der ListBox sehr ähnlich und stellt sozusagen eine für Touch optimierte Variante derselben dar.
 \newline
-\item \textit{GridView}: Das GridView hat wiederum viele Gemeinsamkeiten mit der ListView. Unterschiede findet man nur in der Darstellung der Elemente: während die ListView standardmäßig vertikal scrollt, orientiert sich die GridView sich an der Horizontalen. Außerdem wird jeden Element so viel Platz gegeben, wie dem größten Element in der Aufzählung. Alle anderen Elemente passen ihre Darstellung also diesem an.
+\item \textit{GridView}: Die GridView hat wiederum viele Gemeinsamkeiten mit der ListView. Unterschiede findet man nur in der Darstellung der Elemente: während die ListView standardmäßig vertikal scrollt, orientiert die GridView sich an der Horizontalen. Außerdem wird jedem Element so viel Platz gegeben, wie dem größten Element in der Aufzählung. Alle anderen Elemente passen ihre Darstellung also diesem an.
 \end{itemize}
  \cite{ana12}, S. 207ff
 
 \subsection[TextBlock]{TextBlock}
-Das TextBlock wird dazu verwendet, um Text im UI anzuzeigen. Dabei stehen dem Control viele verschiedene Formatierungsmöglichkeiten als Properties zur Verfügung. Verändern kann man so unter anderem die Schriftart, die Schriftgröße, die Farbe des Textes oder dessen Formatierung.
+Das TextBlock Element wird dazu verwendet, um Text im UI anzuzeigen. Dabei stehen dem Control viele verschiedene Formatierungsmöglichkeiten als Properties zur Verfügung. Verändern kann man so unter anderem die Schriftart, die Schriftgröße, die Farbe des Textes oder dessen Formatierung.
 \newline
 Dabei muss innerhalb eines TextBlocks nicht der ganze Textstring gleich formatiert werden. Man kann diesen durchaus in einzelne Bereiche, so genannte \textit{Run}-Blöcke aufteilen und getrennt voneinander bearbeiten:
 \newline
@@ -404,13 +405,13 @@ Setzt man das Property \textit{IsTextSelectionEnabled} auf \textit{true}, kann d
 Das TextBox Control wird an den Stellen im UI verwendet, in denen der User Text eingeben können soll. Bekommt dieses Control den Fokus, öffnet sich die Software-Tastatur automatisch (sofern es sich um ein Touch-fähiges Gerät handelt). Rechtschreibprüfung unterstützt das Control von Haus aus, genauso wie das Anbieten von Vorschlägen für die Eingabe. \cite{ana12}, S. 240ff
 
 \section[Semantic Zoom]{Semantic Zoom}
-Semantic Zoom wird die Möglichkeit genannt, aus einer großen Anzahl von Elementen - wie etwa in Aufzählungen - hinauszuzoomen, um einen besseren Überblick über die verfügbaren Elemente zu bekommen, diese zu gruppieren, oder ähnliches. Windows verwendet diese Funktionalität bereits am Startbildschirm, auf welchem alle verfügbaren Apps angezeigt werden.
+Semantic Zoom wird die Möglichkeit genannt, aus einer großen Anzahl von Elementen - wie etwa in Aufzählungen - hinauszuzoomen, um einen besseren Überblick über die verfügbaren Elemente zu bekommen, diese zu gruppieren, oder Ähnliches. Windows verwendet diese Funktionalität bereits am Startbildschirm, auf welchem alle verfügbaren Apps angezeigt werden.
 \newline
 \newline
-Wie bei den meisten Möglichkeiten, die WinRT Applikationen beherrschen, macht diese Option nicht überall Sinn. Gerade aber wenn es darum geht, sich in einer Vielzahl von Elementen zurecht zu finden, kann diese aber sehr hilfreich sein. \cite{ana12}, S.223ff
+Wie bei den meisten Möglichkeiten die WinRT Applikationen bieten, macht diese Option nicht überall Sinn. Gerade aber wenn es darum geht, sich in einer Vielzahl von Elementen zurecht zu finden, kann diese aber sehr hilfreich sein. \cite{ana12}, S.223ff
 
 \section[Entwicklung von eigenen Controls]{Entwicklung von eigenen Controls}
-Wie auch schon bei WPF, stehen mit XAML dem Entwickler eine große Anzahl von Möglichkeiten für das Erstellen von eigenen Controls zur Verfügung.
+Wie auch schon bei WPF, stehen mit XAML dem Entwickler eine große Anzahl von Möglichkeiten für das Erstellen von eigenen Controls zur Verfügung. Dieser Abschnitt soll eine erste Einführung in dieses Konzept geben und als Einstiegshilfe dienen.
 \subsection[Dependency Properties]{Dependency Properties}\label{ref:dependencyprops}
 Dependency Properties zählen zu den wichtigsten Elementen in XAML. Von einem normalen Property unterscheiden sie sich dabei nur durch XAML-spezifische Zusatzfunktionalitäten: Änderungsnotifikationen an gebundene Elemente, Wertevererbung an Kindelemente und die Unterstützung für mehrere Provider. 
 Man erklärt die Motivation für Dependency Properties und die Funktion der automatischen Änderungsnotifikation am Besten an einem einfachen Beispiel.
