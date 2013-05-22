@@ -413,11 +413,11 @@ Wie bei den meisten Möglichkeiten die WinRT Applikationen bieten, macht diese O
 \section[Entwicklung von eigenen Controls]{Entwicklung von eigenen Controls}
 Wie auch schon bei WPF, stehen mit XAML dem Entwickler eine große Anzahl von Möglichkeiten für das Erstellen von eigenen Controls zur Verfügung. Dieser Abschnitt soll eine erste Einführung in dieses Konzept geben und als Einstiegshilfe dienen.
 \subsection[Dependency Properties]{Dependency Properties}\label{ref:dependencyprops}
-Dependency Properties zählen zu den wichtigsten Elementen in XAML. Von einem normalen Property unterscheiden sie sich dabei nur durch XAML-spezifische Zusatzfunktionalitäten: Änderungsnotifikationen an gebundene Elemente, Wertevererbung an Kindelemente und die Unterstützung für mehrere Provider. 
+Dependency Properties zählen zu den wichtigsten Elementen in XAML. Von einem normalen Property unterscheiden sie sich dabei nur durch XAML-spezifische Zusatzfunktionalitäten: \textit{Änderungsnotifikationen} an gebundene Elemente, \textit{Wertevererbung} an Kindelemente und die Unterstützung für mehrere \textit{Provider}. 
 Man erklärt die Motivation für Dependency Properties und die Funktion der automatischen Änderungsnotifikation am Besten an einem einfachen Beispiel.
 \newline
 \newline
-Dafür wird eine Art Basis-Button Control gebaut, welches - wie der Standard-Control Button - erkennen soll, ob er sich gerade in gedrücktem oder ungedrücktem Zustand befindet. Es wird eine neue Klasse namens \textit{BaseButton} erstellt, die wie Button auch von \textit{ContentControl} ableitet, um möglichst viele Gemeinsamkeiten zu behalten. Unser Button soll ein neues Property namens \textit{IsPressed} bekommen, anhand dem er erkennen kann, ob er aktiviert oder deaktivert wurde. Ein Klick auf ihn soll dabei seinen Zustand ändern.
+Dafür wird eine Art Basis-Button Control gebaut, welches - wie der Standard-Control Button - erkennen soll, ob er sich gerade in gedrücktem oder ungedrücktem Zustand befindet. Es wird eine neue Klasse namens \textit{BaseButton} erstellt, die wie Button auch von \textit{ContentControl} ableitet, um möglichst viele Gemeinsamkeiten beizubehalten. Unser Button soll ein neues Property namens \textit{IsPressed} bekommen, anhand dem er erkennen kann, ob er aktiviert oder deaktivert wurde. Ein Klick auf ihn soll dabei seinen Zustand ändern.
 \newline
 \newline
 \begin{figure}[htbp]
@@ -459,17 +459,20 @@ MainPage.xaml.cs:
 
 using CustomBaseButton = PractitionerMobile.Controls.ButtonBase;
 [...]
-private void baseButton_Tapped(object sender, TappedRoutedEventArgs e)
+private void baseButton_Tapped(object sender,
+	TappedRoutedEventArgs e)
 {
         CustomBaseButton button = (sender as CustomBaseButton);
 
         if(button.IsPressed)
         {
-            button.SetValue(CustomBaseButton.IsPressedProperty, false);
+            button.SetValue(CustomBaseButton.IsPressedProperty,
+		 false);
         }
         else
         {
-            button.SetValue(CustomBaseButton.IsPressedProperty, true);
+            button.SetValue(CustomBaseButton.IsPressedProperty, 
+		true);
         }
  }
 [...]
@@ -492,7 +495,7 @@ public class ButtonBase : ContentControl
 			OnIsPressedChanged));
 
     private static void OnIsPressedChanged(DependencyObject d, 
-					DependencyPropertyChangedEventArgs e)
+			DependencyPropertyChangedEventArgs e)
     {
         Debug.WriteLine("button pressed: " + e.NewValue);
     }
@@ -501,9 +504,9 @@ public class ButtonBase : ContentControl
 \end{lstlisting}
 Im File \textit{MainPage.xaml.cs} wird mittels der SetValue-Methode der Wert des in \textit{ButtonBase.cs} definierten Dependency Properties umgesetzt.
 \newline
-Der .NET Property Wrapper \textit{public bool IsPressed} ist dabei rein optional, ebenso wie der Property Changed-Callback \textit{OnIsPressedChanged}, in dem man zusätzliche Logik verpacken könnte. \cite{ana12}, S. 102f
+Der .NET Property Wrapper \textit{public bool IsPressed} ist dabei rein optional, ebenso wie der Property Changed-Callback \textit{OnIsPressedChanged}, in den man zusätzliche Logik verpacken könnte. Der vollständige, kompilierbare Code ist auf der beigelegten CD dieser Arbeit zu finden. \cite{ana12}, S. 102f
 
-\subsection[Attached Properties]{AttachedProperties}
+\subsection[Attached Properties]{Attached Properties}
 Attached Properties unterscheiden sich von Dependency Properties in der Funktionsweise und Implementierung nur gering, und zwar hauptsächlich dadurch, dass diese \begin{quote}[...] nicht auf Objekten der Klasse gesetzt [werden], die das \textit{DependencyProperty}-Feld und damit den \textit{Schlüssel} zum eigentlichen Wert besitzt, sondern auf Objekten anderer Klassen.\end{quote}
 Somit kann man in etwa von einem Button-Control aus, das ein TextBox-Control beinhaltet, direkt auf dieses zugreifen und dessen Wert verändern. Näher wird auf Attached Properties aufgrund der großen Ähnlichkeit zu Dependency Properties nicht eingegangen. \cite{wpf10}, S.413
 
@@ -512,7 +515,7 @@ Wird auf einem Parent-Element ein Property, zum Beispiel die Schriftgröße eine
 Faktoren ab. Setzt das Kindelement seinerseits einen Wert für dasselbe Property, wird der Wert des Parents überschrieben. 
 \newline
 \newline
-Auch sonst gibt es eine definierte Prioritätsliste, welche genau angibt, welcher Wert für ein Property nun tatsächlich verwendet werden soll. Wenn in etwa gerade eine Animation durchgeführt wird, hat der in dieser gesetzte Wert immer Vorrang. Die genaue Prioritenliste sieht wie folgt aus:
+Auch sonst gibt es eine definierte Prioritätsliste, welche genau angibt, welcher Wert für ein Property nun tatsächlich verwendet werden soll. Wenn in etwa gerade eine Animation durchgeführt wird, hat der in dieser gesetzte Wert immer Vorrang. Die genaue Prioritätenliste sieht wie folgt aus:
 \begin{enumerate}
 \item Aktive Animationen
 \item Lokale Werte
@@ -525,9 +528,9 @@ Auch sonst gibt es eine definierte Prioritätsliste, welche genau angibt, welche
 \cite{ana12}, S. 104ff
 
 \subsection[Styles]{Styles}\label{ref:styles}
-Angenommen, man will das Aussehen eines Buttons verändern. In diesem Fall setzt man im XAML-File die entsprechenden Properties und bekommt so einen Button, der genauso gerendert wird, wie man es möchte.
+Angenommen, man will das Aussehen eines Buttons verändern. In diesem Fall setzt man im XAML-File die entsprechenden Properties und bekommt so einen Button, der genau so gerendert wird, wie man es möchte.
 \newline
-Wenn man nun aber nicht nur eines Controls ändern möchte, sondern eine ganze Reihe von einem bestimmten Control, wird es mühsam und unübersichtlich: man müsste bei jedem einzelnen die selben Properties setzen, was das XAML-File unnötig aufbläht.
+Wenn man nun aber nicht nur das Design eines Controls ändern möchte, sondern eine ganze Reihe von einem bestimmten Control, wird es mühsam und unübersichtlich: man müsste bei jedem einzelnen die selben Properties setzen, was das XAML-File unnötig aufbläht.
 \newline
 An dieser Stelle kommen Styles ins Spiel.
 \newline
@@ -591,7 +594,7 @@ ControlTemplates ermöglichen es, das Aussehen eines Controls vollkommen nach Be
 ControlTemplates kann man direkt im XAML definieren, aber auch wie Styles in ein Resources-File auslagern. Ebenfalls möglich ist es, in der Definition eines Styles (zum Beispiel im File \textit{StandardStyles.xaml})  ein Template zu inkludieren.
 \newline
 \newline
-Ein Problem taucht aber dennoch auf: wenn man das Design eines Controls, zum Beispiel eines Buttons, neu schreibt, woher weiß dieser, an welcher Stelle er sein Content-Property anzeigen soll? Angenommen, er würde als Content den String \textit{Mein Button} und als Design einen Kreis statt ein Rechteck gesetzt haben - der String würde nie angezeigt werden.
+Ein Problem taucht aber dennoch auf: wenn man das Design eines Controls, zum Beispiel eines Buttons, neu schreibt - woher weiß dieser, an welcher Stelle er sein Content-Property anzeigen soll? Angenommen, er würde als Content den String \textit{Mein Button} und als Design einen Kreis statt ein Rechteck gesetzt haben - der String würde nie angezeigt werden.
 \newline
 Um dieses Problem zu lösen, muss man in die Template-Definition des Buttons ein Control definieren, welches diese Aufgabe übernimmt. Das könnte eine TextBox sein, generischer ist allerdings eine ViewBox - der Content beschränkt sich dann nicht nur auf Text, sondern könnte ebensogut ein Bild oder ein sonstiges Element sein. Das Template könnte dann so aussehen, wie in Listing \ref{lst:templates}.
 \begin{lstlisting}[caption={Definition eines Templates. Modifiziert von \cite{ana12}, S.421}\label{lst:templates},captionpos=t]
@@ -608,7 +611,7 @@ Um dieses Problem zu lösen, muss man in die Template-Definition des Buttons ein
    </Button.Template>
 </Button>
 \end{lstlisting}
-Durch das explizite Setzen des Contents auf ein Control kann das Problem also gelöst werden. XAML bedient sich hierbei an einem Konzept, das als \textit{DataBinding} bekannt ist und bereits im Abschnitt \ref{ref:dependencyprops} verwendet wurde. Die Funktionsweise dieses Konzepts wird in dieser Bachelorarbeit nicht detailliert erläutert.
+Durch das explizite Setzen des Contents auf ein Control kann das Problem also gelöst werden. XAML bedient sich hierbei einem Konzept, das als \textit{DataBinding} bekannt ist und bereits im Abschnitt \ref{ref:dependencyprops} verwendet wurde. Die Funktionsweise dieses Konzepts wird in dieser Bachelorarbeit nicht detailliert erläutert.
 \cite{ana12}, S. 418ff
 
 \subsubsection[Visual States]{Visual States}\label{ref:visualstates}
@@ -617,7 +620,7 @@ Bisher wurde erklärt, wie das Aussehen eines Controls verändert werden kann. E
 \newline
 Zustände, die ein Control annehmen kann, werden in so genannte \textit{State Groups} gruppiert, die einander ausschließen. Definieren kann man solche hierarchisch direkt unter dem gewünschten Control-Root-Element mit dem Attached Property \textit{VisualStateManager.VisualStateGroups}, welche wiederum \textit{VisualStateGroup}-Elemente und abermals eine hierarchische Ebene darunter \textit{VisualStates} enthalten.
 \newline
-Das \textit{x:Name} Attribut einer VisualStateGroup entspricht dabei einer möglichen Zustandsgruppe (zum Beispiel \textit{CommonStates}), das eines VisualStates einem möglichen Zustand (zum Beispiel \textit{Focused}). Welche Zustände es gibt, ist individuell pro Control verschieden und als Attribut auf der Klasse im Code Behind definiert.
+Das \textit{x:Name} Attribut einer VisualStateGroup entspricht dabei einer möglichen Zustandsgruppe (zum Beispiel \textit{CommonStates}), das einem VisualState einen möglichen Zustand (zum Beispiel \textit{Focused}) zuordnet. Welche Zustände es gibt, ist individuell pro Control verschieden und als Attribut auf der Klasse im Code Behind definiert.
 \newline
 \newline
 Übergänge zwischen verschiedenen Visual States werden gerne durch Animationen durchgeführt, für die man das \textit{Storyboard}-Element verwendet. \textit{Visual Transitions} erleichtern dabei viele Animationsvorgänge, indem man nur angeben muss, welches Property sich von welchem auf welchen Wert ändern soll. Die Animation wird dann berechnet und automatisch durchgeführt. Auch gewünschte Verzögerungen können dabei angegeben und somit die Schnelligkeit der Transformation kontrolliert werden.

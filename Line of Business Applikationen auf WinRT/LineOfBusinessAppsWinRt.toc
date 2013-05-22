@@ -23,7 +23,7 @@
 \contentsline {subsubsection}{ControlTemplate}{16}{section*.8}
 \contentsline {subsubsection}{Visual States}{17}{section*.9}
 \contentsline {subsubsection}{DataTemplate}{18}{section*.10}
-\contentsline {subsubsection}{ItemsPanelTemplate}{18}{section*.11}
+\contentsline {subsubsection}{ItemsPanelTemplate}{19}{section*.11}
 \contentsline {section}{\numberline {3.8}Frameworks}{19}{section.3.8}
 \contentsline {section}{\numberline {3.9}Custom Control f\IeC {\"u}r Practitioner Mobile}{19}{section.3.9}
 \contentsline {chapter}{\numberline {4}Schnittstellen und Charms}{22}{chapter.4}
