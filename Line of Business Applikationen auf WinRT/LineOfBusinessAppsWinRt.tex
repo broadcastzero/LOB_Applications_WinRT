@@ -623,9 +623,9 @@ Zustände, die ein Control annehmen kann, werden in so genannte \textit{State Gr
 Das \textit{x:Name} Attribut einer VisualStateGroup entspricht dabei einer möglichen Zustandsgruppe (zum Beispiel \textit{CommonStates}), das einem VisualState einen möglichen Zustand (zum Beispiel \textit{Focused}) zuordnet. Welche Zustände es gibt, ist individuell pro Control verschieden und als Attribut auf der Klasse im Code Behind definiert.
 \newline
 \newline
-Übergänge zwischen verschiedenen Visual States werden gerne durch Animationen durchgeführt, für die man das \textit{Storyboard}-Element verwendet. \textit{Visual Transitions} erleichtern dabei viele Animationsvorgänge, indem man nur angeben muss, welches Property sich von welchem auf welchen Wert ändern soll. Die Animation wird dann berechnet und automatisch durchgeführt. Auch gewünschte Verzögerungen können dabei angegeben und somit die Schnelligkeit der Transformation kontrolliert werden.
+Übergänge zwischen verschiedenen Visual States werden gerne durch Animationen durchgeführt, für die man das \textit{Storyboard}-Element verwendet. \textit{Visual Transitions} erleichtern dabei viele Animationsvorgänge, indem man nur angeben muss, welches Property sich auf welchen Wert ändern soll. Die Animation wird dann berechnet und automatisch durchgeführt. Auch gewünschte Verzögerungen können dabei angegeben und somit die Schnelligkeit der Transformation kontrolliert werden.
 \newline
-Auf Animationen wird in dieser Bachelorarbeit aus Platzmangel jedoch nicht näher eingegangen. \cite{ana12}, S.428ff
+Auf Animationen wird in dieser Bachelorarbeit jedoch nicht näher eingegangen. \cite{ana12}, S.428ff
 
 \subsubsection[DataTemplate]{DataTemplate}\label{ref:datatemplate}
 Oftmals steht im Vorhinein noch nicht fest, welche Elemente eine Aufzählung tatsächlich beinhalten wird, da diese erst später programmatisch und durch Data Binding hinzugefügt werden. Wenn es die Elemente aber im XAML noch nicht gibt, kann man sie auch nicht stylen oder Properties setzen.
@@ -652,7 +652,7 @@ Für eine ListView würde ein DataTemplate in etwa so aussehen, wie in Listing \
    </ListView.ItemTemplate>
 </ListView>
 \end{lstlisting}
-Die ListView bekommt hier ein \textit{DataTemplate} gesetzt, in dem für \textit{TextBlock}-Elemente ein neuer Style gesetzt wird. Dieser ist in diesem Codebeispiel nicht direkt gesetzt, sondern als Style innerhalb der ListView referenziert. Styles wurden im Unterkapitel \ref{ref:styles} erklärt. Der Content des TextBlock-Elements ist das \textit{Name}-Property eines Elements, das sich in eine Liste namens \textit{Patients} im CodeBehind befindet.
+Die ListView bekommt hier ein \textit{DataTemplate} gesetzt, in dem für \textit{TextBlock}-Elemente ein neuer Style gesetzt wird. Dieser ist in diesem Codebeispiel nicht direkt gesetzt, sondern als Style innerhalb der ListView referenziert. Styles wurden im Unterkapitel \ref{ref:styles} erklärt. Der Content des TextBlock-Elements ist das \textit{Name}-Property eines Elements, das sich in eine Liste namens \textit{Patients} im Code Behind befindet.
 
 \subsubsection[ItemsPanelTemplate]{ItemsPanelTemplate}\label{itemspaneltemplate}
 Mit einem ItemsPanelTemplate können Items innerhalb eines Controls einfach gestaltet werden. Im Gegensatz zum im Unterkapitel \ref{ref:datatemplate} vorgestellten Data Template, das sich auf Daten innerhalb einer Liste bezieht, werden hier nicht deren Properties verändert, sondern die des Listenelements selbst. Will man in etwa erreichen, dass sich jedes Listenelement innerhalb eines VirtualizingStackPanels befindet, das eine horizontale Orientierung hat, so kann man dies einfach durch in Listing \ref{lst:itemspaneltemplate} dargestelltes XAML erreichen.
@@ -671,7 +671,7 @@ Mit einem ItemsPanelTemplate können Items innerhalb eines Controls einfach gest
 Durch die Möglichkeit, nach Belieben mit XAML Custom Controls zu entwickeln, gibt es bereits erste Frameworks, die Sammlungen an individuellen Steuerelementen anbieten. Diese müssen nur noch aus der Visual Studio Toolbox in die eigene Solution mit Drag and Drop hineingezogen werden, und sind sofort so verwendbar, wie jedes andere Control auch.
 \newline
 \newline
-Den Entwicklungsaufwand lassen sich die Hersteller der Custom-Lösungen natürlich auch etwas kosten, vor allem jetzt, wo WinRT-Applikationen noch am Anfang sind und noch nicht viel Konkurrenz am Markt ist.
+Den Entwicklungsaufwand lassen sich die Hersteller der Custom-Lösungen natürlich auch etwas kosten, vor allem deshalb, weil WinRT-Applikationen relativ neu sind und noch nicht viel Konkurrenz am Markt ist.
 \newline
 Die Firma \textit{Syncfusion} bietet ein Set an Business-Controls zum derzeitigen Zeitpunkt um 199 Dollar an (\cite{syncfn}), deutlich teuerer kommen die Lösungen schon beim Konkurrenten \textit{Componenent One}: hier bezahlt man schon ab 895 Dollar für zusätzliche Elemente. Will man exklusiven Support dazu, wird es noch einmal teurer. \cite{cone}
 \newline
@@ -690,7 +690,7 @@ Die im Rahmen dieser Bachelorarbeit erstellte Applikation Practitioner Mobile ve
 Für die Anwendung Practitioner Mobile wurde ein eigenes Control entwickelt, das es erlaubt, für einen bestimmten Patienten einen Ordinationseintrag hinzuzufügen. Das Control ist in Abbildung \ref{img:customcontrol} ersichtlich. Der vollständige Code dazu befindet sich im Anhang unter \ref{app:customcontrol}.
 \newline
 \newline
- Die folgenden Schritte beziehen sich alle auf ein englische Version der Entwicklungsumgebung Visual Studio 2012 Ultimate.
+ Die folgenden Schritte beziehen sich alle auf eine englische Version der Entwicklungsumgebung Visual Studio 2012 Ultimate.
 \newline
 \newline
 Zuerst fügt man ein neues Item zur Solution hinzu, indem man mit der rechten Maustaste auf einen Ordner des Solution Explorers klickt und \textit{Add -> New Item} auswählt. Aus der vorgeschlagenen Liste sucht man den Eintrag \textit{Templated Control} und bestätigt, was Visual Studio eine Klasse anlegen lässt, die von \textit{Control} ableitet und einen Konstruktor besitzt, der das Property \textit{DefaultStyleKey} setzt.
@@ -698,7 +698,7 @@ Zuerst fügt man ein neues Item zur Solution hinzu, indem man mit der rechten Ma
 Außerdem wird, falls dieses noch nicht existiert, das File \textit{Themes / Generic.xaml} angelegt und ein Eintrag für das eben erstellte Custom Control hinzugefügt. In dieser XAML-Datei kann ein Template für das neue Control erstellt werden. Standardmäßig werden für das \textit{Border}-Property die drei Attribute \textit{Background}, \textit{BorderBrush} und \textit{BorderThickness} gesetzt und die Struktur für ein eigenes Template aufgebaut. Auf diesem kann man anschließend aufsetzen und sein eigenes Template definieren.
 \newline
 \newline
-Das Template des Custom Controls von Practitioner Mobile besteht aus einem Grid als Wrapper-Element, das ein Image-, ein ComboBox-, drei Textblockelemente und einen OK- und Cancel-Button beinhält. Der Pfad des Bildelements und die Elemente der ComboBox werden durch ein \textit{TemplateBinding} gesetzt, welches auf je ein DependencyProperty verweisen, die im File des Custom Controls definiert sind. Wie DependencyProperties erzeugt werden, wurde in Abschnitt \ref{ref:dependencyprops} erklärt.
+Das Template des Custom Controls von Practitioner Mobile besteht aus einem Grid als Wrapper-Element, das ein Image-, ein ComboBox-, drei Textblockelemente und einen OK- und Cancel-Button beinhält. Der Pfad des Bildelements und die Elemente der ComboBox werden durch ein \textit{TemplateBinding} gesetzt, welches auf je ein DependencyProperty verweist, die im File des Custom Controls definiert sind. Wie DependencyProperties erzeugt werden, wurde in Abschnitt \ref{ref:dependencyprops} erklärt.
 \newline
 \newline
 Für die ComboBox wird in \textit{OrdinationMask.cs} eine Standardliste definiert, indem beim Registrieren des DependencyProperties dem Parameter \textit{PropertyMetadata} eine bereits befüllte Liste übergeben wird.
@@ -724,18 +724,18 @@ Das fertige Control kann man im \textit{ToolExplorer} von Visual Studio wiederfi
 %-------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \chapter[Schnittstellen und Charms]{Schnittstellen und Charms}\label{charms}
-Neben den ursprünglichen, auf WinRT umgemappten API-Aufrufen gibt es auch ein Set von komplett neuen APIs. Viele davon sind in der Charm-Bar zusammengefasst, welche mit den neuen Windows-Versionen eingeführt wurde. Die Charm-Bar ist eine Art Menüleiste, die auf der rechten Seite des Bildschirms durch eine Wischgeste oder dadurch erscheint, dass man die Maus in die rechte obere Ecke des Bildschirms bewegt. Hier finden sich appspezifische Einstellungen und Funktionen. Die neuen Möglichkeiten, die Entwicklern dadurch offenstehen, werden in diesem Kapitel erläutert.
+Neben den ursprünglichen, auf WinRT umgemappten API-Aufrufen gibt es auch ein Set von komplett neuen APIs. Viele davon sind in der Charms-Bar zusammengefasst, welche mit den neuen Windows-Versionen eingeführt wurde. Die Charms-Bar ist eine Art Menüleiste, die auf der rechten Seite des Bildschirms durch eine Wischgeste oder dadurch erscheint, dass man die Maus in die rechte obere Ecke des Bildschirms bewegt. Hier finden sich App-spezifische Einstellungen und Funktionen. Die neuen Möglichkeiten, die Entwicklern dadurch offenstehen, werden in diesem Kapitel erläutert.
 Auf Abbildung \ref{Abb7} ist diese neue Art der Menüleiste auf der rechten Seite der Online-Wörterbuchsapplikation \textit{LEO} erkennbar.
 \newline
 \begin{figure}[htbp]
 \centering
 \includegraphics[scale=0.425]{images/charms.png}
-\caption[Die neue Charms-Bart]{Die neue Charms-Bar}\label{Abb7}
+\caption[Die neue Charms-Bar]{Die neue Charms-Bar}\label{Abb7}
 \end{figure}
 \newline
 
 \section[Suchen]{Suchen}
-Die Suche in WinRT Applikationen wurde im Vergleich zu den vorhergehenden Windows Versionen gründlich überarbeitet und mit neuen Funktionen ausgestattet. So ist es nun nicht mehr nur möglich, nach Dateien und Ordnern zu suchen. Zusätzlich kann man nun einen Suchbegriff eingeben, eine WinRT App auswählen und innerhalb einer App (welche diese Funktionalität explizit unterstützen muss) nach diesem Begriff suchen. So wird es unter anderem möglich, den Namen einer Stadt einzugeben, die Wetter-App auszuwählen, und direkt auf die Vorhersage an diesem Ort zuzugreifen. Wichtig dabei zu erwähnen ist, dass diese Applikation nicht laufen muss, nicht einmal im Hintergrund!
+Die Suche in WinRT Applikationen wurde im Vergleich zu den vorhergehenden Windows Versionen gründlich überarbeitet und mit neuen Funktionen ausgestattet. So ist es nun nicht mehr nur möglich, nach Dateien und Ordnern zu suchen. Zusätzlich kann man nun einen Suchbegriff eingeben, eine WinRT App auswählen und innerhalb einer App (welche diese Funktionalität explizit unterstützen muss) nach diesem Begriff suchen. So wird es unter anderem möglich, den Namen einer Stadt einzugeben, die Wetter-App auszuwählen, und direkt auf die Vorhersage an diesem Ort zuzugreifen. Wichtig dabei zu erwähnen ist, dass diese Applikation zuvor nicht laufen muss, nicht einmal im Hintergrund!
 \newline
 Die Suchresultate werden anschließend innerhalb der gewählten Applikation auf einer gesonderten Seite angezeigt, von wo aus man weitere Funktionen der Anwendung aufrufen kann.
 \newline
@@ -747,17 +747,17 @@ Ein zusätzliches Feature der Suche ist das Anbieten von Suchvorschlägen beim E
 Auch die später vorgestellte Applikation Practitioner Mobile verwendet die erwähnten Funktionalitäten. Demonstriert werden diese in Kapitel \ref{practmobile}.
 
 \section[Teilen]{Teilen}\label{ref:share}
-Die Teilen-Funktionalität ermöglicht es auf einfache Weise, Inhalte einer App mit anderen Applikationen zu teilen. Anstatt in etwa einen Text innerhalb einer Anwendung zu kopieren, das Mailprogramm zu öffnen, den Text dort einzufügen und anschließend zu versenden, könnte man dasselbe Resultat einfacher erzielen, indem man die Teilen-Funktion der Charm-Bar öffnet, ein Programm auswählt, das sich selbst als möglicher Empfänger klassifiziert (wie zum Beispiel das Mailprogramm), und direkt aus der gerade offenen Anwendung die Mail mit den gewünschten Inhalt verschickt.
+Die Teilen-Funktionalität ermöglicht es auf einfache Weise, Inhalte einer App mit anderen Applikationen zu teilen. Anstatt in etwa einen Text innerhalb einer Anwendung zu kopieren, das Mailprogramm zu öffnen, den Text dort einzufügen und anschließend zu versenden, könnte man dasselbe Resultat einfacher erzielen, indem man die Teilen-Funktion der Charms-Bar öffnet, ein Programm auswählt, das sich selbst als möglicher Empfänger klassifiziert (wie zum Beispiel das Mailprogramm), und direkt aus der gerade offenen Anwendung die Mail mit den gewünschten Inhalt verschickt.
 \newline
 \newline
-Dieser ist dabei keinesfalls auf Text beschränkt, auch andere Objekte, von Bildern, spezielle Dokumente oder Binärdaten können geteilt werden. Wie der Inhalt dann weiter genutzt wird, entscheidet die App, die diesen entgegennimmt, programmatisch.
+Dieser ist dabei keinesfalls auf Text beschränkt, auch andere Objekte, wie Bilder, spezielle Dokumente oder Binärdaten können geteilt werden. Wie der Inhalt dann weiter genutzt wird, entscheidet die App, die diesen entgegennimmt, programmatisch.
 \newline
-Zwei Properties, die beim Teilvorgang gesetzt werden, sind dabei besonders hervorzuheben: \textit{Title} und \textit{Description}. Diese werden in der Charm-Bar über der Liste der verfügbaren Apps angezeigt und entsprechen somit einer Art Vorschau, welche Daten geteilt werden. \cite {ana12}, S.486ff
+Zwei Properties, die beim Teilvorgang gesetzt werden, sind dabei besonders hervorzuheben: \textit{Title} und \textit{Description}. Diese werden in der Charms-Bar über der Liste der verfügbaren Apps angezeigt und entsprechen somit einer Art Vorschau, welche Daten geteilt werden. \cite {ana12}, S.486ff
 \newline
 Diese Funktion wird ebenfalls in Kapitel \ref{practmobile} demonstriert.
 
 \section[Geräte]{Geräte}
-Die Funktion \textit{Geräte} ist der \textit{Teilen} Funktionalität im Prinzip sehr ähnlich. Auch hier können Inhalte geteilt werden, diesmal allerdings nicht nur mit anderen Apps, sondern sogar mit anderen Geräten. Diese müssen allerdings Windows-zertifiziert sein, darunter fallen Geräte wie in etwa Drucker, Lautsprecher oder Ähnliches. Eine Quelle von so geteiltem Inhalt zu werden ist dagegen deutlich einfacher und mit ein wenig Code können Inhalte an einen Drucker, an Microsoft OneNote oder den Microsoft XPS Document Writer gesendet werden. \cite {ana12}, S.492ff
+Die Funktion \textit{Geräte} ist der \textit{Teilen} Funktionalität im Prinzip sehr ähnlich. Auch hier können Inhalte geteilt werden, diesmal allerdings nicht nur mit anderen Apps, sondern sogar mit anderen Geräten. Diese müssen allerdings Windows-zertifiziert sein, darunter fallen Geräte wie in etwa Drucker, Lautsprecher oder Ähnliches. Eine Quelle von so geteiltem Inhalt zu werden ist dagegen deutlich einfacher und mit ein wenig Code können Inhalte an einen Drucker, an Microsofts OneNote oder den Microsoft XPS Document Writer gesendet werden. \cite {ana12}, S.492ff
 \newline
 \newline
 Wie einfach diese Art des Teilens ist, wird in Kapitel \ref{practmobile} gezeigt.
@@ -777,10 +777,10 @@ Außerdem gibt es keine Garantie dafür, dass die Einstellungen sofort nach Änd
 \section[Lokale Daten und Datenbankanbindung]{Lokale Daten und Datenbankanbindung}
 Da - wie im vorherigen Unterkapitel \ref{einstellungen} erwähnt - nur 100 Kilobyte geroamt werden dürfen, muss man sich als Entwickler eine andere Art der Datensicherung suchen, falls man mehr Informationen speichern will.
 \newline
-Eine Möglichkeit ist es, sogenannte \textit{App Files} anzulegen. Diese sind reguläre Files am normalen Filesystem, auf die andere WinRT Apps jedoch keinen Zugriff haben, da diese in einem speziellen abgetrennten Bereich abgelegt werden. Begrenzungen in der Größe der Dokumente gibt es lokal nicht, die Unterordner-Hierarchie darf lediglich eine Tiefe von 32 nicht überschreiten.
+Eine Möglichkeit ist es, sogenannte \textit{App Files} anzulegen. Diese sind reguläre Files am normalen Filesystem, auf die andere WinRT Apps jedoch keinen Zugriff haben, da diese in einem speziellen abgetrennten Bereich abgelegt werden. Begrenzungen in der Größe der Dokumente gibt es lokal nur durch die Kapazität des Datenspeichers, die Unterordner-Hierarchie darf lediglich eine Tiefe von 32 nicht überschreiten.
 \newline
 \newline
-Datenbankanbindung an SQL Server wird derzeit nicht unterstützt - falls eine Datenbank benötigt wird, kann man aber auf File-basierte Datenbanken wie SQLite zurückgreifen.
+Eine Datenbankanbindung an SQL Server wird derzeit nicht unterstützt - falls eine Datenbank benötigt wird, kann man aber auf File-basierte Datenbanken wie SQLite zurückgreifen.
 \newline
 \newline
 Auch temporäre Dateien können bei Bedarf sehr einfach erstellt werden. Diese existieren selten länger als eine App-Session lang.
@@ -789,7 +789,7 @@ Auch temporäre Dateien können bei Bedarf sehr einfach erstellt werden. Diese e
 % \section[File Picker Contract]{File Picker Contract}
 
 \section[App Bars]{App Bars}
-Die AppBars sind eine besondere Art von Control und bestehen aus Balken, die sich vom oberen oder unteren Rand der Applikation über die normale Views legen. Standardmäßig sind diese Balken ausgeblendet, durch einen rechten Mausklick oder eine entsprechende Geste werden sie erst ein-, beziehungsweise wieder ausgeblendet. Inhaltlich sollten diese Bars Buttons enthalten, die zusätzliche Optionen anbieten, sich aber nicht direkt auf der View befinden sollen, weil sie dort zu viel Platz einnehmen oder einfach nicht dorthin passen. Gruppiert werden können diese Buttons in den bereits in \ref{ref:panels} vorgestellten Panels.
+Die AppBars sind eine besondere Art von Control und bestehen aus Balken, die sich vom oberen oder unteren Rand der Applikation über die normale View legen. Standardmäßig sind diese Balken ausgeblendet, durch einen rechten Mausklick oder eine entsprechende Geste werden sie erst ein-, beziehungsweise wieder ausgeblendet. Inhaltlich sollten diese Bars Buttons enthalten, die zusätzliche Optionen anbieten, sich aber nicht direkt auf der View befinden sollen, weil sie dort zu viel Platz einnehmen oder einfach nicht dorthin passen. Gruppiert werden können diese Buttons in den bereits in \ref{ref:panels} vorgestellten Panels.
 \cite{ana12}, S.196ff
 
 \section[Live Tiles]{Live Tiles}
@@ -799,7 +799,7 @@ Defaultmäßig wird eine App am Windows 8 oder Windows RT Startbildschirm mit se
 Wie ein Live Tile am Bildschim angezeigt wird, wird durch ein Template bestimmt, welches durch einen XML String definiert ist. Es können entweder auf verschiedene lokal gesicherte Informationen zurückgegriffen, oder aber in periodischen Abständen neue Daten aus dem Internet abgefragt werden. Wie Push Notifications dazu beitragen können, wird in \ref{pushnots} erklärt.
 \newline
 \newline
-Über ein Live Tile können auch \textit{Badges} gelegt werden. Diese werden als Overlay dargestellt, die zusätzliche Informationen, wie in etwa die Anzahl der neu eingegangenen Emails bei einer Mailapp, darstellen kann. \cite{ana12}, S.539ff
+Über ein Live Tile können auch \textit{Badges} gelegt werden. Diese werden als Overlay dargestellt, die zusätzliche Informationen, wie in etwa die Anzahl der neu eingegangenen Emails bei einer Mail-App, darstellen kann. \cite{ana12}, S.539ff
 \newline
 \newline
 In Abbildung \ref{img:livetile} sieht man das Live Tile der \textit{Bing Wetter} Applikation, die regelmäßig aktuelle Daten aus dem Internet abfragt.
@@ -828,12 +828,13 @@ Dieses funktioniert, wie auch in Abbildung \ref{img:push} visualisiert wird, fol
 \item Die Applikation sendet eine Push Notification Request an die Notification Client Plattform und fragt um einen Kommunikationskanal an.
 \item Die Notification Client Plattform leitet diese Anfrage an das WNS weiter, welches diesen im Erfolgsfall als Uniform Resource Identifier (URI) zurückliefert.
 \item Diese URI wird jetzt wieder an die aufrufende WinRT App returniert. Sie kann an den eigenen Cloud-Dienst weitergeleitet werden und ab sofort als Kommunikationskanal zwischen Cloud Service und Applikation dienen.
-\item Sobald der Cloud Service eine Update-Nachricht zur Verfügung hat, benachrichtig dieses den WNS über die erhaltene URI und eine HTTP POST Request. Dieses liefert die erhaltene Nachricht anschließend an das referenzierte Gerät aus.
+\item Sobald der Cloud Service eine Update-Nachricht zur Verfügung hat, benachrichtigt dieses den WNS über die erhaltene URI und eine HTTP POST Request. Dieses liefert die erhaltene Nachricht anschließend an das referenzierte Gerät aus.
 \end{itemize}
 Damit eine Applikation überhaupt Push Notifications empfangen kann, muss diese für diesen Dienst registriert sein. Die Authentifikation geschieht dann über das OAuth 2.0 Protokoll. \cite{push12}
 
 \section[Sensoren]{Sensoren}
 Tablets bieten Unterstützung für eine ganze Reihe von zusätzlicher Hardware an, die stationäre Geräte nicht besitzen und für die diese auch wenig sinnvoll wäre. Darunter können sich folgende Sensoren befinden: ein Beschleunigungsmesser, ein Gyrometer, ein Abweichungsmesser, ein Kompass, ein Lichtsensor, ein Orientierungssensor, ein Ortungssensor oder ein NFC-Chip. \cite{ana12}, S.529ff
+\newline
 \newline
 Die Anzahl der Möglichkeiten ist also so groß wie noch nie. Es macht oftmals keinen Sinn, Unterstützung für alle der oben genannten Sensoren anzubieten, aber je nach Applikation sind diese zusätzlichen Optionen eine echte Bereicherung.
 
@@ -842,7 +843,7 @@ Die Anzahl der Möglichkeiten ist also so groß wie noch nie. Es macht oftmals k
 \chapter[Praktisches Beispiel anhand einer einfachen Line Of Business Applikation]{Praktisches Beispiel anhand einer einfachen Line Of Business Applikation}\label{practmobile}
 In diesem Abschnitt werden die Highlights der für diese Bachelorarbeit entwickelten Applikation \textit{Practitioner Mobile} vorgestellt.
 \newline
-Practitioner Mobile ist ein Programm, dass es praktischen Ärzten ermöglichen soll, auch unterwegs Informationen über ihre Patienten und über Medikamente abrufen zu können. Die Anwendung ist simpel gehalten und mit nicht persistenten Testdaten befüllt. Ihr Zweck ist es nicht, tatsächlich einmal im Windows Store zu erscheinen, sondern dient rein zu Demonstrationszwecken.
+Practitioner Mobile ist ein Programm, das es praktischen Ärzten ermöglichen soll, auch unterwegs Informationen über ihre Patienten und über Medikamente abrufen zu können. Die Anwendung ist simpel gehalten und mit nicht persistenten Testdaten befüllt. Ihr Zweck ist es nicht, tatsächlich einmal im Windows Store zu erscheinen, sondern dient rein zu Demonstrationszwecken.
 
 \section[Die Applikation]{Die Applikation}
 \begin{figure}[htbp]
@@ -850,7 +851,7 @@ Practitioner Mobile ist ein Programm, dass es praktischen Ärzten ermöglichen s
 \includegraphics[scale=0.4]{images/practitionermobile.png}
 \caption[Practitioner Mobile]{Practitioner Mobile}\label{img:practitionermobile}
 \end{figure}
-Die Applikation wurde in Visual Studio 2012 Ultimate Edition in der englischen Version erstellt. Alles, was damit programmiert wurde, wäre aber prinzipiell auch mit der kostenfreien Express-Edition möglich gewesen.
+Die Applikation wurde in Visual Studio 2012 Ultimate Edition in der englischen Version erstellt. Alles was damit programmiert wurde, wäre aber prinzipiell auch mit der kostenfreien Express-Edition möglich gewesen.
 \newline
 Außerdem wurde auf die Verwendung eines Projektes mit bereits existierendem Layout bewusst verzichtet und stattdessen mit einer leeren Solution gestartet.
 \newline
@@ -960,7 +961,7 @@ Wenn die Daten nicht geteilt, sondern in etwa an einen Drucker gesendet werden s
 \end{figure}
 \newline
 \newline
-Der Einfachheit halber soll in Practitioner Mobile nicht mehr als der Name des Patienten gedruckt werden, grün hinterlegt, falls ein Patient ausgewählt ist, ein Hinweistext rot hinterlegt, falls das nicht der Fall ist. Angelehnt ist dieses Beispiel an das in \cite{ana12}, S. 493f.
+Der Einfachheit wegen soll in Practitioner Mobile nicht mehr als der Name des Patienten gedruckt werden, grün hinterlegt, falls ein Patient ausgewählt ist, ein Hinweistext rot hinterlegt, falls das nicht der Fall ist. Angelehnt ist dieses Beispiel an das in \cite{ana12}, S. 493f.
 \newline
 \newline
 Um die Druck-Funktionalität nutzen zu können, erzeugt man in der betroffenen View eine Instanz der Klasse \textit{PrintDocument} und sichert diese in einem lokalen Feld.
@@ -985,7 +986,7 @@ public MainPage()
 Die ausimplementierten Methoden sind in Appendix \ref{app:print} dargestellt.
 
 \chapter[Fazit]{Fazit}
-Mobile Geräte sind im Aufstieg, das hört und list man derzeit überall. Bis sich auch klassische Line of Business Applikationen auf Tablets wiederfinden, ist es nur eine Frage der Zeit. Ob die klassischen Desktopcomputer jedoch ganz ersetzt werden, oder eine Art Symbiose zwischen mobil und stationär eingegangen wird, ist noch ungewiss.
+Mobile Geräte sind im Aufstieg, das hört und liest man derzeit überall. Bis sich auch klassische Line of Business Applikationen auf Tablets wiederfinden, ist es nur eine Frage der Zeit. Ob die klassischen Desktopcomputer jedoch ganz ersetzt werden, oder eine Art Symbiose zwischen mobil und stationär eingegangen wird, ist noch ungewiss.
 \newline
 \newline
 Microsoft probiert derzeit mit seinen beiden Betriebssystemen Windows 8 und Windows RT eben genau das, und bietet Entwicklern eine ausgereifte und sehr mächtige Entwicklungsplattform, auf der man mit wenig Code bereits zu einem optisch ansprechenden und funktionierenden Ergebnis kommt. Das Feedback von Anwendern ist aber sehr zwiespältig.
@@ -1030,9 +1031,9 @@ Wie der Markt aber tatsächlich in den nächsten Jahren aussehen wird, bleibt ei
 \newpage
 
 % Tabellenverzeichnis
-\listoftables 
-\addcontentsline{toc}{chapter}{Tabellenverzeichnis} % f"ugt den Eintrag "Tabellenverzeichnis" im Inhaltsverzeichnis hinzu
-\newpage
+% \listoftables 
+% \addcontentsline{toc}{chapter}{Tabellenverzeichnis} % f"ugt den Eintrag "Tabellenverzeichnis" im Inhaltsverzeichnis hinzu
+% \newpage
 
 % Abk"urzungsverzeichnis
 % Bei Verwendung der Dokumentklasse "scrartcl" ist der Befehlt \addchap{Abk"urzungsverzeichnis} durch 
@@ -1043,7 +1044,7 @@ API & Application Programming Interface \\
 CLR & Common Language Runtime \\
 IDC & International Data Corporation \\
 IMEA & Europa, Mittlerer Osten und Afrika \\
-LOB & Line Of Business \\
+LOB & Line of Business \\
 PC & Personal Computer \\
 UI & User Interface \\
 URI & Uniform Resource Identifier \\
