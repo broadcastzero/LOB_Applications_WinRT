@@ -91,6 +91,8 @@ namespace PractitionerMobile
         /// property is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            // Select todays date in calendar control
+            this.PatientAppointmentCalender.SelectedDate = DateTime.Today;
         }
 
         /// <summary>
@@ -190,6 +192,8 @@ namespace PractitionerMobile
                 message = "Bitte wählen Sie zuerst einen Patienten aus!";
             }
 
+            this.GetOrdinationsForDateAndPatient();
+
             MessageDialog dialog = new MessageDialog(message, "Speichern einer Ordination");
             await dialog.ShowAsync();
         }
@@ -225,7 +229,21 @@ namespace PractitionerMobile
                 return;
             }
 
-            ordinationsOfPatientAndDate = selectedPatient.Ordinations.Where(o => o.Date == DateTime.Today).ToList();
+            DateTime selectedDate;
+            bool couldParse;
+            try
+            { 
+                couldParse = DateTime.TryParse(PatientAppointmentCalender.SelectedDate.ToString(), out selectedDate); 
+            }
+            catch (NullReferenceException)
+            {
+                return;
+            }
+            
+            if (!couldParse)
+                return;
+
+            ordinationsOfPatientAndDate = selectedPatient.Ordinations.Where(o => o.Date == selectedDate).ToList();
 
             this.OrdinationsOfPatientAndDate.Clear();
 
